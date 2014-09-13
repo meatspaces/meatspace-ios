@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C188A8418889EC3002CD14C /* NMPostMeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C188A8318889EC3002CD14C /* NMPostMeatViewController.m */; };
 		2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
 		2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */; };
 		2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
@@ -22,6 +23,29 @@
 		2C1F8CC11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
 		2C1F8CC91885CFEB001BE713 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */; };
 		2C1F8CCB1885CFEB001BE713 /* NordMeatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */; };
+		2C1F8CD61885D05B001BE713 /* NMeatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD51885D05B001BE713 /* NMeatCell.m */; };
+		2C1F8CD91885D08A001BE713 /* NMeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* NMeatViewController.m */; };
+		2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CDA1885D50A001BE713 /* meat.gif */; };
+		2C1F8CDE1885E61A001BE713 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CDD1885E61A001BE713 /* UIImage+animatedGIF.m */; };
+		2C1F8CE81885F8C0001BE713 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CE11885F8C0001BE713 /* base64.c */; };
+		2C1F8CE91885F8C0001BE713 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CE41885F8C0001BE713 /* NSData+SRB64Additions.m */; };
+		2C1F8CEA1885F8C0001BE713 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CE71885F8C0001BE713 /* SRWebSocket.m */; };
+		2C1F8CF61885F8DA001BE713 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CEC1885F8DA001BE713 /* SocketIO.m */; };
+		2C1F8CF71885F8DA001BE713 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CEE1885F8DA001BE713 /* SocketIOJSONSerialization.m */; };
+		2C1F8CF81885F8DA001BE713 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CF01885F8DA001BE713 /* SocketIOPacket.m */; };
+		2C1F8CF91885F8DA001BE713 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CF31885F8DA001BE713 /* SocketIOTransportWebsocket.m */; };
+		2C1F8CFA1885F8DA001BE713 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CF51885F8DA001BE713 /* SocketIOTransportXHR.m */; };
+		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
+		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
+		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
+		2C1F8D4F188603BB001BE713 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D42188603BB001BE713 /* SBJson4Parser.m */; };
+		2C1F8D50188603BB001BE713 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D44188603BB001BE713 /* SBJson4StreamParser.m */; };
+		2C1F8D51188603BB001BE713 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D46188603BB001BE713 /* SBJson4StreamParserState.m */; };
+		2C1F8D52188603BB001BE713 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D48188603BB001BE713 /* SBJson4StreamTokeniser.m */; };
+		2C1F8D53188603BB001BE713 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D4A188603BB001BE713 /* SBJson4StreamWriter.m */; };
+		2C1F8D54188603BB001BE713 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D4C188603BB001BE713 /* SBJson4StreamWriterState.m */; };
+		2C1F8D55188603BB001BE713 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8D4E188603BB001BE713 /* SBJson4Writer.m */; };
+		2C27842019C4331400EDCA57 /* NMeatPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C27841F19C4331400EDCA57 /* NMeatPost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C188A8218889EC3002CD14C /* NMPostMeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMPostMeatViewController.h; sourceTree = "<group>"; };
+		2C188A8318889EC3002CD14C /* NMPostMeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMPostMeatViewController.m; sourceTree = "<group>"; };
 		2C1F8C991885CFEB001BE713 /* NordMeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NordMeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8C9C1885CFEB001BE713 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,6 +81,52 @@
 		2C1F8CC61885CFEB001BE713 /* NordMeatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NordMeatTests-Info.plist"; sourceTree = "<group>"; };
 		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NordMeatTests.m; sourceTree = "<group>"; };
+		2C1F8CD41885D05B001BE713 /* NMeatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMeatCell.h; sourceTree = "<group>"; };
+		2C1F8CD51885D05B001BE713 /* NMeatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMeatCell.m; sourceTree = "<group>"; };
+		2C1F8CD71885D08A001BE713 /* NMeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMeatViewController.h; sourceTree = "<group>"; };
+		2C1F8CD81885D08A001BE713 /* NMeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMeatViewController.m; sourceTree = "<group>"; };
+		2C1F8CDA1885D50A001BE713 /* meat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = meat.gif; sourceTree = "<group>"; };
+		2C1F8CDC1885E61A001BE713 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		2C1F8CDD1885E61A001BE713 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		2C1F8CE11885F8C0001BE713 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		2C1F8CE21885F8C0001BE713 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		2C1F8CE31885F8C0001BE713 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		2C1F8CE41885F8C0001BE713 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		2C1F8CE51885F8C0001BE713 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		2C1F8CE61885F8C0001BE713 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		2C1F8CE71885F8C0001BE713 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		2C1F8CEB1885F8DA001BE713 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
+		2C1F8CEC1885F8DA001BE713 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
+		2C1F8CED1885F8DA001BE713 /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
+		2C1F8CEE1885F8DA001BE713 /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = "<group>"; };
+		2C1F8CEF1885F8DA001BE713 /* SocketIOPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOPacket.h; sourceTree = "<group>"; };
+		2C1F8CF01885F8DA001BE713 /* SocketIOPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOPacket.m; sourceTree = "<group>"; };
+		2C1F8CF11885F8DA001BE713 /* SocketIOTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = "<group>"; };
+		2C1F8CF21885F8DA001BE713 /* SocketIOTransportWebsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportWebsocket.h; sourceTree = "<group>"; };
+		2C1F8CF31885F8DA001BE713 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
+		2C1F8CF41885F8DA001BE713 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
+		2C1F8CF51885F8DA001BE713 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
+		2C1F8CFC1885FB86001BE713 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2C1F8D40188603BB001BE713 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4.h; path = "../../external/json-framework/src/main/objc/SBJson4.h"; sourceTree = "<group>"; };
+		2C1F8D41188603BB001BE713 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4Parser.h; path = "../../external/json-framework/src/main/objc/SBJson4Parser.h"; sourceTree = "<group>"; };
+		2C1F8D42188603BB001BE713 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4Parser.m; path = "../../external/json-framework/src/main/objc/SBJson4Parser.m"; sourceTree = "<group>"; };
+		2C1F8D43188603BB001BE713 /* SBJson4StreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4StreamParser.h; path = "../../external/json-framework/src/main/objc/SBJson4StreamParser.h"; sourceTree = "<group>"; };
+		2C1F8D44188603BB001BE713 /* SBJson4StreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4StreamParser.m; path = "../../external/json-framework/src/main/objc/SBJson4StreamParser.m"; sourceTree = "<group>"; };
+		2C1F8D45188603BB001BE713 /* SBJson4StreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4StreamParserState.h; path = "../../external/json-framework/src/main/objc/SBJson4StreamParserState.h"; sourceTree = "<group>"; };
+		2C1F8D46188603BB001BE713 /* SBJson4StreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4StreamParserState.m; path = "../../external/json-framework/src/main/objc/SBJson4StreamParserState.m"; sourceTree = "<group>"; };
+		2C1F8D47188603BB001BE713 /* SBJson4StreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4StreamTokeniser.h; path = "../../external/json-framework/src/main/objc/SBJson4StreamTokeniser.h"; sourceTree = "<group>"; };
+		2C1F8D48188603BB001BE713 /* SBJson4StreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4StreamTokeniser.m; path = "../../external/json-framework/src/main/objc/SBJson4StreamTokeniser.m"; sourceTree = "<group>"; };
+		2C1F8D49188603BB001BE713 /* SBJson4StreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4StreamWriter.h; path = "../../external/json-framework/src/main/objc/SBJson4StreamWriter.h"; sourceTree = "<group>"; };
+		2C1F8D4A188603BB001BE713 /* SBJson4StreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4StreamWriter.m; path = "../../external/json-framework/src/main/objc/SBJson4StreamWriter.m"; sourceTree = "<group>"; };
+		2C1F8D4B188603BB001BE713 /* SBJson4StreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4StreamWriterState.h; path = "../../external/json-framework/src/main/objc/SBJson4StreamWriterState.h"; sourceTree = "<group>"; };
+		2C1F8D4C188603BB001BE713 /* SBJson4StreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4StreamWriterState.m; path = "../../external/json-framework/src/main/objc/SBJson4StreamWriterState.m"; sourceTree = "<group>"; };
+		2C1F8D4D188603BB001BE713 /* SBJson4Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson4Writer.h; path = "../../external/json-framework/src/main/objc/SBJson4Writer.h"; sourceTree = "<group>"; };
+		2C1F8D4E188603BB001BE713 /* SBJson4Writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJson4Writer.m; path = "../../external/json-framework/src/main/objc/SBJson4Writer.m"; sourceTree = "<group>"; };
+		2C27841B19C4329B00EDCA57 /* NordMeat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NordMeat-Bridging-Header.h"; sourceTree = "<group>"; };
+		2C27841E19C4331400EDCA57 /* NMeatPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMeatPost.h; sourceTree = "<group>"; };
+		2C27841F19C4331400EDCA57 /* NMeatPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMeatPost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +134,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */,
+				2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */,
+				2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */,
+				2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */,
 				2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */,
 				2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */,
-				2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +178,9 @@
 		2C1F8C9B1885CFEB001BE713 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C1F8D001885FB92001BE713 /* Security.framework */,
+				2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */,
+				2C1F8CFC1885FB86001BE713 /* libicucore.dylib */,
 				2C1F8C9C1885CFEB001BE713 /* Foundation.framework */,
 				2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */,
 				2C1F8CA01885CFEB001BE713 /* UIKit.framework */,
@@ -114,12 +192,14 @@
 		2C1F8CA21885CFEB001BE713 /* NordMeat */ = {
 			isa = PBXGroup;
 			children = (
+				2C27841A19C4322600EDCA57 /* Models */,
+				2C27841919C4321900EDCA57 /* Views */,
+				2C27841819C431F800EDCA57 /* Controllers */,
+				2C1F8CDF1885F89B001BE713 /* External */,
 				2C1F8CAB1885CFEB001BE713 /* NMAppDelegate.h */,
 				2C1F8CAC1885CFEB001BE713 /* NMAppDelegate.m */,
 				2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */,
 				2C1F8CB11885CFEB001BE713 /* Main_iPad.storyboard */,
-				2C1F8CB41885CFEB001BE713 /* NMViewController.h */,
-				2C1F8CB51885CFEB001BE713 /* NMViewController.m */,
 				2C1F8CB71885CFEB001BE713 /* Images.xcassets */,
 				2C1F8CA31885CFEB001BE713 /* Supporting Files */,
 			);
@@ -129,6 +209,8 @@
 		2C1F8CA31885CFEB001BE713 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C27841B19C4329B00EDCA57 /* NordMeat-Bridging-Header.h */,
+				2C1F8CDA1885D50A001BE713 /* meat.gif */,
 				2C1F8CA41885CFEB001BE713 /* NordMeat-Info.plist */,
 				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
 				2C1F8CA81885CFEB001BE713 /* main.m */,
@@ -153,6 +235,103 @@
 				2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C1F8CDF1885F89B001BE713 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F8D0218860389001BE713 /* JSON */,
+				2C1F8CFB1885F8DF001BE713 /* SocketIO */,
+				2C1F8CE01885F8C0001BE713 /* SocketRocket */,
+				2C1F8CDC1885E61A001BE713 /* UIImage+animatedGIF.h */,
+				2C1F8CDD1885E61A001BE713 /* UIImage+animatedGIF.m */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		2C1F8CE01885F8C0001BE713 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F8CE11885F8C0001BE713 /* base64.c */,
+				2C1F8CE21885F8C0001BE713 /* base64.h */,
+				2C1F8CE31885F8C0001BE713 /* NSData+SRB64Additions.h */,
+				2C1F8CE41885F8C0001BE713 /* NSData+SRB64Additions.m */,
+				2C1F8CE51885F8C0001BE713 /* SocketRocket-Prefix.pch */,
+				2C1F8CE61885F8C0001BE713 /* SRWebSocket.h */,
+				2C1F8CE71885F8C0001BE713 /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
+			sourceTree = "<group>";
+		};
+		2C1F8CFB1885F8DF001BE713 /* SocketIO */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F8CEB1885F8DA001BE713 /* SocketIO.h */,
+				2C1F8CEC1885F8DA001BE713 /* SocketIO.m */,
+				2C1F8CED1885F8DA001BE713 /* SocketIOJSONSerialization.h */,
+				2C1F8CEE1885F8DA001BE713 /* SocketIOJSONSerialization.m */,
+				2C1F8CEF1885F8DA001BE713 /* SocketIOPacket.h */,
+				2C1F8CF01885F8DA001BE713 /* SocketIOPacket.m */,
+				2C1F8CF11885F8DA001BE713 /* SocketIOTransport.h */,
+				2C1F8CF21885F8DA001BE713 /* SocketIOTransportWebsocket.h */,
+				2C1F8CF31885F8DA001BE713 /* SocketIOTransportWebsocket.m */,
+				2C1F8CF41885F8DA001BE713 /* SocketIOTransportXHR.h */,
+				2C1F8CF51885F8DA001BE713 /* SocketIOTransportXHR.m */,
+			);
+			name = SocketIO;
+			sourceTree = "<group>";
+		};
+		2C1F8D0218860389001BE713 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F8D40188603BB001BE713 /* SBJson4.h */,
+				2C1F8D41188603BB001BE713 /* SBJson4Parser.h */,
+				2C1F8D42188603BB001BE713 /* SBJson4Parser.m */,
+				2C1F8D43188603BB001BE713 /* SBJson4StreamParser.h */,
+				2C1F8D44188603BB001BE713 /* SBJson4StreamParser.m */,
+				2C1F8D45188603BB001BE713 /* SBJson4StreamParserState.h */,
+				2C1F8D46188603BB001BE713 /* SBJson4StreamParserState.m */,
+				2C1F8D47188603BB001BE713 /* SBJson4StreamTokeniser.h */,
+				2C1F8D48188603BB001BE713 /* SBJson4StreamTokeniser.m */,
+				2C1F8D49188603BB001BE713 /* SBJson4StreamWriter.h */,
+				2C1F8D4A188603BB001BE713 /* SBJson4StreamWriter.m */,
+				2C1F8D4B188603BB001BE713 /* SBJson4StreamWriterState.h */,
+				2C1F8D4C188603BB001BE713 /* SBJson4StreamWriterState.m */,
+				2C1F8D4D188603BB001BE713 /* SBJson4Writer.h */,
+				2C1F8D4E188603BB001BE713 /* SBJson4Writer.m */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		2C27841819C431F800EDCA57 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F8CB41885CFEB001BE713 /* NMViewController.h */,
+				2C1F8CB51885CFEB001BE713 /* NMViewController.m */,
+				2C1F8CD71885D08A001BE713 /* NMeatViewController.h */,
+				2C1F8CD81885D08A001BE713 /* NMeatViewController.m */,
+				2C188A8218889EC3002CD14C /* NMPostMeatViewController.h */,
+				2C188A8318889EC3002CD14C /* NMPostMeatViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2C27841919C4321900EDCA57 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C1F8CD41885D05B001BE713 /* NMeatCell.h */,
+				2C1F8CD51885D05B001BE713 /* NMeatCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2C27841A19C4322600EDCA57 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C27841E19C4331400EDCA57 /* NMeatPost.h */,
+				2C27841F19C4331400EDCA57 /* NMeatPost.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +379,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NM;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Nordaaker AS";
 				TargetAttributes = {
 					2C1F8CBC1885CFEB001BE713 = {
@@ -234,6 +413,7 @@
 			files = (
 				2C1F8CB31885CFEB001BE713 /* Main_iPad.storyboard in Resources */,
 				2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */,
+				2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */,
 				2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */,
 				2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */,
 			);
@@ -254,9 +434,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C188A8418889EC3002CD14C /* NMPostMeatViewController.m in Sources */,
+				2C1F8CE91885F8C0001BE713 /* NSData+SRB64Additions.m in Sources */,
+				2C1F8D51188603BB001BE713 /* SBJson4StreamParserState.m in Sources */,
 				2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */,
+				2C1F8CDE1885E61A001BE713 /* UIImage+animatedGIF.m in Sources */,
+				2C1F8D4F188603BB001BE713 /* SBJson4Parser.m in Sources */,
+				2C1F8CE81885F8C0001BE713 /* base64.c in Sources */,
+				2C1F8D54188603BB001BE713 /* SBJson4StreamWriterState.m in Sources */,
+				2C1F8D55188603BB001BE713 /* SBJson4Writer.m in Sources */,
+				2C1F8CF61885F8DA001BE713 /* SocketIO.m in Sources */,
 				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
+				2C1F8D52188603BB001BE713 /* SBJson4StreamTokeniser.m in Sources */,
+				2C1F8CD91885D08A001BE713 /* NMeatViewController.m in Sources */,
+				2C1F8CF71885F8DA001BE713 /* SocketIOJSONSerialization.m in Sources */,
+				2C1F8CF81885F8DA001BE713 /* SocketIOPacket.m in Sources */,
+				2C1F8CFA1885F8DA001BE713 /* SocketIOTransportXHR.m in Sources */,
+				2C1F8CEA1885F8C0001BE713 /* SRWebSocket.m in Sources */,
+				2C1F8D50188603BB001BE713 /* SBJson4StreamParser.m in Sources */,
+				2C1F8CF91885F8DA001BE713 /* SocketIOTransportWebsocket.m in Sources */,
+				2C27842019C4331400EDCA57 /* NMeatPost.m in Sources */,
 				2C1F8CAD1885CFEB001BE713 /* NMAppDelegate.m in Sources */,
+				2C1F8D53188603BB001BE713 /* SBJson4StreamWriter.m in Sources */,
+				2C1F8CD61885D05B001BE713 /* NMeatCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +518,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -358,7 +557,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -393,10 +591,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NordMeat/NordMeat-Prefix.pch";
 				INFOPLIST_FILE = "NordMeat/NordMeat-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NordMeat/NordMeat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -406,10 +608,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NordMeat/NordMeat-Prefix.pch";
 				INFOPLIST_FILE = "NordMeat/NordMeat-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NordMeat/NordMeat-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -417,7 +622,6 @@
 		2C1F8CD21885CFEB001BE713 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -440,7 +644,6 @@
 		2C1F8CD31885CFEB001BE713 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -475,6 +678,7 @@
 				2C1F8CD01885CFEB001BE713 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "NordMeatTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +687,7 @@
 				2C1F8CD31885CFEB001BE713 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
