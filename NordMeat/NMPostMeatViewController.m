@@ -9,6 +9,7 @@
 #import "NMPostMeatViewController.h"
 
 
+
 @interface NMPostMeatViewController ()
 @property (retain,nonatomic) AVCaptureSession *session;
 

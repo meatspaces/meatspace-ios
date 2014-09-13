@@ -8,6 +8,7 @@
 
 #import "NMeatPost.h"
 #import "UIImage+animatedGIF.h"
+#import "NSDate+TimeAgo.h"
 
 
 @implementation NMeatPost
@@ -22,6 +23,12 @@
   }
 
   return self;
+}
+
+- (NSString*)relativeTime
+{
+  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] integerValue]/1000];
+ return [postDate dateTimeAgo];
 }
 
 - (NSAttributedString*)attributedBody {

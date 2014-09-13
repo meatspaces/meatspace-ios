@@ -19,7 +19,7 @@
 
 @property (retain,nonatomic) NSMutableArray *items;
 @property (retain,nonatomic) SocketIO *socket;
-@property (assign,nonatomic) BOOL at_bottom;
+@property (assign,nonatomic) BOOL atBottom;
 
 @end
 
@@ -27,12 +27,6 @@
 
 - (void)viewDidLoad
 {
-  self.toolbarItems=[NSArray arrayWithObjects:
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action:nil],
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemCamera target:self action:@selector(post:)],
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFlexibleSpace target: nil action:nil],
-                     
-                     nil];
   [super viewDidLoad];
   self.items=[NSMutableArray array];
   self.socket = [[SocketIO alloc] initWithDelegate:self];
@@ -45,7 +39,7 @@
 
   self.tableView.estimatedRowHeight=120;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
-
+  self.atBottom=YES;
 }
 
 
@@ -56,10 +50,11 @@
   NMeatPost *post=[[NMeatPost alloc] initWithDictionary: chat];
   //  NSLog(@"%@",[chat allKeys]);
    [self.items addObject: post];
-  [self.tableView reloadData];
-  // if (self.at_bottom) {
-    [self.tableView scrollToRowAtIndexPath: [NSIndexPath indexPathForItem:[self.items count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-  //}
+    NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[newRow] withRowAnimation: UITableViewRowAnimationAutomatic];
+   if (self.atBottom) {
+    [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+   }
 
 }
 
@@ -99,12 +94,12 @@
     NMeatCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-  NMeatPost *post=[self.items objectAtIndex:indexPath.row];
+    NMeatPost *post=[self.items objectAtIndex:indexPath.row];
     cell.postLabel.attributedText=[post attributedBody];
-  cell.postImage.image=[post image];
-  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: 1];
-  
-  return cell;
+    cell.postImage.image=[post image];
+    cell.timeLabel.text=[post relativeTime];
+ 
+    return cell;
 }
 
 
@@ -117,7 +112,7 @@
   
   CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
   
-  self.at_bottom = (distanceFromBottom <= height);
+  self.atBottom = (distanceFromBottom <= height);
 }
 
 
