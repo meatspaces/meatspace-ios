@@ -11,6 +11,11 @@
 
 @interface NMeatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, SocketIODelegate>
 
-@property (weak,nonatomic) UITableView IBOutlet *tableView;
+- (void)keyboardWillHide:(NSNotification *)sender;
+- (void)keyboardDidShow:(NSNotification *)sender;
+
+
+@property (weak, nonatomic)IBOutlet NSLayoutConstraint *containerHeight;
+@property (strong, nonatomic)IBOutlet UITableView *tableView;
 
 @end
