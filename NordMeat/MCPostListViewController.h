@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocketIO.h"
 
-@interface NMeatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, SocketIODelegate>
+@interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;

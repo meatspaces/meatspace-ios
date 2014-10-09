@@ -6,25 +6,30 @@
   //  Copyright (c) 2014 Nordaaker AS. All rights reserved.
   //
 
-#import "NMPostMeatViewController.h"
-#import "NMeatViewController.h"
+#import "MCPostViewController.h"
+#import "MCPostListViewController.h"
+#import <ImageIO/ImageIO.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 
-@interface NMPostMeatViewController ()
+@interface MCPostViewController ()
 @property (retain,nonatomic) AVCaptureSession *session;
 @property (weak, nonatomic) IBOutlet UITextField *textfield;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
+@property (assign, nonatomic) struct CGImageDestination *saveGif;
+@property (strong, nonatomic) NSDictionary *frameProperties;
 @end
 
-@implementation NMPostMeatViewController
+@implementation MCPostViewController
 
 const int CAPTURE_FRAMES_PER_SECOND=5;
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  
+  // Do any additional setup after loading the view.
   [self setupCaptureSession];
 }
 
@@ -52,7 +57,10 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   AVCaptureDevice *device = [AVCaptureDevice
                              defaultDeviceWithMediaType:AVMediaTypeVideo];
 
-  
+  [device lockForConfiguration: &error];
+  device.activeVideoMinFrameDuration = CMTimeMake(1, CAPTURE_FRAMES_PER_SECOND);
+  device.activeVideoMaxFrameDuration = CMTimeMake(1, CAPTURE_FRAMES_PER_SECOND);
+  [device unlockForConfiguration];
     // Create a device input with the device and add it to the session.
   AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device
                                                                       error:&error];
@@ -64,11 +72,6 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   
     // Create a VideoDataOutput and add it to the session
   AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
-  AVCaptureConnection *conn = [output connectionWithMediaType:AVMediaTypeVideo];
-  if (conn.isVideoMinFrameDurationSupported)
-    conn.videoMinFrameDuration = CMTimeMake(1, CAPTURE_FRAMES_PER_SECOND);
-  if (conn.isVideoMaxFrameDurationSupported)
-    conn.videoMaxFrameDuration = CMTimeMake(1, CAPTURE_FRAMES_PER_SECOND);
 
   [session addOutput:output];
   AVCaptureVideoPreviewLayer *captureLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
@@ -102,6 +105,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
   ;    // Create a UIImage from the sample buffer data
   
+    // if(self.saveGif) {
+    
+    // CGImageDestinationAddImage(self.saveGif, [self imageFromSampleBuffer:sampleBuffer]);
+    //  }
     // [self.imageButton setImage: [self imageFromSampleBuffer:sampleBuffer] forState: UIControlStateNormal];
   
   
@@ -182,7 +189,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   CGColorSpaceRelease(colorSpace);
   
     // Create an image object from the Quartz image
-  UIImage *image = [UIImage imageWithCGImage:quartzImage];
+  UIImage *image = [UIImage imageWithCGImage:quartzImage] ;
   
     // Release the Quartz image
   CGImageRelease(quartzImage);
@@ -191,42 +198,41 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 
-- (IBAction)callPost:(id)sender
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
   [_session startRunning];
-  NMeatViewController *meat= (NMeatViewController*)self.parentViewController;
-  meat.containerHeight.constant=101;
-  [meat.view setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.5f animations:^{
     self.imageButton.alpha=1;
-    self.textfield.alpha=1;
-    self.postButton.alpha=0;
-    [meat.view layoutIfNeeded];
   } completion:^(BOOL finished) {
     [self.textfield becomeFirstResponder];
   }];
+  
+  return YES;
 }
-
-- (IBAction)closePost:(id)sender {
-  [_session stopRunning];
-  [self.textfield resignFirstResponder];
-  NMeatViewController *meat= (NMeatViewController*)self.parentViewController;
-  meat.containerHeight.constant=42;
-  [meat.view setNeedsUpdateConstraints];
-  [UIView animateWithDuration:0.5f animations:^{
-    [meat.view layoutIfNeeded];
-    self.imageButton.alpha=0;
-    self.textfield.alpha=0;
-    self.postButton.alpha=1;
-  }];
-}
-
 
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
+  [UIView animateWithDuration:0.5f animations:^{
+    self.imageButton.alpha=0;
+  }];
   NSLog(@"Posting %@",textField.text);
-  [self closePost: textField];
+  
+  NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+  NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+  
+  NSDictionary *fileProperties = @{
+                                   (__bridge id)kCGImagePropertyGIFDictionary: @{
+                                       (__bridge id)kCGImagePropertyGIFLoopCount: @0, // 0 means loop forever
+                                       }
+                                   };
+  CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, 10, NULL);
+  CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
+  self.saveGif=destination;
+  [_session stopRunning];
+  
   return YES;
+  
 }
 
 

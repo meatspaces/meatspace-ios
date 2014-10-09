@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Nordaaker AS. All rights reserved.
 //
 
-#import "NMeatCell.h"
+#import "MCPostCell.h"
 
-@implementation NMeatCell
+@implementation MCPostCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

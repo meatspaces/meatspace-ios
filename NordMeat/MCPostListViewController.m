@@ -3,91 +3,94 @@
 //  NordMeat
 //
 //  Created by Marcus Ramberg on 14.01.14.
-//  Copyright (c) 2014 Nordaaker AS. All rights reserved.
+//  Copyright (c) 2014 Nordaaker AS. 
 //
 
-#import "NMeatViewController.h"
-#import "NMeatCell.h"
-#import "SocketIOPacket.h"
+#import "MCPostListViewController.h"
+#import "MCPostCell.h"
+#import <SIOSocket/SIOSocket.h>
 #import "SBJson4Parser.h"
-#import "NMPostMeatViewController.h"
-#import "NMeatPost.h"
+#import "MCPostViewController.h"
+#import "MCPost.h"
 
 
 
-@interface NMeatViewController ()
+@interface MCPostListViewController ()
 
 @property (retain,nonatomic) NSMutableArray *items;
-@property (retain,nonatomic) SocketIO *socket;
+@property (retain,nonatomic) SIOSocket *socket;
 @property (assign,nonatomic) BOOL atBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableDictionary *seen;
+@property (nonatomic,assign) BOOL socketIsConnected;
+
+- (void)addPost: (NSDictionary*)data;
 
 @end
 
-@implementation NMeatViewController
+@implementation MCPostListViewController
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   self.seen=[NSMutableDictionary dictionary];
   self.items=[NSMutableArray array];
-  self.socket = [[SocketIO alloc] initWithDelegate:self];
-
-  [self.socket connectToHost:@"mrbook.local"
-                   onPort:3000
-               withParams:[NSDictionary dictionaryWithObjectsAndKeys:@"1234", @"auth_token", nil]
-   ];
+  [SIOSocket socketWithHost: @"http://chat.meatspac.es" response: ^(SIOSocket *socket)
+   {
+   self.socket = socket;
+   __weak typeof(self) weakSelf = self;
+   self.socket.onConnect = ^()
+     {
+     weakSelf.socketIsConnected = YES;
+     };
+   [self.socket on: @"message"  callback:^(id data) {
+       //NSDictionary *data=[packet dataAsJSON];
+       // NSLog(@"%@",data);
+       //return;
+     [weakSelf performSelectorOnMainThread:@selector(addPost:) withObject:data waitUntilDone:NO];
+   }];
+   self.socket.onError = ^(NSDictionary *errorInfo) {
+     NSLog(@"Oops: %@",errorInfo);
+   };
+   self.socket.onReconnect = ^(NSInteger numberOfAttempts) {
+     NSLog(@"Reconnect %ld", (long)numberOfAttempts);
+   };
+   self.socket.onReconnectionAttempt =^(NSInteger numberOfAttempts) {
+     NSLog(@"Attempt %ld", (long)numberOfAttempts);
+   };
+   self.socket.onReconnectionError=^(NSDictionary *errorInfo) {
+     NSLog(@"Oops: %@",errorInfo);
+   };
+   }];
   
-      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
- 
-
+  
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
+  
+  
   self.tableView.estimatedRowHeight=120;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.atBottom=YES;
 }
 
-#pragma mark - Socket.io delegate
-
-- (void)socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
+- (void)addPost: (NSDictionary*)data
 {
-  NSDictionary *data=[packet dataAsJSON];
-  NSDictionary *chat=[[[[data objectForKey: @"args"] objectAtIndex:0] objectForKey: @"chat"] objectForKey: @"value"];
-  NSString *key=[[[[data objectForKey: @"args"] objectAtIndex:0] objectForKey: @"chat"] objectForKey: @"key"];
-  if(![self.seen valueForKey: key]) {
+  
+  NSString *key=[data objectForKey: @"fingerprint"];
+    //  if(![self.seen valueForKey: key]) {
     if (key) [self.seen setObject: @"1" forKey: key];
-    NMeatPost *post=[[NMeatPost alloc] initWithDictionary: chat];
+    MCPost *post=[[MCPost alloc] initWithDictionary: data];
     [self.items addObject: post];
     NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
+    [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:@[newRow] withRowAnimation: UITableViewRowAnimationFade];
-    [self.tableView reloadData];
+    [self.tableView endUpdates];
     if (self.atBottom) {
       [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
-  }
-}
-
-- (void)socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
-{
-  NSLog(@"Disconnected with %@",error);
-    // FIXME: Add a timeout here before reconnecting
-  [socket connectToHost:@"mrbook.local"
-                   onPort:3000
-               withParams:[NSDictionary dictionaryWithObjectsAndKeys:@"1234", @"auth_token", nil]
-   ];
-}
-
-
-- (void)socketIO:(SocketIO *)socket onError:(NSError *)error
-{
-    // FIXME: Add a timeout here before reconnecting
-  NSLog(@"OOPS: %@",error);
-    [socket connectToHost:@"mrbook.local"
-                   onPort:3000
-               withParams:[NSDictionary dictionaryWithObjectsAndKeys:@"1234", @"auth_token", nil]
-   ];
+    // }
 }
 
 #pragma mark - Keyboard handling
@@ -107,7 +110,7 @@
 
 - (void)post: (id)sender
 {
-  NMPostMeatViewController *post=[[NMPostMeatViewController alloc] init];
+  MCPostViewController *post=[[MCPostViewController alloc] init];
   [self presentViewController: post animated:YES completion:^{
     NSLog(@"Presentmodal");
   }];
@@ -137,13 +140,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MeatCell";
-    NMeatCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MCPostCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NMeatPost *post=[self.items objectAtIndex:indexPath.row];
-    cell.postLabel.attributedText=[post attributedBody];
-    cell.postImage.image=[post image];
-    cell.timeLabel.text=[post relativeTime];
+    MCPost *post=[self.items objectAtIndex:indexPath.row];
+    cell.textView.attributedText=post.attributedString;
+  CGRect frame=cell.frame;
+  frame.size = [cell.textView sizeThatFits:CGSizeMake(cell.textView.frame.size.width, 800)];
+  cell.textView.frame=frame;
+  cell.timeLabel.text=[post relativeTime];
  
     return cell;
 }
@@ -157,6 +162,11 @@
   CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
   
   self.atBottom = (distanceFromBottom <= height);
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+  return YES;
 }
 
 

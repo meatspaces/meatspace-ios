@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NMeatCell : UITableViewCell
+@interface MCPostCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
-@property (weak, nonatomic) IBOutlet UILabel *postLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

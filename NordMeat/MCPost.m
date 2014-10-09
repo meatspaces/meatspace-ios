@@ -6,12 +6,11 @@
 //  Copyright (c) 2014 Nordaaker AS. All rights reserved.
 //
 
-#import "NMeatPost.h"
-#import "UIImage+animatedGIF.h"
+#import "MCPost.h"
 #import "NSDate+TimeAgo.h"
 
 
-@implementation NMeatPost
+@implementation MCPost
 
 
 -(id)initWithDictionary: (NSDictionary*)dict
@@ -19,7 +18,7 @@
   self = [super init];
   if(self) {
     self.postData=dict;
-    self.image=[UIImage animatedImageWithAnimatedGIFURL: [NSURL URLWithString: [dict objectForKey: @"media"]]];
+    self.attributedString=[self attributedBody];
   }
 
   return self;
@@ -37,6 +36,16 @@
   if(!text) {
     return [[NSAttributedString alloc] init];
   }
+  
+  NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+  
+  NSError *error;
+  NSDictionary *attributes;
+  NSString *html=[NSString stringWithFormat: @"<html><p>%@</p></html>",text];
+ NSAttributedString *string=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:&attributes error:&error];
+  return string;
+
+  
   NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
   // Add Background Color for Smooth rendering
   [attributedString setAttributes:@{NSBackgroundColorAttributeName:[UIColor whiteColor]} range:NSMakeRange(0, attributedString.length)];

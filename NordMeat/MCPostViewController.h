@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface NMPostMeatViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,UITextFieldDelegate>
+@interface MCPostViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,UITextFieldDelegate>
 
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position;

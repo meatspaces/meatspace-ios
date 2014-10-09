@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Nordaaker AS. All rights reserved.
 //
 
-#import "NMAppDelegate.h"
+#import "MCAppDelegate.h"
 
-@implementation NMAppDelegate
+@implementation MCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

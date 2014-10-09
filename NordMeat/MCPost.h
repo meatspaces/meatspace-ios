@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NMeatPost : NSObject
+@interface MCPost : NSObject
 
 @property (nonatomic,strong) NSDictionary *postData;
-@property (nonatomic,strong) UIImage *image;
+@property (nonatomic,strong) NSAttributedString *attributedString;
 
 -(id)initWithDictionary: (NSDictionary*)dict;
 - (NSAttributedString*)attributedBody;
