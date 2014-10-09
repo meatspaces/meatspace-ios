@@ -8,8 +8,6 @@
 
 #import "MCPostListViewController.h"
 #import "MCPostCell.h"
-#import <SIOSocket/SIOSocket.h>
-#import "SBJson4Parser.h"
 #import "MCPostViewController.h"
 #import "MCPost.h"
 
@@ -18,7 +16,6 @@
 @interface MCPostListViewController ()
 
 @property (retain,nonatomic) NSMutableArray *items;
-@property (retain,nonatomic) SIOSocket *socket;
 @property (assign,nonatomic) BOOL atBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

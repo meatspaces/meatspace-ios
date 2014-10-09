@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SIOSocket/SIOSocket.h>
 
 @interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
@@ -16,5 +17,6 @@
 
 @property (weak, nonatomic)IBOutlet NSLayoutConstraint *containerHeight;
 @property (strong, nonatomic)IBOutlet UITableView *tableView;
+@property (retain,nonatomic) SIOSocket *socket;
 
 @end

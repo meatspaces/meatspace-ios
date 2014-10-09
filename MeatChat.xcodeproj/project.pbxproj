@@ -1,614 +1,1436 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		2C188A8418889EC3002CD14C /* MCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C188A8318889EC3002CD14C /* MCPostViewController.m */; };
-		2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
-		2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */; };
-		2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
-		2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */; };
-		2C1F8CA91885CFEB001BE713 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CA81885CFEB001BE713 /* main.m */; };
-		2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */; };
-		2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */; };
-		2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB51885CFEB001BE713 /* NMViewController.m */; };
-		2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB71885CFEB001BE713 /* Images.xcassets */; };
-		2C1F8CBF1885CFEB001BE713 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CBE1885CFEB001BE713 /* XCTest.framework */; };
-		2C1F8CC01885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
-		2C1F8CC11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
-		2C1F8CC91885CFEB001BE713 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */; };
-		2C1F8CCB1885CFEB001BE713 /* NordMeatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */; };
-		2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD51885D05B001BE713 /* MCPostCell.m */; };
-		2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */; };
-		2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CDA1885D50A001BE713 /* meat.gif */; };
-		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
-		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
-		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
-		2C27842019C4331400EDCA57 /* MCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C27841F19C4331400EDCA57 /* MCPost.m */; };
-		61B37259671C453AA69C08CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24400EDD099742C5ABF721BF /* libPods.a */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2C1F8CC21885CFEB001BE713 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C1F8C911885CFEB001BE713 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C1F8C981885CFEB001BE713;
-			remoteInfo = NordMeat;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		24400EDD099742C5ABF721BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C188A8218889EC3002CD14C /* MCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostViewController.h; sourceTree = "<group>"; };
-		2C188A8318889EC3002CD14C /* MCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostViewController.m; sourceTree = "<group>"; };
-		2C1F8C991885CFEB001BE713 /* MeatChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C1F8C9C1885CFEB001BE713 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2C1F8CA01885CFEB001BE713 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2C1F8CA41885CFEB001BE713 /* MeatChat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat-Info.plist"; sourceTree = "<group>"; };
-		2C1F8CA61885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2C1F8CA81885CFEB001BE713 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeatChat-Prefix.pch"; sourceTree = "<group>"; };
-		2C1F8CAB1885CFEB001BE713 /* MCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAppDelegate.h; sourceTree = "<group>"; };
-		2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAppDelegate.m; sourceTree = "<group>"; };
-		2C1F8CAF1885CFEB001BE713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		2C1F8CB41885CFEB001BE713 /* NMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NMViewController.h; sourceTree = "<group>"; };
-		2C1F8CB51885CFEB001BE713 /* NMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NMViewController.m; sourceTree = "<group>"; };
-		2C1F8CB71885CFEB001BE713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C1F8CBE1885CFEB001BE713 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2C1F8CC61885CFEB001BE713 /* MeatChatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChatTests-Info.plist"; sourceTree = "<group>"; };
-		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NordMeatTests.m; sourceTree = "<group>"; };
-		2C1F8CD41885D05B001BE713 /* MCPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostCell.h; sourceTree = "<group>"; };
-		2C1F8CD51885D05B001BE713 /* MCPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostCell.m; sourceTree = "<group>"; };
-		2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostListViewController.h; sourceTree = "<group>"; };
-		2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostListViewController.m; sourceTree = "<group>"; };
-		2C1F8CDA1885D50A001BE713 /* meat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = meat.gif; sourceTree = "<group>"; };
-		2C1F8CFC1885FB86001BE713 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		2C27841B19C4329B00EDCA57 /* NordMeat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NordMeat-Bridging-Header.h"; sourceTree = "<group>"; };
-		2C27841E19C4331400EDCA57 /* MCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPost.h; sourceTree = "<group>"; };
-		2C27841F19C4331400EDCA57 /* MCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPost.m; sourceTree = "<group>"; };
-		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		2C1F8C961885CFEB001BE713 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */,
-				2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */,
-				2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */,
-				2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */,
-				2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */,
-				2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */,
-				61B37259671C453AA69C08CE /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C1F8CBA1885CFEB001BE713 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CBF1885CFEB001BE713 /* XCTest.framework in Frameworks */,
-				2C1F8CC11885CFEB001BE713 /* UIKit.framework in Frameworks */,
-				2C1F8CC01885CFEB001BE713 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		2C1F8C901885CFEB001BE713 = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CA21885CFEB001BE713 /* MeatChat */,
-				2C1F8CC41885CFEB001BE713 /* MeatChat */,
-				2C1F8C9B1885CFEB001BE713 /* Frameworks */,
-				2C1F8C9A1885CFEB001BE713 /* Products */,
-				30709C7767B2121A7B0101B4 /* Pods */,
-			);
-			sourceTree = "<group>";
-		};
-		2C1F8C9A1885CFEB001BE713 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8C991885CFEB001BE713 /* MeatChat.app */,
-				2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2C1F8C9B1885CFEB001BE713 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8D001885FB92001BE713 /* Security.framework */,
-				2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */,
-				2C1F8CFC1885FB86001BE713 /* libicucore.dylib */,
-				2C1F8C9C1885CFEB001BE713 /* Foundation.framework */,
-				2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */,
-				2C1F8CA01885CFEB001BE713 /* UIKit.framework */,
-				2C1F8CBE1885CFEB001BE713 /* XCTest.framework */,
-				24400EDD099742C5ABF721BF /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2C1F8CA21885CFEB001BE713 /* MeatChat */ = {
-			isa = PBXGroup;
-			children = (
-				2C27841A19C4322600EDCA57 /* Models */,
-				2C27841919C4321900EDCA57 /* Views */,
-				2C27841819C431F800EDCA57 /* Controllers */,
-				2C1F8CDF1885F89B001BE713 /* External */,
-				2C1F8CAB1885CFEB001BE713 /* MCAppDelegate.h */,
-				2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */,
-				2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */,
-				2C1F8CB71885CFEB001BE713 /* Images.xcassets */,
-				2C1F8CA31885CFEB001BE713 /* Supporting Files */,
-			);
-			name = MeatChat;
-			path = NordMeat;
-			sourceTree = "<group>";
-		};
-		2C1F8CA31885CFEB001BE713 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2C27841B19C4329B00EDCA57 /* NordMeat-Bridging-Header.h */,
-				2C1F8CDA1885D50A001BE713 /* meat.gif */,
-				2C1F8CA41885CFEB001BE713 /* MeatChat-Info.plist */,
-				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
-				2C1F8CA81885CFEB001BE713 /* main.m */,
-				2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2C1F8CC41885CFEB001BE713 /* MeatChat */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */,
-				2C1F8CC51885CFEB001BE713 /* Supporting Files */,
-			);
-			name = MeatChat;
-			path = NordMeatTests;
-			sourceTree = "<group>";
-		};
-		2C1F8CC51885CFEB001BE713 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CC61885CFEB001BE713 /* MeatChatTests-Info.plist */,
-				2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2C1F8CDF1885F89B001BE713 /* External */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = External;
-			sourceTree = "<group>";
-		};
-		2C27841819C431F800EDCA57 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CB41885CFEB001BE713 /* NMViewController.h */,
-				2C1F8CB51885CFEB001BE713 /* NMViewController.m */,
-				2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */,
-				2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */,
-				2C188A8218889EC3002CD14C /* MCPostViewController.h */,
-				2C188A8318889EC3002CD14C /* MCPostViewController.m */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		2C27841919C4321900EDCA57 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CD41885D05B001BE713 /* MCPostCell.h */,
-				2C1F8CD51885D05B001BE713 /* MCPostCell.m */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		2C27841A19C4322600EDCA57 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				2C27841E19C4331400EDCA57 /* MCPost.h */,
-				2C27841F19C4331400EDCA57 /* MCPost.m */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		30709C7767B2121A7B0101B4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */,
-				878D885A722FC2C12257BA5B /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		2C1F8C981885CFEB001BE713 /* MeatChat */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat" */;
-			buildPhases = (
-				BBA07FE4852D4CF2954B2AB4 /* Check Pods Manifest.lock */,
-				2C1F8C951885CFEB001BE713 /* Sources */,
-				2C1F8C961885CFEB001BE713 /* Frameworks */,
-				2C1F8C971885CFEB001BE713 /* Resources */,
-				CF0CBC43598E48318E5B1E58 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MeatChat;
-			productName = NordMeat;
-			productReference = 2C1F8C991885CFEB001BE713 /* MeatChat.app */;
-			productType = "com.apple.product-type.application";
-		};
-		2C1F8CBC1885CFEB001BE713 /* MeatChatTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChatTests" */;
-			buildPhases = (
-				2C1F8CB91885CFEB001BE713 /* Sources */,
-				2C1F8CBA1885CFEB001BE713 /* Frameworks */,
-				2C1F8CBB1885CFEB001BE713 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */,
-			);
-			name = MeatChatTests;
-			productName = NordMeatTests;
-			productReference = 2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		2C1F8C911885CFEB001BE713 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = NM;
-				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "Nordaaker AS";
-				TargetAttributes = {
-					2C1F8CBC1885CFEB001BE713 = {
-						TestTargetID = 2C1F8C981885CFEB001BE713;
-					};
-				};
-			};
-			buildConfigurationList = 2C1F8C941885CFEB001BE713 /* Build configuration list for PBXProject "MeatChat" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 2C1F8C901885CFEB001BE713;
-			productRefGroup = 2C1F8C9A1885CFEB001BE713 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				2C1F8C981885CFEB001BE713 /* MeatChat */,
-				2C1F8CBC1885CFEB001BE713 /* MeatChatTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		2C1F8C971885CFEB001BE713 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */,
-				2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */,
-				2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */,
-				2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C1F8CBB1885CFEB001BE713 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CC91885CFEB001BE713 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		BBA07FE4852D4CF2954B2AB4 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CF0CBC43598E48318E5B1E58 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		2C1F8C951885CFEB001BE713 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C188A8418889EC3002CD14C /* MCPostViewController.m in Sources */,
-				2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */,
-				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
-				2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */,
-				2C27842019C4331400EDCA57 /* MCPost.m in Sources */,
-				2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */,
-				2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C1F8CB91885CFEB001BE713 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CCB1885CFEB001BE713 /* NordMeatTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C1F8C981885CFEB001BE713 /* MeatChat */;
-			targetProxy = 2C1F8CC21885CFEB001BE713 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C1F8CA61885CFEB001BE713 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C1F8CAF1885CFEB001BE713 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C1F8CC81885CFEB001BE713 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		2C1F8CCC1885CFEB001BE713 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2C1F8CCD1885CFEB001BE713 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		2C1F8CCF1885CFEB001BE713 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "NordMeat/MeatChat-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = MeatChat;
-				SWIFT_OBJC_BRIDGING_HEADER = "NordMeat/NordMeat-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		2C1F8CD01885CFEB001BE713 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 878D885A722FC2C12257BA5B /* Pods.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "NordMeat/MeatChat-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = MeatChat;
-				SWIFT_OBJC_BRIDGING_HEADER = "NordMeat/NordMeat-Bridging-Header.h";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		2C1F8CD21885CFEB001BE713 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/NordMeat-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "NordMeatTests/MeatChatTests-Info.plist";
-				PRODUCT_NAME = MeatChatTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		2C1F8CD31885CFEB001BE713 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/NordMeat-Prefix.pch";
-				INFOPLIST_FILE = "NordMeatTests/MeatChatTests-Info.plist";
-				PRODUCT_NAME = MeatChatTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		2C1F8C941885CFEB001BE713 /* Build configuration list for PBXProject "MeatChat" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C1F8CCC1885CFEB001BE713 /* Debug */,
-				2C1F8CCD1885CFEB001BE713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C1F8CCF1885CFEB001BE713 /* Debug */,
-				2C1F8CD01885CFEB001BE713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChatTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C1F8CD21885CFEB001BE713 /* Debug */,
-				2C1F8CD31885CFEB001BE713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 2C1F8C911885CFEB001BE713 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>24400EDD099742C5ABF721BF</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>2C188A8218889EC3002CD14C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MCPostViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C188A8318889EC3002CD14C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MCPostViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C188A8418889EC3002CD14C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C188A8318889EC3002CD14C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8C901885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CA21885CFEB001BE713</string>
+				<string>2C1F8CC41885CFEB001BE713</string>
+				<string>2C1F8C9B1885CFEB001BE713</string>
+				<string>2C1F8C9A1885CFEB001BE713</string>
+				<string>30709C7767B2121A7B0101B4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8C911885CFEB001BE713</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>NM</string>
+				<key>LastUpgradeCheck</key>
+				<string>0600</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Nordaaker AS</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>2C1F8CBC1885CFEB001BE713</key>
+					<dict>
+						<key>TestTargetID</key>
+						<string>2C1F8C981885CFEB001BE713</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>2C1F8C941885CFEB001BE713</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>2C1F8C901885CFEB001BE713</string>
+			<key>productRefGroup</key>
+			<string>2C1F8C9A1885CFEB001BE713</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>2C1F8C981885CFEB001BE713</string>
+				<string>2C1F8CBC1885CFEB001BE713</string>
+			</array>
+		</dict>
+		<key>2C1F8C941885CFEB001BE713</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>2C1F8CCC1885CFEB001BE713</string>
+				<string>2C1F8CCD1885CFEB001BE713</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2C1F8C951885CFEB001BE713</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C188A8418889EC3002CD14C</string>
+				<string>2C1F8CB61885CFEB001BE713</string>
+				<string>2C1F8CA91885CFEB001BE713</string>
+				<string>2C1F8CD91885D08A001BE713</string>
+				<string>2C27842019C4331400EDCA57</string>
+				<string>2C1F8CAD1885CFEB001BE713</string>
+				<string>2C1F8CD61885D05B001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2C1F8C961885CFEB001BE713</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C1F8C9D1885CFEB001BE713</string>
+				<string>2C1F8D011885FB92001BE713</string>
+				<string>2C1F8CFF1885FB8C001BE713</string>
+				<string>2C1F8CFD1885FB86001BE713</string>
+				<string>2C1F8C9F1885CFEB001BE713</string>
+				<string>2C1F8CA11885CFEB001BE713</string>
+				<string>61B37259671C453AA69C08CE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2C1F8C971885CFEB001BE713</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C1F8CB81885CFEB001BE713</string>
+				<string>2C1F8CDB1885D50A001BE713</string>
+				<string>2C1F8CB01885CFEB001BE713</string>
+				<string>2C1F8CA71885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2C1F8C981885CFEB001BE713</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>2C1F8CCE1885CFEB001BE713</string>
+			<key>buildPhases</key>
+			<array>
+				<string>BBA07FE4852D4CF2954B2AB4</string>
+				<string>2C1F8C951885CFEB001BE713</string>
+				<string>2C1F8C961885CFEB001BE713</string>
+				<string>2C1F8C971885CFEB001BE713</string>
+				<string>CF0CBC43598E48318E5B1E58</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>MeatChat</string>
+			<key>productName</key>
+			<string>NordMeat</string>
+			<key>productReference</key>
+			<string>2C1F8C991885CFEB001BE713</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>2C1F8C991885CFEB001BE713</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>MeatChat.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>2C1F8C9A1885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8C991885CFEB001BE713</string>
+				<string>2C1F8CBD1885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8C9B1885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8D001885FB92001BE713</string>
+				<string>2C1F8CFE1885FB8C001BE713</string>
+				<string>2C1F8CFC1885FB86001BE713</string>
+				<string>2C1F8C9C1885CFEB001BE713</string>
+				<string>2C1F8C9E1885CFEB001BE713</string>
+				<string>2C1F8CA01885CFEB001BE713</string>
+				<string>2C1F8CBE1885CFEB001BE713</string>
+				<string>24400EDD099742C5ABF721BF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8C9C1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>2C1F8C9D1885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8C9C1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8C9E1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>2C1F8C9F1885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8C9E1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CA01885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>2C1F8CA11885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CA01885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CA21885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C27841A19C4322600EDCA57</string>
+				<string>2C27841919C4321900EDCA57</string>
+				<string>2C27841819C431F800EDCA57</string>
+				<string>2C1F8CDF1885F89B001BE713</string>
+				<string>2C1F8CAB1885CFEB001BE713</string>
+				<string>2C1F8CAC1885CFEB001BE713</string>
+				<string>2C1F8CAE1885CFEB001BE713</string>
+				<string>2C1F8CB71885CFEB001BE713</string>
+				<string>2C1F8CA31885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MeatChat</string>
+			<key>path</key>
+			<string>NordMeat</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CA31885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C27841B19C4329B00EDCA57</string>
+				<string>2C1F8CDA1885D50A001BE713</string>
+				<string>2C1F8CA41885CFEB001BE713</string>
+				<string>2C1F8CA51885CFEB001BE713</string>
+				<string>2C1F8CA81885CFEB001BE713</string>
+				<string>2C1F8CAA1885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CA41885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>MeatChat-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CA51885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CA61885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CA61885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CA71885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CA51885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CA81885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CA91885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CA81885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CAA1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MeatChat-Prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CAB1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MCAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CAC1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MCAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CAD1885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CAC1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CAE1885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CAF1885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main_iPhone.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CAF1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main_iPhone.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CB01885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CAE1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CB41885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NMViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CB51885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NMViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CB61885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CB51885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CB71885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CB81885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CB71885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CB91885CFEB001BE713</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C1F8CCB1885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2C1F8CBA1885CFEB001BE713</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C1F8CBF1885CFEB001BE713</string>
+				<string>2C1F8CC11885CFEB001BE713</string>
+				<string>2C1F8CC01885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2C1F8CBB1885CFEB001BE713</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>2C1F8CC91885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>2C1F8CBC1885CFEB001BE713</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>2C1F8CD11885CFEB001BE713</string>
+			<key>buildPhases</key>
+			<array>
+				<string>2C1F8CB91885CFEB001BE713</string>
+				<string>2C1F8CBA1885CFEB001BE713</string>
+				<string>2C1F8CBB1885CFEB001BE713</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>2C1F8CC31885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>MeatChatTests</string>
+			<key>productName</key>
+			<string>NordMeatTests</string>
+			<key>productReference</key>
+			<string>2C1F8CBD1885CFEB001BE713</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>2C1F8CBD1885CFEB001BE713</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>MeatChatTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>2C1F8CBE1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>2C1F8CBF1885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CBE1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CC01885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8C9C1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CC11885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CA01885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CC21885CFEB001BE713</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>2C1F8C911885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>2C1F8C981885CFEB001BE713</string>
+			<key>remoteInfo</key>
+			<string>NordMeat</string>
+		</dict>
+		<key>2C1F8CC31885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>2C1F8C981885CFEB001BE713</string>
+			<key>targetProxy</key>
+			<string>2C1F8CC21885CFEB001BE713</string>
+		</dict>
+		<key>2C1F8CC41885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CCA1885CFEB001BE713</string>
+				<string>2C1F8CC51885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MeatChat</string>
+			<key>path</key>
+			<string>NordMeatTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CC51885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CC61885CFEB001BE713</string>
+				<string>2C1F8CC71885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CC61885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>MeatChatTests-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CC71885CFEB001BE713</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CC81885CFEB001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CC81885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.strings</string>
+			<key>name</key>
+			<string>en</string>
+			<key>path</key>
+			<string>en.lproj/InfoPlist.strings</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CC91885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CC71885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CCA1885CFEB001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NordMeatTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CCB1885CFEB001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CCA1885CFEB001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CCC1885CFEB001BE713</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2C1F8CCD1885CFEB001BE713</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>2C1F8CCE1885CFEB001BE713</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>2C1F8CCF1885CFEB001BE713</string>
+				<string>2C1F8CD01885CFEB001BE713</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2C1F8CCF1885CFEB001BE713</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>BB118653E2E1DB891F4CA8C6</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>NordMeat/MeatChat-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NordMeat/MeatChat-Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>MeatChat</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>NordMeat/NordMeat-Bridging-Header.h</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2C1F8CD01885CFEB001BE713</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>878D885A722FC2C12257BA5B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
+				<string>LaunchImage</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>NordMeat/MeatChat-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NordMeat/MeatChat-Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>MeatChat</string>
+				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
+				<string>NordMeat/NordMeat-Bridging-Header.h</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>app</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>2C1F8CD11885CFEB001BE713</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>2C1F8CD21885CFEB001BE713</string>
+				<string>2C1F8CD31885CFEB001BE713</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2C1F8CD21885CFEB001BE713</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>NordMeat/NordMeat-Prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>NordMeatTests/MeatChatTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>MeatChatTests</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2C1F8CD31885CFEB001BE713</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
+				</array>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>NordMeat/NordMeat-Prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NordMeatTests/MeatChatTests-Info.plist</string>
+				<key>PRODUCT_NAME</key>
+				<string>MeatChatTests</string>
+				<key>TEST_HOST</key>
+				<string>$(BUNDLE_LOADER)</string>
+				<key>WRAPPER_EXTENSION</key>
+				<string>xctest</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>2C1F8CD41885D05B001BE713</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MCPostCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CD51885D05B001BE713</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MCPostCell.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CD61885D05B001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CD51885D05B001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CD71885D08A001BE713</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MCPostListViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CD81885D08A001BE713</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MCPostListViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CD91885D08A001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CD81885D08A001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CDA1885D50A001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.gif</string>
+			<key>path</key>
+			<string>meat.gif</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CDB1885D50A001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CDA1885D50A001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CDF1885F89B001BE713</key>
+		<dict>
+			<key>children</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>External</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C1F8CFC1885FB86001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>compiled.mach-o.dylib</string>
+			<key>name</key>
+			<string>libicucore.dylib</string>
+			<key>path</key>
+			<string>usr/lib/libicucore.dylib</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>2C1F8CFD1885FB86001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CFC1885FB86001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8CFE1885FB8C001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CFNetwork.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/CFNetwork.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>2C1F8CFF1885FB8C001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8CFE1885FB8C001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C1F8D001885FB92001BE713</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Security.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/Security.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>2C1F8D011885FB92001BE713</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C1F8D001885FB92001BE713</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2C27841819C431F800EDCA57</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CB41885CFEB001BE713</string>
+				<string>2C1F8CB51885CFEB001BE713</string>
+				<string>2C1F8CD71885D08A001BE713</string>
+				<string>2C1F8CD81885D08A001BE713</string>
+				<string>2C188A8218889EC3002CD14C</string>
+				<string>2C188A8318889EC3002CD14C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C27841919C4321900EDCA57</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C1F8CD41885D05B001BE713</string>
+				<string>2C1F8CD51885D05B001BE713</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Views</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C27841A19C4322600EDCA57</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2C27841E19C4331400EDCA57</string>
+				<string>2C27841F19C4331400EDCA57</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C27841B19C4329B00EDCA57</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NordMeat-Bridging-Header.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C27841E19C4331400EDCA57</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MCPost.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C27841F19C4331400EDCA57</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MCPost.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2C27842019C4331400EDCA57</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2C27841F19C4331400EDCA57</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30709C7767B2121A7B0101B4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BB118653E2E1DB891F4CA8C6</string>
+				<string>878D885A722FC2C12257BA5B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>61B37259671C453AA69C08CE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>24400EDD099742C5ABF721BF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>878D885A722FC2C12257BA5B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB118653E2E1DB891F4CA8C6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BBA07FE4852D4CF2954B2AB4</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>CF0CBC43598E48318E5B1E58</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>2C1F8C911885CFEB001BE713</string>
+</dict>
+</plist>

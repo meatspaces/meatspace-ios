@@ -10,6 +10,8 @@
 #import "MCPostListViewController.h"
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "UIImage+Resize.h"
+#import "MCPostListViewController.h"
 
 
 @interface MCPostViewController ()
@@ -17,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textfield;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
-@property (assign, nonatomic) struct CGImageDestination *saveGif;
+@property (strong, atomic) NSMutableArray *frames;
+@property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
 @end
 
@@ -28,8 +31,9 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  // Do any additional setup after loading the view.
+  self.frames=[NSMutableArray array];
+  self.capturing=NO;
+      // Do any additional setup after loading the view.
   [self setupCaptureSession];
 }
 
@@ -103,15 +107,27 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection
 {
-  ;    // Create a UIImage from the sample buffer data
-  
-    // if(self.saveGif) {
-    
-    // CGImageDestinationAddImage(self.saveGif, [self imageFromSampleBuffer:sampleBuffer]);
-    //  }
-    // [self.imageButton setImage: [self imageFromSampleBuffer:sampleBuffer] forState: UIControlStateNormal];
-  
-  
+  if(self.capturing) {
+    NSLog(@"Capturing");
+    [self.frames addObject: [self imageFromSampleBuffer:sampleBuffer]];
+    if([self.frames count] == 10) {
+      NSMutableArray *encodedImages=[NSMutableArray array];
+      for(int i=0;i<[self.frames count];i++) {
+        UIImage *image=[(UIImage*)[self.frames objectAtIndex:i] resizedImageToSize:  CGSizeMake(300, 150)];
+        
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+        NSString *encodedString = [imageData base64EncodedStringWithOptions: 0];
+        [encodedImages addObject: [NSString stringWithFormat: @"data:image/jpeg;base64,%@", encodedString]];
+      }
+      self.capturing=NO;
+      [self.frames removeAllObjects];
+      return;
+      MCPostListViewController *parentViewController=(MCPostListViewController*)[self parentViewController];
+      [parentViewController.socket emit:@"post", @"message", self.textfield.text, @"media",encodedImages,@"ip", @"127.0.0.1", @"fingerprint",@"its me mario", nil];
+      [_session stopRunning];
+      [self.textfield resignFirstResponder];
+    }
+  }
 }
 
 -(IBAction)switchCameraTapped:(id)sender
@@ -159,6 +175,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   // Create a UIImage from sample buffer data
 - (UIImage *) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
 {
+  
     // Get a CMSampleBuffer's Core Video image buffer for the media data
   CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     // Lock the base address of the pixel buffer
@@ -190,7 +207,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   
     // Create an image object from the Quartz image
   UIImage *image = [UIImage imageWithCGImage:quartzImage] ;
-  
     // Release the Quartz image
   CGImageRelease(quartzImage);
   
@@ -211,26 +227,15 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   return YES;
 }
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
   [UIView animateWithDuration:0.5f animations:^{
     self.imageButton.alpha=0;
   }];
   NSLog(@"Posting %@",textField.text);
   
-  NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-  NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
   
-  NSDictionary *fileProperties = @{
-                                   (__bridge id)kCGImagePropertyGIFDictionary: @{
-                                       (__bridge id)kCGImagePropertyGIFLoopCount: @0, // 0 means loop forever
-                                       }
-                                   };
-  CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, 10, NULL);
-  CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
-  self.saveGif=destination;
-  [_session stopRunning];
-  
+  self.capturing=YES;
   return YES;
   
 }
