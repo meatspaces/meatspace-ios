@@ -1,5 +1,7 @@
 # IOS Client for new meatspac.es
 
+_NOTE: This is a work in progress, and not expected to work right yet._
+
 ## Installation
 
 This application uses 
