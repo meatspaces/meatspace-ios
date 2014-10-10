@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) NSDictionary *postData;
 @property (nonatomic,strong) NSAttributedString *attributedString;
+@property (nonatomic,strong) NSURL *videoUrl;
 
 -(id)initWithDictionary: (NSDictionary*)dict;
 - (NSAttributedString*)attributedBody;

@@ -19,10 +19,20 @@
   if(self) {
     self.postData=dict;
     self.attributedString=[self attributedBody];
+    NSString *media=[[dict objectForKey: @"media"] substringFromIndex:22];
+    NSData *videoData=[[NSData alloc] initWithBase64EncodedString: media options: NSDataBase64DecodingIgnoreUnknownCharacters];
+    
+    NSString *path;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSNumber *created=[dict objectForKey: @"created"];
+    path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[created stringValue] stringByAppendingString: @".mp4"]];
+    [videoData writeToFile: path atomically:NO];
+    self.videoUrl=[NSURL fileURLWithPath: path];
   }
 
   return self;
 }
+
 
 - (NSString*)relativeTime
 {

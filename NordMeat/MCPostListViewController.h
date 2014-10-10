@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <SIOSocket/SIOSocket.h>
+#import <AVFoundation/AVAssetResourceLoader.h>
 
-@interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
-
-- (void)keyboardWillHide:(NSNotification *)sender;
-- (void)keyboardDidShow:(NSNotification *)sender;
+@interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, AVAssetResourceLoaderDelegate>
 
 
 @property (weak, nonatomic)IBOutlet NSLayoutConstraint *containerHeight;
 @property (strong, nonatomic)IBOutlet UITableView *tableView;
 @property (retain,nonatomic) SIOSocket *socket;
+
 
 @end

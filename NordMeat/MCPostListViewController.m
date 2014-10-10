@@ -20,9 +20,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableDictionary *seen;
+@property (strong, nonatomic) AVPlayer *avplayer;
 @property (nonatomic,assign) BOOL socketIsConnected;
 
+
 - (void)addPost: (NSDictionary*)data;
+- (void)setupAVPlayer;
+- (void)playerItemDidReachEnd:(NSNotification *)notification;
 
 @end
 
@@ -31,20 +35,20 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self setupAVPlayer];
   self.seen=[NSMutableDictionary dictionary];
   self.items=[NSMutableArray array];
-  [SIOSocket socketWithHost: @"http://chat.meatspac.es" response: ^(SIOSocket *socket)
+  [SIOSocket socketWithHost: @"https://chat.meatspac.es:443/" response: ^(SIOSocket *socket)
    {
    self.socket = socket;
    __weak typeof(self) weakSelf = self;
    self.socket.onConnect = ^()
      {
      weakSelf.socketIsConnected = YES;
+     [weakSelf.socket emit: @"join",@"mp4", nil];
      };
    [self.socket on: @"message"  callback:^(id data) {
-       //NSDictionary *data=[packet dataAsJSON];
-       // NSLog(@"%@",data);
-       //return;
+     NSLog(@"Got some message");
      [weakSelf performSelectorOnMainThread:@selector(addPost:) withObject:data waitUntilDone:NO];
    }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
@@ -61,16 +65,26 @@
    };
    }];
   
-  
-  
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
-  
-  
-  self.tableView.estimatedRowHeight=120;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight=75;
   self.atBottom=YES;
 }
+
+-(void)setupAVPlayer
+{
+  self.avplayer=[[AVPlayer alloc] init];
+  self.avplayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+  
+  
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification
+{
+  AVPlayerItem *p = [notification object];
+  [p seekToTime:kCMTimeZero];
+}
+
+
 
 - (void)addPost: (NSDictionary*)data
 {
@@ -136,18 +150,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MeatCell";
-    MCPostCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+  static NSString *CellIdentifier = @"MeatCell";
+  MCPostCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+  
     // Configure the cell...
-    MCPost *post=[self.items objectAtIndex:indexPath.row];
-    cell.textView.attributedText=post.attributedString;
+  MCPost *post=[self.items objectAtIndex:indexPath.row];
+  cell.textView.attributedText=post.attributedString;
   CGRect frame=cell.frame;
   frame.size = [cell.textView sizeThatFits:CGSizeMake(cell.textView.frame.size.width, 800)];
   cell.textView.frame=frame;
   cell.timeLabel.text=[post relativeTime];
- 
-    return cell;
+  AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
+  
+  
+  AVPlayer *avplayer=[AVPlayer playerWithPlayerItem: item];
+  avplayer.actionAtItemEnd=AVPlayerActionAtItemEndNone;
+  AVPlayerLayer *layer=[AVPlayerLayer playerLayerWithPlayer: avplayer];
+  layer.frame=CGRectMake(0, 0, 100, 75);
+  layer.videoGravity=AVLayerVideoGravityResizeAspectFill;
+  [cell.video.layer addSublayer: layer];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(playerItemDidReachEnd:)
+                                               name:AVPlayerItemDidPlayToEndTimeNotification
+                                             object:[self.avplayer currentItem]];
+  
+  [avplayer play];
+  return cell;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
