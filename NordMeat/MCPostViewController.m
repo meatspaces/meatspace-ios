@@ -10,7 +10,7 @@
 #import "MCPostListViewController.h"
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "UIImage+Resize.h"
+#import "UIImage+Extras.h"
 #import "MCPostListViewController.h"
 
 
@@ -113,7 +113,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     if([self.frames count] == 10) {
       NSMutableArray *encodedImages=[NSMutableArray array];
       for(int i=0;i<[self.frames count];i++) {
-        UIImage *image=[(UIImage*)[self.frames objectAtIndex:i] resizedImageToSize:  CGSizeMake(200, 150)];
+        UIImage *image=[(UIImage*)[self.frames objectAtIndex:i] imageByScalingAndCroppingForSize: CGSizeMake(200, 150)];
+        
         
         NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
         NSString *encodedString = [imageData base64EncodedStringWithOptions: 0];
