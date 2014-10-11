@@ -21,7 +21,7 @@
 		2C1F8CC01885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
 		2C1F8CC11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
 		2C1F8CC91885CFEB001BE713 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */; };
-		2C1F8CCB1885CFEB001BE713 /* NordMeatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */; };
+		2C1F8CCB1885CFEB001BE713 /* MeatChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */; };
 		2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD51885D05B001BE713 /* MCPostCell.m */; };
 		2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */; };
 		2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CDA1885D50A001BE713 /* meat.gif */; };
@@ -39,7 +39,7 @@
 			containerPortal = 2C1F8C911885CFEB001BE713 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2C1F8C981885CFEB001BE713;
-			remoteInfo = NordMeat;
+			remoteInfo = MeatChat;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,7 +65,7 @@
 		2C1F8CBE1885CFEB001BE713 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2C1F8CC61885CFEB001BE713 /* MeatChatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChatTests-Info.plist"; sourceTree = "<group>"; };
 		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NordMeatTests.m; sourceTree = "<group>"; };
+		2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeatChatTests.m; sourceTree = "<group>"; };
 		2C1F8CD41885D05B001BE713 /* MCPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostCell.h; sourceTree = "<group>"; };
 		2C1F8CD51885D05B001BE713 /* MCPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostCell.m; sourceTree = "<group>"; };
 		2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostListViewController.h; sourceTree = "<group>"; };
@@ -74,11 +74,12 @@
 		2C1F8CFC1885FB86001BE713 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		2C27841B19C4329B00EDCA57 /* NordMeat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NordMeat-Bridging-Header.h"; sourceTree = "<group>"; };
+		2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeatChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		2C27841E19C4331400EDCA57 /* MCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPost.h; sourceTree = "<group>"; };
 		2C27841F19C4331400EDCA57 /* MCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPost.m; sourceTree = "<group>"; };
 		2C2B273E19E980E200A03B04 /* UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extras.h"; sourceTree = "<group>"; };
 		2C2B273F19E980E200A03B04 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
+		4134EA2819E9EC210093B991 /* MeatChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat-Prefix.pch"; path = "MeatChat/MeatChat-Prefix.pch"; sourceTree = "<group>"; };
 		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +115,7 @@
 		2C1F8C901885CFEB001BE713 = {
 			isa = PBXGroup;
 			children = (
+				4134EA2819E9EC210093B991 /* MeatChat-Prefix.pch */,
 				2C1F8CA21885CFEB001BE713 /* MeatChat */,
 				2C1F8CC41885CFEB001BE713 /* MeatChat */,
 				2C1F8C9B1885CFEB001BE713 /* Frameworks */,
@@ -160,13 +162,13 @@
 				2C1F8CA31885CFEB001BE713 /* Supporting Files */,
 			);
 			name = MeatChat;
-			path = NordMeat;
+			path = MeatChat;
 			sourceTree = "<group>";
 		};
 		2C1F8CA31885CFEB001BE713 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2C27841B19C4329B00EDCA57 /* NordMeat-Bridging-Header.h */,
+				2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */,
 				2C1F8CDA1885D50A001BE713 /* meat.gif */,
 				2C1F8CA41885CFEB001BE713 /* MeatChat-Info.plist */,
 				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
@@ -179,11 +181,11 @@
 		2C1F8CC41885CFEB001BE713 /* MeatChat */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F8CCA1885CFEB001BE713 /* NordMeatTests.m */,
+				2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */,
 				2C1F8CC51885CFEB001BE713 /* Supporting Files */,
 			);
 			name = MeatChat;
-			path = NordMeatTests;
+			path = MeatChatTests;
 			sourceTree = "<group>";
 		};
 		2C1F8CC51885CFEB001BE713 /* Supporting Files */ = {
@@ -262,7 +264,7 @@
 			dependencies = (
 			);
 			name = MeatChat;
-			productName = NordMeat;
+			productName = MeatChat;
 			productReference = 2C1F8C991885CFEB001BE713 /* MeatChat.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -280,7 +282,7 @@
 				2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */,
 			);
 			name = MeatChatTests;
-			productName = NordMeatTests;
+			productName = MeatChatTests;
 			productReference = 2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -393,7 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C1F8CCB1885CFEB001BE713 /* NordMeatTests.m in Sources */,
+				2C1F8CCB1885CFEB001BE713 /* MeatChatTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,12 +517,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "NordMeat/MeatChat-Info.plist";
+				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
+				INFOPLIST_FILE = "MeatChat/MeatChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = MeatChat;
-				SWIFT_OBJC_BRIDGING_HEADER = "NordMeat/NordMeat-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -535,12 +537,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "NordMeat/MeatChat-Info.plist";
+				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
+				INFOPLIST_FILE = "MeatChat/MeatChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = MeatChat;
-				SWIFT_OBJC_BRIDGING_HEADER = "NordMeat/NordMeat-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -549,19 +551,19 @@
 		2C1F8CD21885CFEB001BE713 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeatChat.app/MeatChat";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/NordMeat-Prefix.pch";
+				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "NordMeatTests/MeatChatTests-Info.plist";
+				INFOPLIST_FILE = "MeatChatTests/MeatChatTests-Info.plist";
 				PRODUCT_NAME = MeatChatTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -571,15 +573,15 @@
 		2C1F8CD31885CFEB001BE713 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NordMeat.app/NordMeat";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeatChat.app/MeatChat";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NordMeat/NordMeat-Prefix.pch";
-				INFOPLIST_FILE = "NordMeatTests/MeatChatTests-Info.plist";
+				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
+				INFOPLIST_FILE = "MeatChatTests/MeatChatTests-Info.plist";
 				PRODUCT_NAME = MeatChatTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
