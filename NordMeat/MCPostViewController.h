@@ -15,5 +15,7 @@
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position;
 
+- (void)donePosting;
+
 
 @end

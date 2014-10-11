@@ -126,18 +126,23 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         @"message": self.textfield.text,
         @"media": encodedImages,
         @"ip": parentViewController.ip,
-        @"fingerprint": [[UIDevice currentDevice] identifierForVendor]
+        @"fingerprint": [[UIDevice currentDevice] identifierForVendor].UUIDString
       } options:0 error:nil] encoding: NSUTF8StringEncoding];
       [parentViewController.socket emit: @"message", message,  nil];
-      [_session stopRunning];
       [self performSelectorOnMainThread:@selector(donePosting) withObject:nil waitUntilDone:NO];
     }
   }
 }
 
-- (void)donePosting {
-      self.textfield.text=@"";
-      [ self.textfield resignFirstResponder];
+
+- (void)donePosting
+{
+  self.textfield.text=@"";
+  [ self.textfield resignFirstResponder];
+  [UIView animateWithDuration:0.5f animations:^{
+    self.imageButton.alpha=0;
+  }];
+  [_session stopRunning];
 }
 
 -(IBAction)switchCameraTapped:(id)sender
@@ -244,9 +249,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-  [UIView animateWithDuration:0.5f animations:^{
-    self.imageButton.alpha=0;
-  }];
   NSLog(@"Posting %@",textField.text);
   
   

@@ -36,6 +36,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                 initWithTarget:self
+                                 action:@selector(dismissKeyboard)];
+  
+  [self.view addGestureRecognizer:tap];
+
   self.ip=@"127.0.0.1";
   self.seen=[NSMutableDictionary dictionary];
   self.items=[NSMutableArray array];
@@ -84,6 +90,9 @@
 }
 
 
+-(void)dismissKeyboard {
+  [self.postViewController donePosting];
+}
 
 
 - (void)addPost: (NSDictionary*)data
@@ -111,6 +120,8 @@
   CGRect frame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
   self.containerBottom.constant = frame.size.height;
   [self.containerView setNeedsUpdateConstraints];
+  NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
+  [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)keyboardWillHide:(NSNotification *)sender {
