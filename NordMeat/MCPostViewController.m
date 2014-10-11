@@ -114,7 +114,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         UIImage *image=[(UIImage*)[self.frames objectAtIndex:i] imageByScalingAndCroppingForSize: CGSizeMake(200, 150)];
         
         
-        NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
         NSString *encodedString = [imageData base64EncodedStringWithOptions: 0];
         [encodedImages addObject: [NSString stringWithFormat: @"data:image/jpeg;base64,%@", encodedString]];
       }
