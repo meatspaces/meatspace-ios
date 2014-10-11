@@ -61,7 +61,8 @@
     weakSelf.postViewController.textfield.enabled=NO;
    };
    [self.socket on: @"message"  callback:^(id data) {
-     [weakSelf performSelectorOnMainThread:@selector(addPost:) withObject:data waitUntilDone:NO];
+     __weak typeof(self) weakSelf = self;
+     dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf addPost: data]; });
    }];
    [self.socket on: @"ip" callback:^(id data) {
      self.ip=data;
@@ -99,8 +100,8 @@
 {
   
   NSString *key=[data objectForKey: @"fingerprint"];
-    //  if(![self.seen valueForKey: key]) {
     if (key) [self.seen setObject: @"1" forKey: key];
+  NSLog(@"Timestamp %@",[data objectForKey: @"created"]);
     MCPost *post=[[MCPost alloc] initWithDictionary: data];
     [self.items addObject: post];
     NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
