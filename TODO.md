@@ -1,0 +1,9 @@
+- [ ] Make camera delay work correctly
+- [ ] Post to meatspace server correctly
+- [ ] Expire old posts
+- [ ] Make videos stop playing when offscreen
+- [ ] Add mute support
+- [ ] Fix expanding layout
+- [ ] Check net connectivity.
+- [ ] Startup screen
+- [ ] Fix icon background (transparent => white)
