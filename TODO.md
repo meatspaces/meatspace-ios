@@ -1,7 +1,7 @@
 - [x] Post to meatspace server correctly
 - [ ] Fix so you can post more than once.
 - [ ] Make camera delay work correctly
-- [ ] Fix order of posts.
+- [x] Fix order of posts.
 - [ ] Expire old posts
 - [ ] Make videos stop playing when offscreen
 - [ ] Add mute support
