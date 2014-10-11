@@ -113,7 +113,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     if([self.frames count] == 10) {
       NSMutableArray *encodedImages=[NSMutableArray array];
       for(int i=0;i<[self.frames count];i++) {
-        UIImage *image=[(UIImage*)[self.frames objectAtIndex:i] resizedImageToSize:  CGSizeMake(300, 150)];
+        UIImage *image=[(UIImage*)[self.frames objectAtIndex:i] resizedImageToSize:  CGSizeMake(200, 150)];
         
         NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
         NSString *encodedString = [imageData base64EncodedStringWithOptions: 0];
@@ -121,13 +121,24 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
       }
       self.capturing=NO;
       [self.frames removeAllObjects];
-      return;
-      MCPostListViewController *parentViewController=(MCPostListViewController*)[self parentViewController];
-      [parentViewController.socket emit:@"post", @"message", self.textfield.text, @"media",encodedImages,@"ip", @"127.0.0.1", @"fingerprint",@"its me mario", nil];
+      MCPostListViewController *parentViewController=(MCPostListViewController*)self.parentViewController;
+      
+   NSString *message=[[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject: @{
+        @"message": self.textfield.text,
+        @"media": encodedImages,
+        @"ip": parentViewController.ip,
+        @"fingerprint": @"itsmemario"
+      } options:0 error:nil] encoding: NSUTF8StringEncoding];
+      [parentViewController.socket emit: @"message", message,  nil];
       [_session stopRunning];
-      [self.textfield resignFirstResponder];
+      [self performSelectorOnMainThread:@selector(donePosting) withObject:nil waitUntilDone:NO];
     }
   }
+}
+
+- (void)donePosting {
+      self.textfield.text=@"";
+      [ self.textfield resignFirstResponder];
 }
 
 -(IBAction)switchCameraTapped:(id)sender
@@ -206,7 +217,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   CGColorSpaceRelease(colorSpace);
   
     // Create an image object from the Quartz image
-  UIImage *image = [UIImage imageWithCGImage:quartzImage] ;
+  AVCaptureInput* currentCameraInput = [_session.inputs objectAtIndex:0];
+  int cameraImageOrientation = ((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionBack ?
+    UIImageOrientationRight:
+    UIImageOrientationLeftMirrored;
+  UIImage *image = [[UIImage alloc] initWithCGImage:quartzImage scale:(CGFloat)1.0 orientation:cameraImageOrientation];
+
     // Release the Quartz image
   CGImageRelease(quartzImage);
   

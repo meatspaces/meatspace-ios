@@ -27,6 +27,9 @@
 - (void)addPost: (NSDictionary*)data;
 - (void)setupAVPlayer;
 - (void)playerItemDidReachEnd:(NSNotification *)notification;
+- (void)keyboardWillHide:(NSNotification *)sender;
+- (void)keyboardDidShow:(NSNotification *)sender;
+
 
 @end
 
@@ -35,10 +38,11 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  self.ip=@"127.0.0.1";
   [self setupAVPlayer];
   self.seen=[NSMutableDictionary dictionary];
   self.items=[NSMutableArray array];
-  [SIOSocket socketWithHost: @"https://chat.meatspac.es:443/" response: ^(SIOSocket *socket)
+  [SIOSocket socketWithHost: @"http://mrbook.local:3000/" response: ^(SIOSocket *socket)
    {
    self.socket = socket;
    __weak typeof(self) weakSelf = self;
@@ -48,8 +52,11 @@
      [weakSelf.socket emit: @"join",@"mp4", nil];
      };
    [self.socket on: @"message"  callback:^(id data) {
-     NSLog(@"Got some message");
      [weakSelf performSelectorOnMainThread:@selector(addPost:) withObject:data waitUntilDone:NO];
+   }];
+   [self.socket on: @"ip" callback:^(id data) {
+     NSLog(@"ip: %@",data);
+     self.ip=data;
    }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
@@ -65,6 +72,9 @@
    };
    }];
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]
+  ;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight=75;
   self.atBottom=YES;
