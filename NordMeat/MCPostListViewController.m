@@ -20,13 +20,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableDictionary *seen;
-@property (strong, nonatomic) AVPlayer *avplayer;
 @property (nonatomic,assign) BOOL socketIsConnected;
+@property (nonatomic,weak) MCPostViewController *postViewController;
 
 
 - (void)addPost: (NSDictionary*)data;
-- (void)setupAVPlayer;
-- (void)playerItemDidReachEnd:(NSNotification *)notification;
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;
 
@@ -39,7 +37,6 @@
 {
   [super viewDidLoad];
   self.ip=@"127.0.0.1";
-  [self setupAVPlayer];
   self.seen=[NSMutableDictionary dictionary];
   self.items=[NSMutableArray array];
     [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
@@ -49,14 +46,18 @@
    __weak typeof(self) weakSelf = self;
    self.socket.onConnect = ^()
      {
+     weakSelf.postViewController.textfield.enabled=YES;
      weakSelf.socketIsConnected = YES;
      [weakSelf.socket emit: @"join",@"mp4", nil];
      };
+   self.socket.onDisconnect= ^()
+   {
+    weakSelf.postViewController.textfield.enabled=NO;
+   };
    [self.socket on: @"message"  callback:^(id data) {
      [weakSelf performSelectorOnMainThread:@selector(addPost:) withObject:data waitUntilDone:NO];
    }];
    [self.socket on: @"ip" callback:^(id data) {
-     NSLog(@"ip: %@",data);
      self.ip=data;
    }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
@@ -71,6 +72,7 @@
    self.socket.onReconnectionError=^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
    };
+   
    }];
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]
@@ -81,19 +83,6 @@
   self.atBottom=YES;
 }
 
--(void)setupAVPlayer
-{
-  self.avplayer=[[AVPlayer alloc] init];
-  self.avplayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-  
-  
-}
-
-- (void)playerItemDidReachEnd:(NSNotification *)notification
-{
-  AVPlayerItem *p = [notification object];
-  [p seekToTime:kCMTimeZero];
-}
 
 
 
@@ -172,21 +161,20 @@
   cell.textView.frame=frame;
   cell.timeLabel.text=[post relativeTime];
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
+  [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];
   
-  
-  AVPlayer *avplayer=[AVPlayer playerWithPlayerItem: item];
-  avplayer.actionAtItemEnd=AVPlayerActionAtItemEndNone;
-  AVPlayerLayer *layer=[AVPlayerLayer playerLayerWithPlayer: avplayer];
-  layer.frame=CGRectMake(0, 0, 100, 75);
-  layer.videoGravity=AVLayerVideoGravityResizeAspectFill;
-  [cell.video.layer addSublayer: layer];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(playerItemDidReachEnd:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
-                                             object:[self.avplayer currentItem]];
-  
-  [avplayer play];
+                                             object:item];
+  [cell.videoPlayer play];
   return cell;
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification
+{
+  AVPlayerItem *p = [notification object];
+  [p seekToTime:kCMTimeZero];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -205,6 +193,13 @@
   return YES;
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"postViewSegue"]) {
+      // can't assign the view controller from an embed segue via the storyboard, so capture here
+  _postViewController = (UINavigationController *)segue.destinationViewController;
+  }
+}
 
 
 @end

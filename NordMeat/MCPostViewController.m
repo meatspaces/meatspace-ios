@@ -16,9 +16,7 @@
 
 @interface MCPostViewController ()
 @property (retain,nonatomic) AVCaptureSession *session;
-@property (weak, nonatomic) IBOutlet UITextField *textfield;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
-@property (weak, nonatomic) IBOutlet UIButton *postButton;
 @property (strong, atomic) NSMutableArray *frames;
 @property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
@@ -128,7 +126,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         @"message": self.textfield.text,
         @"media": encodedImages,
         @"ip": parentViewController.ip,
-        @"fingerprint": @"itsmemario"
+        @"fingerprint": [[UIDevice currentDevice] identifierForVendor]
       } options:0 error:nil] encoding: NSUTF8StringEncoding];
       [parentViewController.socket emit: @"message", message,  nil];
       [_session stopRunning];

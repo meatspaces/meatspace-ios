@@ -19,6 +19,16 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+      self.videoPlayer=[[AVPlayer alloc] init];
+  AVPlayerLayer *layer=[AVPlayerLayer playerLayerWithPlayer: self.videoPlayer];
+  self.videoPlayer.actionAtItemEnd=AVPlayerActionAtItemEndNone;
+  layer.frame=CGRectMake(0, 0, 100, 75);
+  layer.videoGravity=AVLayerVideoGravityResizeAspectFill;
+  [self.video.layer addSublayer: layer];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -26,5 +36,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

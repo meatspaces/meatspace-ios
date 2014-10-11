@@ -11,6 +11,7 @@
 
 @interface MCPostViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate,UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *textfield;
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position;
 

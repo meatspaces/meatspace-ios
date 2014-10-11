@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface MCPostCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *video;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (strong,nonatomic) AVPlayer *videoPlayer;
+
 
 @end
