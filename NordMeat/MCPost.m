@@ -40,6 +40,14 @@
  return [postDate dateTimeAgo];
 }
 
+- (BOOL)isObsolete
+{
+  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] integerValue]/1000];
+  NSDate *oldMessage=[NSDate dateWithTimeIntervalSinceNow: -600];
+  if([oldMessage compare: postDate] == NSOrderedDescending) { return YES;}
+  return NO;
+}
+
 - (NSAttributedString*)attributedBody {
   NSString *text=[self.postData objectForKey: @"message"];
   // Let's make an NSAttributedString first

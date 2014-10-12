@@ -45,8 +45,7 @@
   self.ip=@"127.0.0.1";
   self.seen=[NSMutableDictionary dictionary];
   self.items=[NSMutableArray array];
-    // [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
-      [SIOSocket socketWithHost: @"http://mrbook.local:3000/" response: ^(SIOSocket *socket)
+     [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
    {
    self.socket = socket;
    __weak typeof(self) weakSelf = self;
@@ -98,19 +97,21 @@
 
 - (void)addPost: (NSDictionary*)data
 {
+  for( MCPost *post in self.items) {
+    
+  }
   
   NSString *key=[data objectForKey: @"fingerprint"];
-    if (key) [self.seen setObject: @"1" forKey: key];
-    MCPost *post=[[MCPost alloc] initWithDictionary: data];
-    [self.items addObject: post];
-    NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[newRow] withRowAnimation: UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
-    if (self.atBottom) {
-      [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-    // }
+  if (key) [self.seen setObject: @"1" forKey: key];
+  MCPost *post=[[MCPost alloc] initWithDictionary: data];
+  [self.items addObject: post];
+  NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
+  [self.tableView beginUpdates];
+  [self.tableView insertRowsAtIndexPaths:@[newRow] withRowAnimation: UITableViewRowAnimationFade];
+  [self.tableView endUpdates];
+  if (self.atBottom) {
+    [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+  }
 }
 
 #pragma mark - Keyboard handling
