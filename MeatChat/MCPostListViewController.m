@@ -219,7 +219,15 @@
 - (void)keyboardWillHide:(NSNotification *)sender
 {
   self.containerBottom.constant = 0;
-  [self.view setNeedsUpdateConstraints];
+  [self.containerView setNeedsUpdateConstraints];
+  [UIView animateWithDuration:0.25f animations:^{
+    [self.containerView layoutIfNeeded];
+  } completion:^(BOOL finished) {
+    if([self.items count]) {
+      [self scrollToBottom];
+      self.atBottom=YES;
+    }
+  }];
 }
 
 
