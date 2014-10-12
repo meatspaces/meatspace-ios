@@ -10,6 +10,7 @@
 #import "MCPostCell.h"
 #import "MCPostViewController.h"
 #import "MCPost.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 
@@ -58,6 +59,7 @@
      };
    self.socket.onDisconnect= ^()
    {
+     //FIXME: Crashes if keyboard is active atm.
     weakSelf.postViewController.textfield.enabled=NO;
    };
    [self.socket on: @"message"  callback:^(id data) {
@@ -104,7 +106,7 @@
 - (void)addPost: (NSDictionary*)data
 {
   BOOL expired=NO;
-  for( int i = [self.items count]-1; i >=0; --i)
+  for( int i = (int)[self.items count]-1; i >=0; --i)
   {
   MCPost *post=[self.items objectAtIndex: i];
     if ([post isObsolete]) {
@@ -202,6 +204,12 @@
   return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  [[(MCPostCell*)cell videoPlayer] pause];
+}
+
+
 - (void)playerItemDidReachEnd:(NSNotification *)notification
 {
   AVPlayerItem *p = [notification object];
@@ -210,12 +218,15 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+  // Ensure visible cells are playing
+  for (MCPostCell *cell in self.tableView.visibleCells) {
+    [cell.videoPlayer play];
+  }
+  
+  // Check if we're still at the bottom.
   CGFloat height = scrollView.frame.size.height;
-  
   CGFloat contentYoffset = scrollView.contentOffset.y;
-  
   CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
-  
   self.atBottom = (distanceFromBottom <= height);
 }
 
@@ -228,7 +239,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"postViewSegue"]) {
       // can't assign the view controller from an embed segue via the storyboard, so capture here
-  _postViewController = (UINavigationController *)segue.destinationViewController;
+  _postViewController = (MCPostViewController*)segue.destinationViewController;
   }
 }
 

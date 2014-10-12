@@ -20,6 +20,7 @@
 @property (strong, atomic) NSMutableArray *frames;
 @property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
+@property (nonatomic) int skipFrames;
 @end
 
 @implementation MCPostViewController
@@ -31,6 +32,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   [super viewDidLoad];
   self.frames=[NSMutableArray array];
   self.capturing=NO;
+  self.skipFrames=6;
       // Do any additional setup after loading the view.
   [self setupCaptureSession];
 }
@@ -106,6 +108,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection
 {
   if(self.capturing) {
+      // FIXME: This is a dirty hack, because CAPTURE_FRAMES_PER_SECOND above doesn't seem to work.
+    if(self.skipFrames) {
+      self.skipFrames--;
+      return;
+    }
+    self.skipFrames=6;
     NSLog(@"Capturing");
     [self.frames addObject: [self imageFromSampleBuffer:sampleBuffer]];
     if([self.frames count] == 10) {
