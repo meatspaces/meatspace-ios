@@ -56,7 +56,7 @@
     return [[NSAttributedString alloc] init];
   }
   
-  NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+  NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)};
   
   NSError *error;
   NSDictionary *attributes;
