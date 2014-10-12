@@ -17,5 +17,6 @@
 -(id)initWithDictionary: (NSDictionary*)dict;
 - (NSAttributedString*)attributedBody;
 - (NSString*)relativeTime;
+- (BOOL)isObsolete;
 
 @end

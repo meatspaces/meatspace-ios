@@ -54,6 +54,7 @@
      weakSelf.postViewController.textfield.enabled=YES;
      weakSelf.socketIsConnected = YES;
      [weakSelf.socket emit: @"join",@"mp4", nil];
+     dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf flushItems]; });
      };
    self.socket.onDisconnect= ^()
    {
@@ -94,11 +95,25 @@
   [self.postViewController donePosting];
 }
 
+- (void)flushItems
+{
+  [self.items removeAllObjects];
+  [self.tableView reloadData];
+}
 
 - (void)addPost: (NSDictionary*)data
 {
-  for( MCPost *post in self.items) {
-    
+  BOOL expired=NO;
+  for( int i = [self.items count]-1; i >=0; --i)
+  {
+  MCPost *post=[self.items objectAtIndex: i];
+    if ([post isObsolete]) {
+      expired=YES;
+      [self.items removeObjectAtIndex: i];
+    }
+  }
+  if (expired) {
+    [self.tableView reloadData];
   }
   
   NSString *key=[data objectForKey: @"fingerprint"];
@@ -113,6 +128,8 @@
     [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
   }
 }
+
+
 
 #pragma mark - Keyboard handling
 
