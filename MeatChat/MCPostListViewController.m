@@ -148,6 +148,7 @@
   if([self.items count]) {
     NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
     [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    self.atBottom=YES;
   }
 }
 

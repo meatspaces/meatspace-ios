@@ -17,11 +17,15 @@
 @interface MCPostViewController ()
 @property (retain,nonatomic) AVCaptureSession *session;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (strong, atomic) NSMutableArray *frames;
 @property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
 @property (nonatomic) int skipFrames;
+
+- (void)updateCount;
 @end
+
 
 @implementation MCPostViewController
 
@@ -74,6 +78,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
     // Create a device input with the device and add it to the session.
   AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device
                                                                       error:&error];
+  [self switchCameraTapped: self];
   if (!input) {
       // Handling the error appropriately.
     return;
@@ -119,8 +124,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
       self.skipFrames--;
       return;
     }
+    dispatch_async(dispatch_get_main_queue(), ^{ [self updateCount]; });
     self.skipFrames=6;
-    NSLog(@"Capturing");
     [self.frames addObject: [self imageFromSampleBuffer:sampleBuffer]];
     if([self.frames count] == 10) {
       NSMutableArray *encodedImages=[NSMutableArray array];
@@ -147,11 +152,15 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
   }
 }
-
+- (void)updateCount
+{
+    self.countLabel.text=[NSString stringWithFormat: @"%lu",9-[self.frames count]];
+}
 
 - (void)donePosting
 {
   self.textfield.text=@"";
+  self.countLabel.hidden=YES;
   [ self.textfield resignFirstResponder];
   [UIView animateWithDuration:0.5f animations:^{
     self.imageButton.alpha=0;
@@ -266,6 +275,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   NSLog(@"Posting %@",textField.text);
   
   
+  self.countLabel.hidden=NO;
   self.capturing=YES;
   return YES;
   
