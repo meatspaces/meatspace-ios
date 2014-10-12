@@ -11,7 +11,9 @@ and open MeatChat.xcworkspace
 
 ## Copyright
 
-Copyright 2014 Marcus Ramberg
+Copyright 2014 Marcus Ramberg and the following contributors
+
+* Dr. Daniel Alexander Smith
 
 ## License
 
