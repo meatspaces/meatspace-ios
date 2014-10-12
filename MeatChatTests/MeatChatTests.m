@@ -1,6 +1,6 @@
 //
-//  NordMeatTests.m
-//  NordMeatTests
+//  MeatChatTests.m
+//  MeatChatTests
 //
 //  Created by Marcus Ramberg on 14.01.14.
 //  Copyright (c) 2014 Nordaaker AS. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface NordMeatTests : XCTestCase
+@interface MeatChatTests : XCTestCase
 
 @end
 
-@implementation NordMeatTests
+@implementation MeatChatTests
 
 - (void)setUp
 {
