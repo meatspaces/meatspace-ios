@@ -50,7 +50,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OcP-PN-fOv">
-                                                    <rect key="frame" x="8" y="8" width="100" height="75"/>
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="t5q-IM-TbW"/>
                                                         <constraint firstAttribute="height" constant="75" id="xwV-H6-Qtp"/>
@@ -63,7 +63,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cq-zs-Ogn">
-                                                    <rect key="frame" x="118" y="14" width="478" height="69"/>
+                                                    <rect key="frame" x="118" y="14" width="478" height="33"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="387" id="fcc-kC-IB4"/>
@@ -88,22 +88,24 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OcP-PN-fOv" secondAttribute="bottom" id="2LJ-b0-CzQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4ga-Ou-tZx" secondAttribute="trailing" constant="-6" id="80D-uM-ni0"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7cq-zs-Ogn" secondAttribute="bottom" constant="12" id="Emv-MA-bwS"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7cq-zs-Ogn" secondAttribute="bottom" id="Emv-MA-bwS"/>
                                                 <constraint firstItem="4ga-Ou-tZx" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="-6" id="JYb-eN-ZDE"/>
-                                                <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" id="NyW-Qc-YFi"/>
+                                                <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="-8" id="NyW-Qc-YFi"/>
                                                 <constraint firstItem="OcP-PN-fOv" firstAttribute="leading" secondItem="7Fh-vT-t2S" secondAttribute="leadingMargin" id="PtF-Ox-MpJ"/>
-                                                <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" id="Xmv-sS-V7C"/>
+                                                <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="-8" id="Xmv-sS-V7C"/>
                                                 <constraint firstItem="OcP-PN-fOv" firstAttribute="leading" secondItem="7Fh-vT-t2S" secondAttribute="leadingMargin" constant="-8" id="YQm-xL-Jnn"/>
-                                                <constraint firstItem="7cq-zs-Ogn" firstAttribute="bottom" secondItem="OcP-PN-fOv" secondAttribute="bottom" id="ZGj-2c-tqY"/>
+                                                <constraint firstItem="7cq-zs-Ogn" firstAttribute="bottom" secondItem="OcP-PN-fOv" secondAttribute="bottom" constant="8" id="ZGj-2c-tqY"/>
                                                 <constraint firstItem="7cq-zs-Ogn" firstAttribute="leading" secondItem="OcP-PN-fOv" secondAttribute="trailing" constant="10" id="c36-I0-udX"/>
-                                                <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" id="eB2-mF-jFv"/>
+                                                <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="-8" id="eB2-mF-jFv"/>
                                                 <constraint firstAttribute="trailing" secondItem="7cq-zs-Ogn" secondAttribute="trailing" constant="4" id="tv5-2I-n56"/>
                                                 <constraint firstItem="7cq-zs-Ogn" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="6" id="zG5-LE-o4t"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="YQm-xL-Jnn"/>
+                                                    <exclude reference="ZGj-2c-tqY"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

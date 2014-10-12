@@ -36,13 +36,14 @@
 
 - (NSString*)relativeTime
 {
-  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] integerValue]/1000];
+  NSTimeInterval epoch=[[self.postData objectForKey: @"created"] doubleValue]/1000;
+  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: epoch];
  return [postDate dateTimeAgo];
 }
 
 - (BOOL)isObsolete
 {
-  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] integerValue]/1000];
+  NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] doubleValue]/1000];
   NSDate *oldMessage=[NSDate dateWithTimeIntervalSinceNow: -600];
   if([oldMessage compare: postDate] == NSOrderedDescending) { return YES;}
   return NO;
@@ -59,7 +60,7 @@
   
   NSError *error;
   NSDictionary *attributes;
-  NSString *html=[NSString stringWithFormat: @"<html><p>%@</p></html>",text];
+  NSString *html=[NSString stringWithFormat: @"<html><head><style>* { font-family: Helvetica Neue;} a { background-color: #95f7f1; color: #2d7470; text-decoration: none }</style></head><body><p>%@</p></body></html>",text];
  NSAttributedString *string=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:&attributes error:&error];
   return string;
 
