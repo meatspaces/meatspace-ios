@@ -37,6 +37,12 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   [self setupCaptureSession];
 }
 
+- (void)setPlaceholder: (NSString*)placeholder
+{
+  UIColor *color = [UIColor lightTextColor];
+  self.textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: color}];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

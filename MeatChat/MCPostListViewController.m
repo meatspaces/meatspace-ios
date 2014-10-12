@@ -48,12 +48,14 @@
   self.items=[NSMutableArray array];
      [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
    {
+   [self.postViewController setPlaceholder: @"Connecting to meatspace"];
    self.socket = socket;
    __weak typeof(self) weakSelf = self;
    self.socket.onConnect = ^()
      {
      weakSelf.postViewController.textfield.enabled=YES;
      weakSelf.socketIsConnected = YES;
+     [weakSelf.postViewController setPlaceholder: @"What do you want to say?"];
      [weakSelf.socket emit: @"join",@"mp4", nil];
      dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf flushItems]; });
      };
@@ -61,6 +63,7 @@
    {
      //FIXME: Crashes if keyboard is active atm.
     weakSelf.postViewController.textfield.enabled=NO;
+   [weakSelf.postViewController setPlaceholder: @"Disconnected, please hold"];
    };
    [self.socket on: @"message"  callback:^(id data) {
      __weak typeof(self) weakSelf = self;
@@ -77,9 +80,11 @@
    };
    self.socket.onReconnectionAttempt =^(NSInteger numberOfAttempts) {
      NSLog(@"Attempt %ld", (long)numberOfAttempts);
+   [weakSelf.postViewController setPlaceholder: @"Reconnecting to meatspace."];
    };
    self.socket.onReconnectionError=^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
+   [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"Could not connect: %@", errorInfo]];
    };
    
    }];

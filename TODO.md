@@ -1,9 +1,11 @@
 # Release blockers
 - [ ] Fix so you can post more than once.
 - [ ] Fix expanding layout
-- [ ] Check net connectivity.
+- [ ] Check net connectivity
+- [ ] Add active count
 - [ ] Add mute support
 - [ ] Startup screen
+- [ ] Render emoji
 - [ ] Fix icon background (transparent => white)
 - [ ] Support active users
 

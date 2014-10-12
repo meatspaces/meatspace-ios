@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textfield;
 
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position;
+- (void)setPlaceholder: (NSString*)placeholder;
 
 - (void)donePosting;
 
