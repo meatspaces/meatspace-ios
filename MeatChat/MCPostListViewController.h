@@ -12,7 +12,6 @@
 
 @interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, AVAssetResourceLoaderDelegate>
 
-- (void)playerItemDidReachEnd:(NSNotification *)notification;
 
 @property (weak, nonatomic)IBOutlet NSLayoutConstraint *containerHeight;
 @property (strong, nonatomic)IBOutlet UITableView *tableView;

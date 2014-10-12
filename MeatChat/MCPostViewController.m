@@ -147,8 +147,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         @"ip": parentViewController.ip,
         @"fingerprint": [[UIDevice currentDevice] identifierForVendor].UUIDString
       } options:0 error:nil] encoding: NSUTF8StringEncoding];
+    dispatch_async(dispatch_get_main_queue(), ^{
       [parentViewController.socket emit: @"message", message,  nil];
-      [self performSelectorOnMainThread:@selector(donePosting) withObject:nil waitUntilDone:NO];
+      [self closePostWithPosted: YES];
+    });
     }
   }
 }
@@ -157,11 +159,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     self.countLabel.text=[NSString stringWithFormat: @"%lu",9-[self.frames count]];
 }
 
-- (void)donePosting
+- (void)closePostWithPosted: (BOOL)posted
 {
-  self.textfield.text=@"";
-  self.countLabel.hidden=YES;
   [ self.textfield resignFirstResponder];
+  if(posted) {
+    self.textfield.text=@"";
+  }
+  self.countLabel.hidden=YES;
+  self.countLabel.text=@"0";
   [UIView animateWithDuration:0.5f animations:^{
     self.imageButton.alpha=0;
   }];

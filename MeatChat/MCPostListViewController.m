@@ -28,6 +28,8 @@
 - (void)addPost: (NSDictionary*)data;
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;
+-(void)handleDisconnect;
+- (void)playerItemDidReachEnd:(NSNotification *)notification;
 
 
 @end
@@ -53,17 +55,17 @@
    __weak typeof(self) weakSelf = self;
    self.socket.onConnect = ^()
      {
-     weakSelf.postViewController.textfield.enabled=YES;
      weakSelf.socketIsConnected = YES;
-     [weakSelf.postViewController setPlaceholder: @"What do you want to say?"];
      [weakSelf.socket emit: @"join",@"mp4", nil];
-     dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf flushItems]; });
+     dispatch_async(dispatch_get_main_queue(), ^{
+       weakSelf.postViewController.textfield.enabled=YES;
+       [weakSelf.postViewController setPlaceholder: @"What do you want to say?"];
+       [weakSelf flushItems];
+     });
      };
    self.socket.onDisconnect= ^()
    {
-     //FIXME: Crashes if keyboard is active atm.
-    weakSelf.postViewController.textfield.enabled=NO;
-   [weakSelf.postViewController setPlaceholder: @"Disconnected, please hold"];
+   dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf handleDisconnect]; });
    };
    [self.socket on: @"message"  callback:^(id data) {
      __weak typeof(self) weakSelf = self;
@@ -80,11 +82,15 @@
    };
    self.socket.onReconnectionAttempt =^(NSInteger numberOfAttempts) {
      NSLog(@"Attempt %ld", (long)numberOfAttempts);
-   [weakSelf.postViewController setPlaceholder: @"Reconnecting to meatspace."];
+   dispatch_async(dispatch_get_main_queue(), ^{
+     [weakSelf.postViewController setPlaceholder: @"Reconnecting to meatspace."];
+   });
    };
    self.socket.onReconnectionError=^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
-   [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"Could not connect: %@", errorInfo]];
+   dispatch_async(dispatch_get_main_queue(), ^{
+     [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"Could not connect: %@", errorInfo]];
+   });
    };
    
    }];
@@ -97,9 +103,16 @@
   self.atBottom=YES;
 }
 
+-(void)handleDisconnect
+{
+   [self.postViewController.textfield resignFirstResponder];
+   self.postViewController.textfield.enabled=NO;
+   [self.postViewController setPlaceholder: @"Disconnected, please hold"];
+  
+}
 
 -(void)dismissKeyboard {
-  [self.postViewController donePosting];
+  [self.postViewController closePostWithPosted: NO];
 }
 
 - (void)flushItems

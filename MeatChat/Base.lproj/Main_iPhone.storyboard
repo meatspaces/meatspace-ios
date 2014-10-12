@@ -179,6 +179,16 @@
                                     <action selector="switchCameraTapped:" destination="Xgz-kX-CTJ" eventType="touchUpInside" id="e2U-PG-wSj"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGu-fq-Rrj" userLabel="Count">
+                                <rect key="frame" x="20" y="-38" width="80" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="OwF-cQ-7UV"/>
+                                    <constraint firstAttribute="height" constant="75" id="hPx-FN-Q49"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say what?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izn-fs-Y3U">
                                 <rect key="frame" x="108" y="6" width="488" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,16 +200,6 @@
                                     <outlet property="delegate" destination="Xgz-kX-CTJ" id="WgI-U9-Iex"/>
                                 </connections>
                             </textField>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGu-fq-Rrj" userLabel="Count">
-                                <rect key="frame" x="20" y="-38" width="100" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="OwF-cQ-7UV"/>
-                                    <constraint firstAttribute="height" constant="75" id="hPx-FN-Q49"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

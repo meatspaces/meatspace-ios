@@ -16,7 +16,6 @@
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position;
 - (void)setPlaceholder: (NSString*)placeholder;
 
-- (void)donePosting;
-
+- (void)closePostWithPosted: (BOOL)posted;
 
 @end
