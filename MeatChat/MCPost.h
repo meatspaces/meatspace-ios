@@ -10,9 +10,9 @@
 
 @interface MCPost : NSObject
 
-@property (nonatomic,strong) NSDictionary *postData;
 @property (nonatomic,strong) NSAttributedString *attributedString;
 @property (nonatomic,strong) NSURL *videoUrl;
+@property (nonatomic, strong) NSNumber *created;
 
 -(id)initWithDictionary: (NSDictionary*)dict;
 - (NSAttributedString*)attributedBody;

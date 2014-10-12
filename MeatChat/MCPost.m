@@ -10,6 +10,10 @@
 #import "NSDate+TimeAgo.h"
 
 
+@interface MCPost ()
+@property (nonatomic,strong) NSDictionary *postData;
+@end
+
 @implementation MCPost
 
 
@@ -17,7 +21,7 @@
 {
   self = [super init];
   if(self) {
-    self.postData=dict;
+    self.postData=[dict dictionaryWithValuesForKeys: @[@"message",@"created"]];
     self.attributedString=[self attributedBody];
     NSString *media=[[dict objectForKey: @"media"] substringFromIndex:22];
     NSData *videoData=[[NSData alloc] initWithBase64EncodedString: media options: NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -28,6 +32,8 @@
     path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[created stringValue] stringByAppendingString: @".mp4"]];
     [videoData writeToFile: path atomically:NO];
     self.videoUrl=[NSURL fileURLWithPath: path];
+    
+    
   }
 
   return self;

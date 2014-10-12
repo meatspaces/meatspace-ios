@@ -144,8 +144,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
    NSString *message=[[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject: @{
         @"message": self.textfield.text,
         @"media": encodedImages,
-        @"ip": parentViewController.ip,
-        @"fingerprint": [[UIDevice currentDevice] identifierForVendor].UUIDString
+        @"fingerprint": [[[UIDevice currentDevice] identifierForVendor].UUIDString substringToIndex:9]
       } options:0 error:nil] encoding: NSUTF8StringEncoding];
     dispatch_async(dispatch_get_main_queue(), ^{
       [parentViewController.socket emit: @"message", message,  nil];
@@ -156,7 +155,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 - (void)updateCount
 {
-    self.countLabel.text=[NSString stringWithFormat: @"%lu",9-[self.frames count]];
+    self.countLabel.text=[NSString stringWithFormat: @"%u",9-(int)[self.frames count]];
 }
 
 - (void)closePostWithPosted: (BOOL)posted
@@ -166,7 +165,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     self.textfield.text=@"";
   }
   self.countLabel.hidden=YES;
-  self.countLabel.text=@"0";
+  self.countLabel.text=@"9";
   [UIView animateWithDuration:0.5f animations:^{
     self.imageButton.alpha=0;
   }];

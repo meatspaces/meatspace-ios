@@ -25,10 +25,11 @@
 @property (nonatomic,weak) MCPostViewController *postViewController;
 
 
+- (void)setupSocket;
 - (void)addPost: (NSDictionary*)data;
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;
--(void)handleDisconnect;
+- (void)handleDisconnect;
 - (void)playerItemDidReachEnd:(NSNotification *)notification;
 
 
@@ -36,19 +37,65 @@
 
 @implementation MCPostListViewController
 
+#pragma mark - UITableview subclass methods
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+  self.items=[NSMutableArray array];
+  [self setupSocket];
+ 
+    // Keyboard handling
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
                                  action:@selector(dismissKeyboard)];
   
   [self.view addGestureRecognizer:tap];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]
+  ;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
+  
+  // Tableview
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight=75;
+  self.atBottom=YES;
+}
 
-  self.ip=@"127.0.0.1";
-  self.seen=[NSMutableDictionary dictionary];
-  self.items=[NSMutableArray array];
-     [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
+
+-(void)scrollToBottom
+{
+  NSIndexPath *indexPath=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
+  [self.tableView scrollToRowAtIndexPath: indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+  // Ensure visible cells are playing
+  for (MCPostCell *cell in self.tableView.visibleCells) {
+    [cell.videoPlayer play];
+  }
+  
+  // Check if we're still at the bottom.
+  CGFloat height = scrollView.frame.size.height;
+  CGFloat contentYoffset = scrollView.contentOffset.y;
+  CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
+  self.atBottom = (distanceFromBottom <= height);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"postViewSegue"]) {
+      // can't assign the view controller from an embed segue via the storyboard, so capture here
+  _postViewController = (MCPostViewController*)segue.destinationViewController;
+  }
+}
+
+#pragma mark - Socket handling
+
+- (void)setupSocket
+{
+  [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
    {
    [self.postViewController setPlaceholder: @"Connecting to meatspace"];
    self.socket = socket;
@@ -71,8 +118,12 @@
      __weak typeof(self) weakSelf = self;
      dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf addPost: data]; });
    }];
-   [self.socket on: @"ip" callback:^(id data) {
-     self.ip=data;
+   [self.socket on: @"messageack"  callback:^(id data) {
+     dispatch_async(dispatch_get_main_queue(), ^{
+       if(![[data class] isSubclassOfClass: [NSNull class]]) {
+         NSLog(@"failed: %@",data);
+       };
+     });
    }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
@@ -94,14 +145,8 @@
    };
    
    }];
-  
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]
-  ;
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
-  self.tableView.rowHeight = UITableViewAutomaticDimension;
-  self.tableView.estimatedRowHeight=75;
-  self.atBottom=YES;
 }
+
 
 -(void)handleDisconnect
 {
@@ -109,10 +154,6 @@
    self.postViewController.textfield.enabled=NO;
    [self.postViewController setPlaceholder: @"Disconnected, please hold"];
   
-}
-
--(void)dismissKeyboard {
-  [self.postViewController closePostWithPosted: NO];
 }
 
 - (void)flushItems
@@ -141,43 +182,46 @@
   MCPost *post=[[MCPost alloc] initWithDictionary: data];
   [self.items addObject: post];
   NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
+  [CATransaction begin];
+  [CATransaction setCompletionBlock:^{
+  if (self.atBottom) {
+    [self scrollToBottom];
+  }
+  }];
   [self.tableView beginUpdates];
   [self.tableView insertRowsAtIndexPaths:@[newRow] withRowAnimation: UITableViewRowAnimationFade];
   [self.tableView endUpdates];
-  if (self.atBottom) {
-    [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-  }
+  [CATransaction commit];
 }
 
 
 
 #pragma mark - Keyboard handling
 
+-(void)dismissKeyboard {
+  [self.postViewController closePostWithPosted: NO];
+}
 
 - (void)keyboardDidShow:(NSNotification *)sender {
   CGRect frame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
   self.containerBottom.constant = frame.size.height;
   [self.containerView setNeedsUpdateConstraints];
-  if([self.items count]) {
-    NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
-    [self.tableView scrollToRowAtIndexPath: newRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    self.atBottom=YES;
-  }
+  [UIView animateWithDuration:0.25f animations:^{
+    [self.containerView layoutIfNeeded];
+  } completion:^(BOOL finished) {
+    if([self.items count]) {
+      [self scrollToBottom];
+      self.atBottom=YES;
+    }
+  }];
 }
 
-- (void)keyboardWillHide:(NSNotification *)sender {
+- (void)keyboardWillHide:(NSNotification *)sender
+{
   self.containerBottom.constant = 0;
   [self.view setNeedsUpdateConstraints];
 }
 
-
-- (void)post: (id)sender
-{
-  MCPostViewController *post=[[MCPostViewController alloc] init];
-  [self presentViewController: post animated:YES completion:^{
-    NSLog(@"Presentmodal");
-  }];
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -229,38 +273,22 @@
 }
 
 
+#pragma mark - AVPlayer delegate
+
+
 - (void)playerItemDidReachEnd:(NSNotification *)notification
 {
   AVPlayerItem *p = [notification object];
   [p seekToTime:kCMTimeZero];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-  // Ensure visible cells are playing
-  for (MCPostCell *cell in self.tableView.visibleCells) {
-    [cell.videoPlayer play];
-  }
-  
-  // Check if we're still at the bottom.
-  CGFloat height = scrollView.frame.size.height;
-  CGFloat contentYoffset = scrollView.contentOffset.y;
-  CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
-  self.atBottom = (distanceFromBottom <= height);
-}
+
+
+#pragma mark - UITextView delegate for cells
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
   return YES;
 }
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  if ([segue.identifier isEqualToString:@"postViewSegue"]) {
-      // can't assign the view controller from an embed segue via the storyboard, so capture here
-  _postViewController = (MCPostViewController*)segue.destinationViewController;
-  }
-}
-
 
 @end
