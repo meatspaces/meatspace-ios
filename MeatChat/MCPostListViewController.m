@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableDictionary *seen;
 @property (nonatomic,assign) BOOL socketIsConnected;
+@property (nonatomic,assign) BOOL keyboardUp;
 @property (nonatomic,weak) MCPostViewController *postViewController;
 
 
@@ -101,6 +102,7 @@
   _postViewController = (MCPostViewController*)segue.destinationViewController;
   }
 }
+
 
 #pragma mark - Socket handling
 
@@ -239,6 +241,8 @@
 }
 
 - (void)keyboardDidShow:(NSNotification *)sender {
+  self.keyboardUp=true;
+  [self.tableView reloadData];
   CGRect frame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
   self.containerBottom.constant = frame.size.height;
   [self.containerView setNeedsUpdateConstraints];
@@ -254,6 +258,8 @@
 
 - (void)keyboardWillHide:(NSNotification *)sender
 {
+  self.keyboardUp=false;
+  [self.tableView reloadData];
   self.containerBottom.constant = 0;
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
@@ -311,6 +317,11 @@
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [[(MCPostCell*)cell videoPlayer] pause];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+  return self.keyboardUp ? 40.0 : 0.0;
 }
 
 

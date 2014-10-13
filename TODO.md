@@ -3,7 +3,7 @@
 - [ ] stop playing while scrolling
 - [ ] Support tapping at top of preview image
 - [ ] Start with front facing camera.
-- [ ] Fix expanding layout (extra space at bottom)
+- [x] Fix expanding layout (extra space at bottom)
 - [ ] Add mute support
 - [ ] Startup screen
 
