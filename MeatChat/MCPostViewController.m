@@ -17,7 +17,6 @@
 @property (retain,nonatomic) AVCaptureSession *session;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
-@property (weak, nonatomic) IBOutlet UILabel *characterCount;
 @property (strong, atomic) NSMutableArray *frames;
 @property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
@@ -69,8 +68,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   session.sessionPreset = AVCaptureSessionPresetMedium;
   
     // Find a suitable AVCaptureDevice
-  AVCaptureDevice *device = [AVCaptureDevice
-                             defaultDeviceWithMediaType:AVMediaTypeVideo];
+  AVCaptureDevice *device = [self cameraWithPosition:AVCaptureDevicePositionFront];
 
   [device lockForConfiguration: &error];
   device.activeVideoMinFrameDuration = CMTimeMake(1, CAPTURE_FRAMES_PER_SECOND);

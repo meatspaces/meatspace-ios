@@ -72,17 +72,6 @@
   [self.tableView scrollToRowAtIndexPath: indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-  NSLog(@"Didscroll");
-  // Ensure visible cells are playing
-  //  for (MCPostCell *cell in self.tableView.visibleCells) {
-  //  [cell.videoPlayer play];
-  //}
-  
-  // Check if we're still at the bottom.
-}
-
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
   self.atBottom = NO;
@@ -273,6 +262,7 @@
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
     [self.containerView layoutIfNeeded];
+    self.postViewController.characterCount.hidden=NO;
   } completion:^(BOOL finished) {
     if([self.items count]) {
       [self scrollToBottom];
@@ -289,6 +279,7 @@
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
     [self.containerView layoutIfNeeded];
+    self.postViewController.characterCount.hidden=YES;
   } completion:^(BOOL finished) {
     if([self.items count]) {
       [self scrollToBottom];
