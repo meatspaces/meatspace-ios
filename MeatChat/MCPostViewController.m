@@ -162,7 +162,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   [ self.textfield resignFirstResponder];
   if(posted) {
     self.textfield.text=@"";
-    self.characterCount.text=@"0";
+    self.characterCount.text=@"250";
   }
   self.countLabel.hidden=YES;
   self.countLabel.text=@"9";
@@ -274,7 +274,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
   
   if( newLength <= MAXLENGTH) {
-    self.characterCount.text=[NSString stringWithFormat: @"%lu",(unsigned long)newLength];
+    self.characterCount.text=[NSString stringWithFormat: @"%lu",250-(unsigned long)newLength];
   }
   return newLength <= MAXLENGTH || returnKey;
 }

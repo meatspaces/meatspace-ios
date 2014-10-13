@@ -165,7 +165,7 @@
    [self.socket on: @"messageack"  callback:^(id data) {
      dispatch_async(dispatch_get_main_queue(), ^{
        if(![[data class] isSubclassOfClass: [NSNull class]]) {
-         TFLog(@"failed: %@",data);
+         NSLog(@"failed: %@",data);
        };
      });
    }];

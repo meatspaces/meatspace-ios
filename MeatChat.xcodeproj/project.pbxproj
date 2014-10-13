@@ -24,7 +24,6 @@
 		2C1F8CCB1885CFEB001BE713 /* MeatChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */; };
 		2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD51885D05B001BE713 /* MCPostCell.m */; };
 		2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */; };
-		2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CDA1885D50A001BE713 /* meat.gif */; };
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
 		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
 		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
@@ -72,7 +71,6 @@
 		2C1F8CD51885D05B001BE713 /* MCPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostCell.m; sourceTree = "<group>"; };
 		2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostListViewController.h; sourceTree = "<group>"; };
 		2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostListViewController.m; sourceTree = "<group>"; };
-		2C1F8CDA1885D50A001BE713 /* meat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = meat.gif; sourceTree = "<group>"; };
 		2C1F8CFC1885FB86001BE713 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */,
-				2C1F8CDA1885D50A001BE713 /* meat.gif */,
 				2C1F8CA41885CFEB001BE713 /* MeatChat-Info.plist */,
 				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
 				2C1F8CA81885CFEB001BE713 /* main.m */,
@@ -335,7 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */,
-				2C1F8CDB1885D50A001BE713 /* meat.gif in Resources */,
 				2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */,
 				2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */,
 			);
