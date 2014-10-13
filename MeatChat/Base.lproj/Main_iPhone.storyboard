@@ -201,7 +201,7 @@
                                 </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxU-Rn-ddf">
-                                <rect key="frame" x="586" y="4" width="6" height="12"/>
+                                <rect key="frame" x="592" y="2" width="6" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -216,8 +216,8 @@
                             <constraint firstItem="yYA-BT-feF" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" constant="4" id="VeP-1c-EXG"/>
                             <constraint firstAttribute="trailing" secondItem="izn-fs-Y3U" secondAttribute="trailing" constant="4" id="Wai-Ca-jNQ"/>
                             <constraint firstItem="hGu-fq-Rrj" firstAttribute="top" secondItem="G58-UY-9fD" secondAttribute="top" constant="-38" id="bo0-MX-lAe"/>
-                            <constraint firstItem="IxU-Rn-ddf" firstAttribute="top" secondItem="G58-UY-9fD" secondAttribute="top" constant="4" id="gqq-br-ja6"/>
-                            <constraint firstAttribute="trailing" secondItem="IxU-Rn-ddf" secondAttribute="trailing" constant="8" id="oSB-AM-czP"/>
+                            <constraint firstItem="IxU-Rn-ddf" firstAttribute="top" secondItem="G58-UY-9fD" secondAttribute="top" constant="2" id="gqq-br-ja6"/>
+                            <constraint firstAttribute="trailing" secondItem="IxU-Rn-ddf" secondAttribute="trailing" constant="2" id="oSB-AM-czP"/>
                             <constraint firstItem="izn-fs-Y3U" firstAttribute="leading" secondItem="yYA-BT-feF" secondAttribute="trailing" constant="4" id="urO-9k-ydX"/>
                         </constraints>
                         <variation key="default">
