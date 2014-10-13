@@ -11,6 +11,8 @@
 #import "MCPostViewController.h"
 #import "MCPost.h"
 #import <AVFoundation/AVFoundation.h>
+#import "TestFlight.h"
+#import "Reachability.h"
 
 
 
@@ -26,6 +28,8 @@
 
 
 - (void)setupSocket;
+- (void)teardownSocket;
+- (void)setupReachability;
 - (void)addPost: (NSDictionary*)data;
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;
@@ -44,7 +48,7 @@
   [super viewDidLoad];
 
   self.items=[NSMutableArray array];
-  [self setupSocket];
+  [self setupReachability];
  
     // Keyboard handling
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -83,6 +87,13 @@
   self.atBottom = (distanceFromBottom <= height);
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+  for (MCPostCell *cell in self.tableView.visibleCells) {
+    [cell.videoPlayer pause];
+  }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"postViewSegue"]) {
@@ -93,13 +104,31 @@
 
 #pragma mark - Socket handling
 
+- (void)setupReachability;
+{
+  Reachability* reach = [Reachability reachabilityWithHostname:@"chat.meatspac.es"];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(reachabilityChanged:)
+                                               name:kReachabilityChangedNotification
+                                             object:nil];
+  
+  [reach startNotifier];
+  
+}
+
+- (void)reachabilityChanged: (NSNotification*)notif
+{
+  Reachability *reach=notif.object;
+  reach.isReachable ? [self setupSocket] : [self teardownSocket];
+}
+
 - (void)setupSocket
 {
+   __weak typeof(self) weakSelf = self;
   [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
    {
    [self.postViewController setPlaceholder: @"Connecting to meatspace"];
    self.socket = socket;
-   __weak typeof(self) weakSelf = self;
    self.socket.onConnect = ^()
      {
      weakSelf.socketIsConnected = YES;
@@ -115,13 +144,12 @@
    dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf handleDisconnect]; });
    };
    [self.socket on: @"message"  callback:^(id data) {
-     __weak typeof(self) weakSelf = self;
      dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf addPost: data]; });
    }];
    [self.socket on: @"messageack"  callback:^(id data) {
      dispatch_async(dispatch_get_main_queue(), ^{
        if(![[data class] isSubclassOfClass: [NSNull class]]) {
-         NSLog(@"failed: %@",data);
+         TFLog(@"failed: %@",data);
        };
      });
    }];
@@ -145,6 +173,14 @@
    };
    
    }];
+}
+
+- (void)teardownSocket
+{
+  [self.socket close];
+  self.socketIsConnected=false;
+  self.socket=NULL;
+  [self.postViewController setPlaceholder: @"Get the internet, bae."];
 }
 
 
@@ -260,9 +296,6 @@
     // Configure the cell...
   MCPost *post=[self.items objectAtIndex:indexPath.row];
   cell.textView.attributedText=post.attributedString;
-  CGRect frame=cell.frame;
-  frame.size = [cell.textView sizeThatFits:CGSizeMake(cell.textView.frame.size.width, 800)];
-  cell.textView.frame=frame;
   cell.timeLabel.text=[post relativeTime];
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
   [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];

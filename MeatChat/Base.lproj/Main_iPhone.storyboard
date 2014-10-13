@@ -63,13 +63,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cq-zs-Ogn">
-                                                    <rect key="frame" x="114" y="14" width="482" height="33"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="108" y="11" width="488" height="33"/>
+                                                    <color key="backgroundColor" red="0.91764712329999998" green="0.48627454040000001" blue="0.65882354970000001" alpha="0.0" colorSpace="deviceRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="387" id="fcc-kC-IB4"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Hello Wordl">
+                                                        <fragment content="Hello World">
                                                             <attributes>
                                                                 <font key="NSFont" size="14" name="HelveticaNeue"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -97,10 +97,10 @@
                                                 <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="-8" id="Xmv-sS-V7C"/>
                                                 <constraint firstItem="OcP-PN-fOv" firstAttribute="leading" secondItem="7Fh-vT-t2S" secondAttribute="leadingMargin" constant="-8" id="YQm-xL-Jnn"/>
                                                 <constraint firstItem="7cq-zs-Ogn" firstAttribute="bottom" secondItem="OcP-PN-fOv" secondAttribute="bottom" constant="8" id="ZGj-2c-tqY"/>
-                                                <constraint firstItem="7cq-zs-Ogn" firstAttribute="leading" secondItem="OcP-PN-fOv" secondAttribute="trailing" constant="10" id="c36-I0-udX"/>
+                                                <constraint firstItem="7cq-zs-Ogn" firstAttribute="leading" secondItem="OcP-PN-fOv" secondAttribute="trailing" constant="4" id="c36-I0-udX"/>
                                                 <constraint firstItem="OcP-PN-fOv" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="-8" id="eB2-mF-jFv"/>
                                                 <constraint firstAttribute="trailing" secondItem="7cq-zs-Ogn" secondAttribute="trailing" constant="4" id="tv5-2I-n56"/>
-                                                <constraint firstItem="7cq-zs-Ogn" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="6" id="zG5-LE-o4t"/>
+                                                <constraint firstItem="7cq-zs-Ogn" firstAttribute="top" secondItem="7Fh-vT-t2S" secondAttribute="topMargin" constant="3" id="zG5-LE-o4t"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">

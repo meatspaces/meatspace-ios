@@ -1,16 +1,19 @@
 PODS:
   - NSDate+TimeAgo (1.0.3)
+  - Reachability (3.1.1)
   - SIOSocket (0.1.0)
-  - TTTAttributedLabel (1.10.1)
+  - TestFlightSDK (3.0.2)
 
 DEPENDENCIES:
   - NSDate+TimeAgo
+  - Reachability (~> 3.1.1)
   - SIOSocket (~> 0.1.0)
-  - TTTAttributedLabel (~> 1.10.1)
+  - TestFlightSDK (~> 3.0.2)
 
 SPEC CHECKSUMS:
   NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   SIOSocket: 754459d4463f870105d5a9d3f8e57c71247c8043
-  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
+  TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
 
 COCOAPODS: 0.34.2

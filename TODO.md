@@ -1,8 +1,7 @@
 # Release blockers
-- [ ] Fix posting with new format
+- [ ] Support tapping at top of preview image
+- [ ] Start with front facing camera.
 - [ ] Fix expanding layout
-- [ ] Check net connectivity
-- [ ] Add active count
 - [ ] Add mute support
 - [ ] Startup screen
 
@@ -20,3 +19,5 @@
 - [x] Make videos stop playing when offscreen
 - [x] Render emoji
 - [x] Fix icon background (transparent => white)
+- [x] Fix posting with new format
+- [x] Check net connectivity

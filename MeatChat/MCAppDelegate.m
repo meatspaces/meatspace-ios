@@ -7,12 +7,16 @@
 //
 
 #import "MCAppDelegate.h"
+#import "TestFlight.h"
 
 @implementation MCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+  
+    [TestFlight takeOff:@"15b86d3f-cf9f-4729-b1be-d4263f01d8ab"];
+
     return YES;
 }
 							
