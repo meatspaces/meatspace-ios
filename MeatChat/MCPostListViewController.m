@@ -8,7 +8,6 @@
 
 #import "MCPostListViewController.h"
 #import "MCPostCell.h"
-#import "MCPostViewController.h"
 #import "MCPost.h"
 #import <AVFoundation/AVFoundation.h>
 #import "TestFlight.h"
@@ -25,7 +24,6 @@
 @property (strong, nonatomic) NSMutableDictionary *seen;
 @property (nonatomic,assign) BOOL socketIsConnected;
 @property (nonatomic,assign) BOOL keyboardUp;
-@property (nonatomic,weak) MCPostViewController *postViewController;
 
 
 - (void)setupSocket;
@@ -76,23 +74,50 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+  NSLog(@"Didscroll");
   // Ensure visible cells are playing
+  //  for (MCPostCell *cell in self.tableView.visibleCells) {
+  //  [cell.videoPlayer play];
+  //}
+  
+  // Check if we're still at the bottom.
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+  self.atBottom = NO;
+  for (MCPostCell *cell in self.tableView.visibleCells) {
+    [cell.videoPlayer pause];
+  }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+  [self endScroll: scrollView];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+  [self endScroll: scrollView];
+}
+
+- (void)endScroll: (UIScrollView*)scrollView
+{
   for (MCPostCell *cell in self.tableView.visibleCells) {
     [cell.videoPlayer play];
   }
-  
-  // Check if we're still at the bottom.
   CGFloat height = scrollView.frame.size.height;
   CGFloat contentYoffset = scrollView.contentOffset.y;
   CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
   self.atBottom = (distanceFromBottom <= height);
 }
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
   for (MCPostCell *cell in self.tableView.visibleCells) {
-    [cell.videoPlayer pause];
+    [cell.videoPlayer play];
   }
+  
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -310,7 +335,7 @@
                                            selector:@selector(playerItemDidReachEnd:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:item];
-  [cell.videoPlayer play];
+    //[cell.videoPlayer play];
   return cell;
 }
 

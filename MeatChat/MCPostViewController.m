@@ -13,11 +13,11 @@
 #import "UIImage+Extras.h"
 #import "MCPostListViewController.h"
 
-
 @interface MCPostViewController ()
 @property (retain,nonatomic) AVCaptureSession *session;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UILabel *characterCount;
 @property (strong, atomic) NSMutableArray *frames;
 @property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
@@ -39,6 +39,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   self.skipFrames=6;
       // Do any additional setup after loading the view.
   [self setupCaptureSession];
+  
 }
 
 - (void)setPlaceholder: (NSString*)placeholder
@@ -78,7 +79,6 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
     // Create a device input with the device and add it to the session.
   AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device
                                                                       error:&error];
-  [self switchCameraTapped: self];
   if (!input) {
       // Handling the error appropriately.
     return;
@@ -89,6 +89,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
 
   [session addOutput:output];
+  [self switchCameraTapped: self];
   AVCaptureVideoPreviewLayer *captureLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
   captureLayer.frame = self.imageButton.bounds;
   captureLayer.videoGravity=AVLayerVideoGravityResizeAspectFill;
@@ -163,6 +164,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   [ self.textfield resignFirstResponder];
   if(posted) {
     self.textfield.text=@"";
+    self.characterCount.text=@"0";
   }
   self.countLabel.hidden=YES;
   self.countLabel.text=@"9";
@@ -261,6 +263,24 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 
+#define MAXLENGTH 250
+
+- (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+  
+  NSUInteger oldLength = [textField.text length];
+  NSUInteger replacementLength = [string length];
+  NSUInteger rangeLength = range.length;
+  
+  NSUInteger newLength = oldLength - rangeLength + replacementLength;
+  
+  BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+  
+  if( newLength <= MAXLENGTH) {
+    self.characterCount.text=[NSString stringWithFormat: @"%lu",(unsigned long)newLength];
+  }
+  return newLength <= MAXLENGTH || returnKey;
+}
+
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
@@ -276,8 +296,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-  NSLog(@"Posting %@",textField.text);
-  
   
   self.countLabel.hidden=NO;
   self.capturing=YES;

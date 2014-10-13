@@ -65,10 +65,9 @@
   NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)};
   
   NSError *error;
-  NSDictionary *attributes=@{ @"ParagraphSpacing": @0} ;
+  NSDictionary *attributes=@{};
   NSString *html=[NSString stringWithFormat: @"<html><head><style>p,body { background-color: red; ;font-family: Helvetica Neue;margin: 0.0px 0.0px 0.0px 0.0px;padding: 0.0px 0.0px 0.0px 0.0px} a { background-color: #95f7f1; color: #2d7470; text-decoration: none }</style></head><body><span>%@</span></body></html>",text];
  NSAttributedString *string=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:&attributes error:&error];
-  NSLog(@"%@",string);
   return string;
 
   

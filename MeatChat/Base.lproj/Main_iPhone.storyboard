@@ -179,16 +179,6 @@
                                     <action selector="switchCameraTapped:" destination="Xgz-kX-CTJ" eventType="touchUpInside" id="e2U-PG-wSj"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGu-fq-Rrj" userLabel="Count">
-                                <rect key="frame" x="20" y="-38" width="80" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="OwF-cQ-7UV"/>
-                                    <constraint firstAttribute="height" constant="75" id="hPx-FN-Q49"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say what?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izn-fs-Y3U">
                                 <rect key="frame" x="108" y="6" width="488" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,16 +190,22 @@
                                     <outlet property="delegate" destination="Xgz-kX-CTJ" id="WgI-U9-Iex"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxU-Rn-ddf">
+                                <rect key="frame" x="586" y="4" width="6" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yYA-BT-feF" firstAttribute="top" secondItem="ESy-Jz-LuQ" secondAttribute="bottom" constant="-38" id="0Oe-kr-Diu"/>
                             <constraint firstItem="dmX-Y4-4q2" firstAttribute="top" secondItem="izn-fs-Y3U" secondAttribute="bottom" constant="63" id="0X5-v4-vso"/>
-                            <constraint firstItem="hGu-fq-Rrj" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leadingMargin" constant="4" id="PWu-H8-Wbl"/>
                             <constraint firstItem="izn-fs-Y3U" firstAttribute="top" secondItem="ESy-Jz-LuQ" secondAttribute="bottom" constant="6" id="S0K-rL-JWG"/>
                             <constraint firstItem="yYA-BT-feF" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" constant="4" id="VeP-1c-EXG"/>
                             <constraint firstAttribute="trailing" secondItem="izn-fs-Y3U" secondAttribute="trailing" constant="4" id="Wai-Ca-jNQ"/>
-                            <constraint firstItem="hGu-fq-Rrj" firstAttribute="top" secondItem="G58-UY-9fD" secondAttribute="top" constant="-38" id="bo0-MX-lAe"/>
+                            <constraint firstItem="IxU-Rn-ddf" firstAttribute="top" secondItem="G58-UY-9fD" secondAttribute="top" constant="4" id="gqq-br-ja6"/>
+                            <constraint firstAttribute="trailing" secondItem="IxU-Rn-ddf" secondAttribute="trailing" constant="8" id="oSB-AM-czP"/>
                             <constraint firstItem="izn-fs-Y3U" firstAttribute="leading" secondItem="yYA-BT-feF" secondAttribute="trailing" constant="4" id="urO-9k-ydX"/>
                         </constraints>
                         <variation key="default">
@@ -222,14 +218,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="42"/>
                     <connections>
-                        <outlet property="countLabel" destination="hGu-fq-Rrj" id="m3J-U2-UaF"/>
+                        <outlet property="characterCount" destination="IxU-Rn-ddf" id="7c2-O5-G7v"/>
                         <outlet property="imageButton" destination="yYA-BT-feF" id="Zxh-lF-IEY"/>
                         <outlet property="textfield" destination="izn-fs-Y3U" id="04H-Jn-q6c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdq-IO-eSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4235" y="925.5"/>
+            <point key="canvasLocation" x="4235" y="925"/>
         </scene>
     </scenes>
 </document>
