@@ -1,9 +1,12 @@
 # Release blockers
+- [ ] Videos stop playing sometimes
+- [ ] stop playing while scrolling
 - [ ] Support tapping at top of preview image
 - [ ] Start with front facing camera.
-- [ ] Fix expanding layout
+- [ ] Fix expanding layout (extra space at bottom)
 - [ ] Add mute support
 - [ ] Startup screen
+
 
 # Backlog 
 - [ ] Support active users
