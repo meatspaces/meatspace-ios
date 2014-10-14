@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableDictionary *seen;
+@property (weak, nonatomic) IBOutlet UIView *headerview;
 @property (nonatomic,assign) BOOL socketIsConnected;
 @property (nonatomic,assign) BOOL keyboardUp;
 
@@ -151,7 +152,7 @@
      [weakSelf.socket emit: @"join",@"mp4", nil];
      dispatch_async(dispatch_get_main_queue(), ^{
        weakSelf.postViewController.textfield.enabled=YES;
-       [weakSelf.postViewController setPlaceholder: @"What do you want to say?"];
+       [weakSelf.postViewController setRandomPlaceholder];
        [weakSelf flushItems];
      });
      };

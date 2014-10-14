@@ -41,6 +41,30 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   
 }
 
++ (NSArray*)placeholders
+  {
+  static NSArray *_titles;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _titles = @[@"What's up?",
+                @"What do you want to say?",
+                @"Anything on your mind?",
+                @"Hello?",
+                @"This is a field you can type in.",
+                @"I take letters.",
+                @"Tap me to see how good you look!",
+                @"250 characters (at most) goes here."
+                ];
+  });
+  return _titles;
+}
+
+- (void)setRandomPlaceholder
+{
+  NSUInteger randomIndex = arc4random() % [[[self class]placeholders] count];
+  [self setPlaceholder: [[[self class] placeholders] objectAtIndex: randomIndex]];
+}
+
 - (void)setPlaceholder: (NSString*)placeholder
 {
   UIColor *color = [UIColor lightTextColor];
