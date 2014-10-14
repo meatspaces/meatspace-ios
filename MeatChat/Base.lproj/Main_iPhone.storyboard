@@ -224,9 +224,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Say what?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izn-fs-Y3U">
-                                <rect key="frame" x="108" y="14" width="488" height="17"/>
+                                <rect key="frame" x="108" y="2" width="488" height="40"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LrY-za-RCO"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="send"/>
@@ -268,7 +271,7 @@
                             <constraint firstItem="yYA-BT-feF" firstAttribute="bottom" secondItem="hGu-fq-Rrj" secondAttribute="bottom" id="8h4-ua-bR6"/>
                             <constraint firstAttribute="trailing" secondItem="5Bl-7e-1HN" secondAttribute="trailing" id="B0p-pQ-UDQ"/>
                             <constraint firstItem="1tz-IO-syO" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" constant="104" id="CZh-iH-QC0"/>
-                            <constraint firstItem="dmX-Y4-4q2" firstAttribute="top" secondItem="izn-fs-Y3U" secondAttribute="bottom" constant="11" id="JVz-X8-jdv"/>
+                            <constraint firstItem="dmX-Y4-4q2" firstAttribute="top" secondItem="izn-fs-Y3U" secondAttribute="bottom" id="JVz-X8-jdv"/>
                             <constraint firstItem="hGu-fq-Rrj" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" id="PWu-H8-Wbl"/>
                             <constraint firstItem="dmX-Y4-4q2" firstAttribute="top" secondItem="IxU-Rn-ddf" secondAttribute="bottom" constant="40" id="TWk-RU-V3w"/>
                             <constraint firstItem="yYA-BT-feF" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" id="VeP-1c-EXG"/>
