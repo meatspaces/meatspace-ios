@@ -256,13 +256,12 @@
 }
 
 - (void)keyboardDidShow:(NSNotification *)sender {
-  self.keyboardUp=true;
-  [self.tableView reloadData];
   CGRect frame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
   self.containerBottom.constant = frame.size.height;
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
     [self.containerView layoutIfNeeded];
+    self.containerHeight.constant = 76.0;
     self.postViewController.characterCount.hidden=NO;
   } completion:^(BOOL finished) {
     if([self.items count]) {
@@ -274,12 +273,11 @@
 
 - (void)keyboardWillHide:(NSNotification *)sender
 {
-  self.keyboardUp=false;
-  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
   self.containerBottom.constant = 0;
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
     [self.containerView layoutIfNeeded];
+    self.containerHeight.constant = 35.0;
     self.postViewController.characterCount.hidden=YES;
   } completion:^(BOOL finished) {
     if([self.items count]) {
@@ -334,11 +332,6 @@
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [[(MCPostCell*)cell videoPlayer] pause];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-  return self.keyboardUp ? 40.0 : 0.0;
 }
 
 
