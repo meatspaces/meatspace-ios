@@ -8,6 +8,7 @@
 
 #import "MCAppDelegate.h"
 #import "TestFlight.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation MCAppDelegate
 
@@ -17,6 +18,9 @@
   
     [TestFlight takeOff:@"15b86d3f-cf9f-4729-b1be-d4263f01d8ab"];
 
+  
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+  
     return YES;
 }
 							
