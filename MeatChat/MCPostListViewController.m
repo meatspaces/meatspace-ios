@@ -321,7 +321,7 @@
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
 
   [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];
-  
+  [cell.videoPlayer play];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(playerItemDidReachEnd:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification

@@ -38,7 +38,6 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   self.skipFrames=6;
       // Do any additional setup after loading the view.
   [self setupCaptureSession];
-  
 }
 
 + (NSArray*)placeholders

@@ -217,7 +217,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Say what?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izn-fs-Y3U">
-                                <rect key="frame" x="104" y="8" width="492" height="30"/>
+                                <rect key="frame" x="104" y="4" width="492" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -228,7 +228,7 @@
                                 </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxU-Rn-ddf">
-                                <rect key="frame" x="574" y="2" width="24" height="12"/>
+                                <rect key="frame" x="574" y="28" width="24" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="SsG-db-kBN"/>
                                     <constraint firstAttribute="width" constant="24" id="nWF-3J-mWJ"/>
@@ -243,9 +243,10 @@
                             <constraint firstItem="yYA-BT-feF" firstAttribute="top" secondItem="ESy-Jz-LuQ" secondAttribute="bottom" constant="-34" id="0Oe-kr-Diu"/>
                             <constraint firstItem="yYA-BT-feF" firstAttribute="bottom" secondItem="hGu-fq-Rrj" secondAttribute="bottom" id="8h4-ua-bR6"/>
                             <constraint firstItem="hGu-fq-Rrj" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" id="PWu-H8-Wbl"/>
-                            <constraint firstItem="izn-fs-Y3U" firstAttribute="top" secondItem="ESy-Jz-LuQ" secondAttribute="bottom" constant="6" id="S0K-rL-JWG"/>
+                            <constraint firstItem="izn-fs-Y3U" firstAttribute="top" secondItem="ESy-Jz-LuQ" secondAttribute="bottom" constant="4" id="S0K-rL-JWG"/>
                             <constraint firstItem="yYA-BT-feF" firstAttribute="leading" secondItem="G58-UY-9fD" secondAttribute="leading" id="VeP-1c-EXG"/>
                             <constraint firstAttribute="trailing" secondItem="izn-fs-Y3U" secondAttribute="trailing" constant="4" id="Wai-Ca-jNQ"/>
+                            <constraint firstItem="dmX-Y4-4q2" firstAttribute="top" secondItem="IxU-Rn-ddf" secondAttribute="bottom" constant="2" id="aPa-6k-KZV"/>
                             <constraint firstItem="IxU-Rn-ddf" firstAttribute="top" secondItem="G58-UY-9fD" secondAttribute="top" constant="2" id="gqq-br-ja6"/>
                             <constraint firstItem="dmX-Y4-4q2" firstAttribute="top" secondItem="yYA-BT-feF" secondAttribute="bottom" id="lqp-TT-EEB"/>
                             <constraint firstAttribute="trailing" secondItem="IxU-Rn-ddf" secondAttribute="trailing" constant="2" id="oSB-AM-czP"/>
@@ -255,7 +256,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0Oe-kr-Diu"/>
-                                <exclude reference="S0K-rL-JWG"/>
+                                <exclude reference="t4u-ph-OmE"/>
+                                <exclude reference="gqq-br-ja6"/>
                             </mask>
                         </variation>
                     </view>

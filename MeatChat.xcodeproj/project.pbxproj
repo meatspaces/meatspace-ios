@@ -295,6 +295,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Nordaaker AS";
 				TargetAttributes = {
+					2C1F8C981885CFEB001BE713 = {
+						DevelopmentTeam = 92W4VZ8HPS;
+					};
 					2C1F8CBC1885CFEB001BE713 = {
 						TestTargetID = 2C1F8C981885CFEB001BE713;
 					};
