@@ -66,7 +66,7 @@
   
   NSError *error;
   NSDictionary *attributes=@{};
-  NSString *html=[NSString stringWithFormat: @"<html><head><style>p,body { background-color: red; ;font-family: Helvetica Neue;margin: 0.0px 0.0px 0.0px 0.0px;padding: 0.0px 0.0px 0.0px 0.0px} a { background-color: #95f7f1; color: #2d7470; text-decoration: none }</style></head><body><span>%@</span></body></html>",text];
+  NSString *html=[NSString stringWithFormat: @"<html><head><style>* { margin: 0; padding:0; }p,body { font-family: Helvetica Neue;margin: 0;padding: 0; font-size:12px;} a { background-color: #95f7f1; color: #2d7470; text-decoration: none }</style></head><body><span>%@</span></body></html>",text];
  NSAttributedString *string=[[NSAttributedString alloc] initWithData:[html dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:&attributes error:&error];
   return string;
 
