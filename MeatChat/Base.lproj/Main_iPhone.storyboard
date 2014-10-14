@@ -189,7 +189,7 @@
                         <viewControllerLayoutGuide type="top" id="ESy-Jz-LuQ"/>
                         <viewControllerLayoutGuide type="bottom" id="dmX-Y4-4q2"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="G58-UY-9fD" customClass="MCPostView">
+                    <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="G58-UY-9fD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -256,9 +256,6 @@
                                 <exclude reference="0X5-v4-vso"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outlet property="postButton" destination="yYA-BT-feF" id="5y6-lQ-v4v"/>
-                        </connections>
                     </view>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

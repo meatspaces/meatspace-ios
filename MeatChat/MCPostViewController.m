@@ -47,13 +47,13 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     _titles = @[@"What's up?",
-                @"What do you want to say?",
+                @"What do you say?",
                 @"Anything on your mind?",
                 @"Hello?",
-                @"This is a field you can type in.",
+                @"A field you can type in.",
                 @"I take letters.",
-                @"Tap me to see how good you look!",
-                @"250 characters (at most) goes here."
+                @"Tap and meat!",
+                @"250 chars or less."
                 ];
   });
   return _titles;
@@ -187,6 +187,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   if(posted) {
     self.textfield.text=@"";
     self.characterCount.text=@"250";
+    [self setRandomPlaceholder];
   }
   self.countLabel.hidden=YES;
   self.countLabel.text=@"9";
