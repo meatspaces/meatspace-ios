@@ -261,7 +261,7 @@
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
     [self.containerView layoutIfNeeded];
-    self.containerHeight.constant = 76.0;
+    self.containerHeight.constant = 75.0;
     self.postViewController.characterCount.hidden=NO;
   } completion:^(BOOL finished) {
     if([self.items count]) {

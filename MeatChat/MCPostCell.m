@@ -27,12 +27,6 @@
   layer.frame=CGRectMake(0, 0, 100, 75);
   layer.videoGravity=AVLayerVideoGravityResizeAspectFill;
   [self.video.layer addSublayer: layer];
-  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                 initWithTarget:self
-                                 action:@selector(play)];
-  
-  [self.textView addGestureRecognizer:tap];
- 
 }
 
 - (void)play

@@ -28,6 +28,8 @@
 
 @implementation MCPostViewController
 
+#define MAXLENGTH 250
+
 const int CAPTURE_FRAMES_PER_SECOND=5;
 
 - (void)viewDidLoad
@@ -66,7 +68,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
 
 - (void)setPlaceholder: (NSString*)placeholder
 {
-  UIColor *color = [UIColor lightTextColor];
+  UIColor *color = [UIColor darkGrayColor];
   self.textfield.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: color}];
 }
 
@@ -175,6 +177,25 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
   }
 }
+
+- (IBAction)toggleFlashlight:(id)sender {
+  UIButton *button=(UIButton*)sender;
+  [self.session beginConfiguration];
+  AVCaptureDevice *camera=[self cameraWithPosition:AVCaptureDevicePositionBack];
+  [camera lockForConfiguration:nil];
+  if (camera.torchMode == AVCaptureTorchModeOff) {
+    camera.torchMode=AVCaptureTorchModeOn;
+    button.selected=YES;
+  }
+  else {
+    camera.torchMode=AVCaptureTorchModeOff;
+    button.selected=NO;
+  }
+  [camera unlockForConfiguration];
+  [_session commitConfiguration];
+  
+}
+
 - (void)updateCount
 {
     self.countLabel.text=[NSString stringWithFormat: @"%u",9-(int)[self.frames count]];
@@ -185,7 +206,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   [ self.textfield resignFirstResponder];
   if(posted) {
     self.textfield.text=@"";
-    self.characterCount.text=@"250";
+    self.characterCount.text=@"250 left";
     [self setRandomPlaceholder];
   }
   self.countLabel.hidden=YES;
@@ -285,7 +306,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 
-#define MAXLENGTH 250
 
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
   
@@ -298,7 +318,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
   
   if( newLength <= MAXLENGTH) {
-    self.characterCount.text=[NSString stringWithFormat: @"%lu",250-(unsigned long)newLength];
+    self.characterCount.text=[NSString stringWithFormat: @"%lu left",MAXLENGTH-(unsigned long)newLength];
   }
   return newLength <= MAXLENGTH || returnKey;
 }

@@ -12,7 +12,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-z2-2sT">
                     <rect key="frame" x="0.0" y="452" width="480" height="28"/>
-                    <color key="backgroundColor" red="0.0" green="0.1647058874" blue="0.15686275059999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="heh-c0-1fT"/>
                     </constraints>
