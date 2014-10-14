@@ -274,7 +274,7 @@
 - (void)keyboardWillHide:(NSNotification *)sender
 {
   self.keyboardUp=false;
-  [self.tableView reloadData];
+  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
   self.containerBottom.constant = 0;
   [self.containerView setNeedsUpdateConstraints];
   [UIView animateWithDuration:0.25f animations:^{
@@ -320,13 +320,13 @@
   cell.textView.attributedText=post.attributedString;
   cell.timeLabel.text=[post relativeTime];
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
+
   [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(playerItemDidReachEnd:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:item];
-    //[cell.videoPlayer play];
   return cell;
 }
 
