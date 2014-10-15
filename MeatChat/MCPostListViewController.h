@@ -18,7 +18,8 @@
 @property (weak, nonatomic)IBOutlet NSLayoutConstraint *containerHeight;
 @property (strong, nonatomic)IBOutlet UITableView *tableView;
 @property (retain,nonatomic) SIOSocket *socket;
-
 @property (nonatomic,weak) MCPostViewController *postViewController;
+
+- (void)flushItems;
 
 @end

@@ -22,16 +22,13 @@
   self = [super init];
   if(self) {
     self.postData=[dict dictionaryWithValuesForKeys: @[@"message",@"created"]];
+    self.created=[dict objectForKey: @"created"];
     self.attributedString=[self attributedBody];
     NSString *media=[[dict objectForKey: @"media"] substringFromIndex:22];
     NSData *videoData=[[NSData alloc] initWithBase64EncodedString: media options: NSDataBase64DecodingIgnoreUnknownCharacters];
     
-    NSString *path;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSNumber *created=[dict objectForKey: @"created"];
-    path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[[created stringValue] stringByAppendingString: @".mp4"]];
-    [videoData writeToFile: path atomically:NO];
-    self.videoUrl=[NSURL fileURLWithPath: path];
+    [videoData writeToFile: [self path] atomically:NO];
+    self.videoUrl=[NSURL fileURLWithPath: [self path]];
     
     
   }
@@ -39,6 +36,11 @@
   return self;
 }
 
+- (NSString*)path
+{
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+  return [[paths objectAtIndex:0] stringByAppendingPathComponent:[[self.created stringValue] stringByAppendingString: @".mp4"]];
+}
 
 - (NSString*)relativeTime
 {
@@ -47,11 +49,22 @@
  return [postDate dateTimeAgo];
 }
 
+- (void)cleanup
+{
+  NSError *err;
+  [[NSFileManager defaultManager] removeItemAtPath: [self path] error:&err];
+  if(err) {
+    NSLog(@"Could not remove %@: %@",[self path],err);
+  }
+}
+
 - (BOOL)isObsolete
 {
   NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] doubleValue]/1000];
   NSDate *oldMessage=[NSDate dateWithTimeIntervalSinceNow: -600];
-  if([oldMessage compare: postDate] == NSOrderedDescending) { return YES;}
+  if([oldMessage compare: postDate] == NSOrderedDescending) {
+    return YES;
+  }
   return NO;
 }
 

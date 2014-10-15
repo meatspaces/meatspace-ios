@@ -256,6 +256,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   }
   self.countLabel.hidden=YES;
   self.countLabel.text=@"9";
+  self.characterCount.hidden=YES;
   [UIView animateWithDuration:0.5f animations:^{
     self.imageButton.alpha=0;
   }];

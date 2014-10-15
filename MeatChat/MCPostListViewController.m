@@ -14,7 +14,6 @@
 #import "Reachability.h"
 
 
-
 @interface MCPostListViewController ()
 
 @property (retain,nonatomic) NSMutableArray *items;
@@ -23,8 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableDictionary *seen;
 @property (weak, nonatomic) IBOutlet UIView *headerview;
-@property (nonatomic,assign) BOOL socketIsConnected;
-@property (nonatomic,assign) BOOL keyboardUp;
 
 
 - (void)setupSocket;
@@ -46,6 +43,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
 
   self.items=[NSMutableArray array];
   [self setupReachability];
@@ -148,7 +146,6 @@
    self.socket = socket;
    self.socket.onConnect = ^()
      {
-     weakSelf.socketIsConnected = YES;
      [weakSelf.socket emit: @"join",@"mp4", nil];
      dispatch_async(dispatch_get_main_queue(), ^{
        weakSelf.postViewController.textfield.enabled=YES;
@@ -195,7 +192,6 @@
 - (void)teardownSocket
 {
   [self.socket close];
-  self.socketIsConnected=false;
   self.socket=NULL;
   [self.postViewController setPlaceholder: @"Get the internet, bae."];
 }
@@ -211,24 +207,26 @@
 
 - (void)flushItems
 {
+  for (MCPost *item in self.items) {
+    [item cleanup];
+  }
   [self.items removeAllObjects];
   [self.tableView reloadData];
 }
 
 - (void)addPost: (NSDictionary*)data
 {
-  BOOL expired=NO;
+  [self.tableView beginUpdates];
   for( int i = (int)[self.items count]-1; i >=0; --i)
   {
   MCPost *post=[self.items objectAtIndex: i];
     if ([post isObsolete]) {
-      expired=YES;
+      [post cleanup];
+      [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]  withRowAnimation:UITableViewRowAnimationAutomatic];
       [self.items removeObjectAtIndex: i];
     }
   }
-  if (expired) {
-    [self.tableView reloadData];
-  }
+  [self.tableView endUpdates];
   
   NSString *key=[data objectForKey: @"fingerprint"];
   if (key) [self.seen setObject: @"1" forKey: key];
@@ -278,7 +276,6 @@
   [UIView animateWithDuration:0.25f animations:^{
     [self.containerView layoutIfNeeded];
     self.containerHeight.constant = 35.0;
-    self.postViewController.characterCount.hidden=YES;
   } completion:^(BOOL finished) {
     if([self.items count]) {
       [self scrollToBottom];
@@ -321,7 +318,8 @@
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
 
   [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];
-  if([self.items count]<[self.tableView.visibleCells count]) {
+  
+  if(([self.items count]-1)==[self.tableView.visibleCells count]) {
     [cell.videoPlayer play];
   }
   [[NSNotificationCenter defaultCenter] addObserver:self

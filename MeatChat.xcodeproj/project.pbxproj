@@ -29,6 +29,7 @@
 		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
 		2C27842019C4331400EDCA57 /* MCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C27841F19C4331400EDCA57 /* MCPost.m */; };
 		2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B273F19E980E200A03B04 /* UIImage+Extras.m */; };
+		2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */; };
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
 		61B37259671C453AA69C08CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24400EDD099742C5ABF721BF /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		2C27841F19C4331400EDCA57 /* MCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPost.m; sourceTree = "<group>"; };
 		2C2B273E19E980E200A03B04 /* UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extras.h"; sourceTree = "<group>"; };
 		2C2B273F19E980E200A03B04 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
+		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		4134EA2819E9EC210093B991 /* MeatChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat-Prefix.pch"; path = "MeatChat/MeatChat-Prefix.pch"; sourceTree = "<group>"; };
 		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
 				2C1F8CA81885CFEB001BE713 /* main.m */,
 				2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */,
+				2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			files = (
 				2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */,
 				2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */,
+				2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */,
 				2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */,
 				2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */,
 			);

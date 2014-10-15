@@ -173,7 +173,6 @@
                         <outlet property="containerBottom" destination="KF3-kb-CEA" id="gEP-tq-dTz"/>
                         <outlet property="containerHeight" destination="lJv-yd-p7R" id="9nc-Mr-R1m"/>
                         <outlet property="containerView" destination="uud-iA-H6S" id="g5m-dn-WGP"/>
-                        <outlet property="headerview" destination="Udn-0g-Jbl" id="pgE-ZQ-OwL"/>
                         <outlet property="tableView" destination="0se-Fx-CQ5" id="Pil-JH-Dc7"/>
                     </connections>
                 </viewController>

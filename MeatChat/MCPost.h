@@ -18,5 +18,6 @@
 - (NSAttributedString*)attributedBody;
 - (NSString*)relativeTime;
 - (BOOL)isObsolete;
+- (void)cleanup;
 
 @end
