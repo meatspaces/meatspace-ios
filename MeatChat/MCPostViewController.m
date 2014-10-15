@@ -16,6 +16,7 @@
 @interface MCPostViewController ()
 @property (retain,nonatomic) AVCaptureSession *session;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
+@property (weak, nonatomic) IBOutlet UIButton *flashButton;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (strong, atomic) NSMutableArray *frames;
 @property (atomic) BOOL capturing;
@@ -170,6 +171,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         @"media": encodedImages,
         @"fingerprint": [[[UIDevice currentDevice] identifierForVendor].UUIDString substringToIndex:9]
       } options:0 error:nil] encoding: NSUTF8StringEncoding];
+      message=[message stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
     dispatch_async(dispatch_get_main_queue(), ^{
       [parentViewController.socket emit: @"message", message,  nil];
       [self closePostWithPosted: YES];
@@ -179,21 +181,64 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (IBAction)toggleFlashlight:(id)sender {
-  UIButton *button=(UIButton*)sender;
   [self.session beginConfiguration];
   AVCaptureDevice *camera=[self cameraWithPosition:AVCaptureDevicePositionBack];
   [camera lockForConfiguration:nil];
   if (camera.torchMode == AVCaptureTorchModeOff) {
     camera.torchMode=AVCaptureTorchModeOn;
-    button.selected=YES;
+    _flashButton.selected=YES;
+    AVCaptureInput* currentCameraInput = [_session.inputs objectAtIndex:0];
+    if(((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionFront) {
+      [_session removeInput:currentCameraInput];
+      AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:camera error:nil];
+      [_session addInput:newVideoInput];
+    }
   }
   else {
     camera.torchMode=AVCaptureTorchModeOff;
-    button.selected=NO;
+    _flashButton.selected=NO;
   }
   [camera unlockForConfiguration];
   [_session commitConfiguration];
   
+}
+
+-(IBAction)switchCameraTapped:(id)sender
+{
+    //Change camera source
+  if(_session) {
+      //Indicate that some changes will be made to the session
+    [_session beginConfiguration];
+    
+      //Remove existing input
+    AVCaptureDeviceInput* currentCameraInput = [_session.inputs objectAtIndex:0];
+    [_session removeInput:currentCameraInput];
+    
+      //Get new input
+    AVCaptureDevice *newCamera = nil;
+    if(((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionBack)
+      {
+      _flashButton.selected=NO;
+      NSError *err;
+      [currentCameraInput.device lockForConfiguration:&err];
+      if(!err) {
+        currentCameraInput.device.torchMode=AVCaptureTorchModeOff;
+        [currentCameraInput.device unlockForConfiguration];
+      }
+      newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+      }
+    else
+      {
+      newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+      }
+    
+      //Add input to session
+    AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:nil];
+    [_session addInput:newVideoInput];
+    
+      //Commit all the configuration changes at once
+    [_session commitConfiguration];
+    }
 }
 
 - (void)updateCount
@@ -217,36 +262,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   [_session stopRunning];
 }
 
--(IBAction)switchCameraTapped:(id)sender
-{
-    //Change camera source
-  if(_session) {
-      //Indicate that some changes will be made to the session
-    [_session beginConfiguration];
-    
-      //Remove existing input
-    AVCaptureInput* currentCameraInput = [_session.inputs objectAtIndex:0];
-    [_session removeInput:currentCameraInput];
-    
-      //Get new input
-    AVCaptureDevice *newCamera = nil;
-    if(((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionBack)
-      {
-      newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
-      }
-    else
-      {
-      newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
-      }
-    
-      //Add input to session
-    AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:nil];
-    [_session addInput:newVideoInput];
-    
-      //Commit all the configuration changes at once
-    [_session commitConfiguration];
-    }
-}
 
   // Find a camera with the specified AVCaptureDevicePosition, returning nil if one is not found
 - (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
