@@ -166,14 +166,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
       [self.frames removeAllObjects];
       MCPostListViewController *parentViewController=(MCPostListViewController*)self.parentViewController;
       
-   NSString *message=[[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject: @{
+   NSDictionary *message=@{
         @"message": self.textfield.text,
         @"media": encodedImages,
         @"fingerprint": [[[UIDevice currentDevice] identifierForVendor].UUIDString substringToIndex:9]
-      } options:0 error:nil] encoding: NSUTF8StringEncoding];
-      message=[message stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+        };
     dispatch_async(dispatch_get_main_queue(), ^{
-      [parentViewController.socket emit: @"message", message,  nil];
+      [parentViewController.socket emit: @"message" args: @[ message ]];
       [self closePostWithPosted: YES];
     });
     }

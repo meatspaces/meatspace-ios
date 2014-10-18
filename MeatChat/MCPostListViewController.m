@@ -148,7 +148,7 @@
    self.socket = socket;
    self.socket.onConnect = ^()
      {
-     [weakSelf.socket emit: @"join",@"mp4", nil];
+     [weakSelf.socket emit: @"join" args: @[ @"mp4" ]];
      dispatch_async(dispatch_get_main_queue(), ^{
        weakSelf.postViewController.textfield.enabled=YES;
        [weakSelf.postViewController setRandomPlaceholder];
@@ -216,8 +216,9 @@
   [self.tableView reloadData];
 }
 
-- (void)addPost: (NSDictionary*)data
+- (void)addPost: (NSArray*)args
 {
+  NSDictionary *data=args[0];
   [self.tableView beginUpdates];
   for( int i = (int)[self.items count]-1; i >=0; --i)
   {
