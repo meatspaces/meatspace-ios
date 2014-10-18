@@ -13,6 +13,7 @@
 @property (nonatomic,strong) NSAttributedString *attributedString;
 @property (nonatomic,strong) NSURL *videoUrl;
 @property (nonatomic, strong) NSNumber *created;
+@property (nonatomic, strong) NSString* fingerprint;
 
 -(id)initWithDictionary: (NSDictionary*)dict;
 - (NSAttributedString*)attributedBody;

@@ -23,6 +23,7 @@
   if(self) {
     self.postData=[dict dictionaryWithValuesForKeys: @[@"message",@"created"]];
     self.created=[dict objectForKey: @"created"];
+    self.fingerprint=[dict objectForKey: @"fingerprint"];
     self.attributedString=[self attributedBody];
     NSString *media=[[dict objectForKey: @"media"] substringFromIndex:22];
     NSData *videoData=[[NSData alloc] initWithBase64EncodedString: media options: NSDataBase64DecodingIgnoreUnknownCharacters];

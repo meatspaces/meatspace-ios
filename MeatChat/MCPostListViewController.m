@@ -17,12 +17,15 @@
 @interface MCPostListViewController ()
 
 @property (retain,nonatomic) NSMutableArray *items;
+@property (retain,nonatomic) NSMutableDictionary *muted;
 @property (assign,nonatomic) BOOL atBottom;
 @property (strong, nonatomic) NSMutableDictionary *seen;
 @property (strong,nonatomic) NSString *userId;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UILabel *activeCount;
+@property (weak, nonatomic) IBOutlet UIButton *muteButton;
 
 
 - (void)setupReachability;
@@ -47,6 +50,17 @@
 {
   [super viewDidLoad];
   
+  NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+  if(![defaults objectForKey: @"meatspaceMutes"]) {
+    [defaults setObject: [NSDictionary dictionary] forKey:@"meatspaceMutes"];
+  }
+  
+  self.muted=[[[NSUserDefaults standardUserDefaults] dictionaryForKey: @"meatspaceMutes"] mutableCopy];
+  if([self.muted count]) {
+    self.muteButton.hidden=NO;
+  }
+  
+  [self.tableView setContentInset:UIEdgeInsetsMake(42, 0, 0, 0)];
 
   self.items=[NSMutableArray array];
   self.seen=[NSMutableDictionary dictionary];
@@ -172,6 +186,11 @@
        self.userId=[data[1] objectForKey: @"userId"];
      });
    }];
+   [self.socket on: @"active" callback:^(NSArray *args) {
+     dispatch_async(dispatch_get_main_queue(), ^{
+       self.activeCount.text=[args[0] stringValue];
+     });
+   }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
      dispatch_async(dispatch_get_main_queue(), ^{
@@ -231,18 +250,20 @@
   MCPost *post=[self.items objectAtIndex: i];
     if ([post isObsolete]) {
       [post cleanup];
-      [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]  withRowAnimation:UITableViewRowAnimationAutomatic];
       [self.items removeObjectAtIndex: i];
+      [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]  withRowAnimation:UITableViewRowAnimationAutomatic];
     }
   }
   [self.tableView endUpdates];
   
   NSString *key=[data objectForKey: @"key"];
+  NSLog(@"Got %@ for %@",[data allKeys],[data objectForKey: @"message"]);
+  if([self.muted objectForKey: [data objectForKey: @"fingerprint"]]) { return; }
   if (key) {
-    if([self.seen valueForKey: key]) {
+    if([self.seen objectForKey: key] ) {
       return;
     }
-  [self.seen setObject: @"1" forKey: key];
+    [self.seen setObject: @"1" forKey: key];
   };
   MCPost *post=[[MCPost alloc] initWithDictionary: data];
   [self.items addObject: post];
@@ -299,6 +320,23 @@
 }
 
 
+- (IBAction)unmuteClicked:(id)sender {
+  [self.muted removeAllObjects];
+  self.muteButton.hidden=YES;
+}
+
+- (IBAction)muteClicked:(UIButton*)sender {
+  MCPost *mutePost=[self.items objectAtIndex: sender.tag];
+  [self.muted setObject: @"1" forKey: mutePost.fingerprint];
+  [[NSUserDefaults standardUserDefaults] setObject: self.muted forKey:@"meatspaceMutes"];
+  for( int i = (int)[self.items count]-1; i >=0; --i) {
+    MCPost *post=[self.items objectAtIndex: i];
+    if([post.fingerprint isEqualToString: mutePost.fingerprint] ) {
+      [self.items removeObject: post];
+    }
+    [self.tableView reloadData];
+  }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -329,6 +367,7 @@
   MCPost *post=[self.items objectAtIndex:indexPath.row];
   cell.textView.attributedText=post.attributedString;
   cell.timeLabel.text=[post relativeTime];
+  cell.muteButton.tag=indexPath.row;
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
 
   [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];
@@ -346,6 +385,19 @@
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [[(MCPostCell*)cell videoPlayer] pause];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  
+  MCPostCell *cell = (MCPostCell*)[tableView cellForRowAtIndexPath:indexPath];
+  cell.muteButton.hidden=YES;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  MCPostCell *cell = (MCPostCell*)[tableView cellForRowAtIndexPath:indexPath];
+  cell.muteButton.hidden=NO;
 }
 
 

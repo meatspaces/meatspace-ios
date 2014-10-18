@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *video;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *muteButton;
 @property (strong,nonatomic) AVPlayer *videoPlayer;
 
 
