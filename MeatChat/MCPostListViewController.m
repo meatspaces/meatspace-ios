@@ -18,19 +18,21 @@
 
 @property (retain,nonatomic) NSMutableArray *items;
 @property (assign,nonatomic) BOOL atBottom;
+@property (strong, nonatomic) NSMutableDictionary *seen;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSMutableDictionary *seen;
-@property (weak, nonatomic) IBOutlet UIView *headerview;
 
 
+- (void)setupReachability;
 - (void)setupSocket;
 - (void)teardownSocket;
-- (void)setupReachability;
 - (void)addPost: (NSDictionary*)data;
+- (void)handleDisconnect;
+
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;
-- (void)handleDisconnect;
+
 - (void)playerItemDidReachEnd:(NSNotification *)notification;
 
 
