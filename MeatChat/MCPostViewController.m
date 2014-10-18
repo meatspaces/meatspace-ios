@@ -38,7 +38,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   [super viewDidLoad];
   self.frames=[NSMutableArray array];
   self.capturing=NO;
-  self.skipFrames=6;
+  self.skipFrames=0;
       // Do any additional setup after loading the view.
   [self setupCaptureSession];
 }
@@ -150,7 +150,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
       return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{ [self updateCount]; });
-    self.skipFrames=6;
+    self.skipFrames=5;
     [self.frames addObject: [self imageFromSampleBuffer:sampleBuffer]];
     if([self.frames count] == 10) {
       NSMutableArray *encodedImages=[NSMutableArray array];

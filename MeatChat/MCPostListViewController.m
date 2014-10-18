@@ -19,6 +19,7 @@
 @property (retain,nonatomic) NSMutableArray *items;
 @property (assign,nonatomic) BOOL atBottom;
 @property (strong, nonatomic) NSMutableDictionary *seen;
+@property (strong,nonatomic) NSString *userId;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -48,6 +49,7 @@
   
 
   self.items=[NSMutableArray array];
+  self.seen=[NSMutableDictionary dictionary];
   [self setupReachability];
  
     // Keyboard handling
@@ -152,7 +154,6 @@
      dispatch_async(dispatch_get_main_queue(), ^{
        weakSelf.postViewController.textfield.enabled=YES;
        [weakSelf.postViewController setRandomPlaceholder];
-       [weakSelf flushItems];
      });
      };
    self.socket.onDisconnect= ^()
@@ -162,15 +163,20 @@
    [self.socket on: @"message"  callback:^(id data) {
      dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf addPost: data]; });
    }];
-   [self.socket on: @"messageack"  callback:^(id data) {
+   [self.socket on: @"messageack"  callback:^(NSArray *data) {
+     NSString *message=data[0];
      dispatch_async(dispatch_get_main_queue(), ^{
-       if(![[data class] isSubclassOfClass: [NSNull class]]) {
-         NSLog(@"failed: %@",data);
+       if([[message class] isSubclassOfClass: [NSString class]]) {
+       [weakSelf.postViewController setPlaceholder: message];
        };
+       self.userId=[data[1] objectForKey: @"userId"];
      });
    }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
      NSLog(@"Oops: %@",errorInfo);
+     dispatch_async(dispatch_get_main_queue(), ^{
+       [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"An error occured: %@",errorInfo]];
+     });
    };
    self.socket.onReconnect = ^(NSInteger numberOfAttempts) {
      NSLog(@"Reconnect %ld", (long)numberOfAttempts);
@@ -231,8 +237,13 @@
   }
   [self.tableView endUpdates];
   
-  NSString *key=[data objectForKey: @"fingerprint"];
-  if (key) [self.seen setObject: @"1" forKey: key];
+  NSString *key=[data objectForKey: @"key"];
+  if (key) {
+    if([self.seen valueForKey: key]) {
+      return;
+    }
+  [self.seen setObject: @"1" forKey: key];
+  };
   MCPost *post=[[MCPost alloc] initWithDictionary: data];
   [self.items addObject: post];
   NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
