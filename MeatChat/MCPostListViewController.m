@@ -37,9 +37,6 @@
 - (void)keyboardWillHide:(NSNotification *)sender;
 - (void)keyboardDidShow:(NSNotification *)sender;
 
-- (void)playerItemDidReachEnd:(NSNotification *)notification;
-
-
 @end
 
 @implementation MCPostListViewController
@@ -107,11 +104,17 @@
   [self endScroll: scrollView];
 }
 
-- (void)endScroll: (UIScrollView*)scrollView
+- (void)resumePlay
 {
   for (MCPostCell *cell in self.tableView.visibleCells) {
     [cell.videoPlayer play];
   }
+  
+}
+
+- (void)endScroll: (UIScrollView*)scrollView
+{
+  [self resumePlay];
   CGFloat height = scrollView.frame.size.height;
   CGFloat contentYoffset = scrollView.contentOffset.y;
   CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
@@ -123,7 +126,7 @@
   for (MCPostCell *cell in self.tableView.visibleCells) {
     [cell.videoPlayer play];
   }
-  
+  [self resumePlay];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -139,7 +142,8 @@
 
 - (void)setupReachability;
 {
-  Reachability* reach = [Reachability reachabilityWithHostname:@"chat.meatspac.es"];
+  NSURL *server_url=[NSURL URLWithString: [[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]];
+  Reachability* reach = [Reachability reachabilityWithHostname:[server_url host]];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(reachabilityChanged:)
                                                name:kReachabilityChangedNotification
@@ -158,7 +162,8 @@
 - (void)setupSocket
 {
    __weak typeof(self) weakSelf = self;
-  [SIOSocket socketWithHost: @"https://chat.meatspac.es/" response: ^(SIOSocket *socket)
+  NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]);
+  [SIOSocket socketWithHost: [[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"] response: ^(SIOSocket *socket)
    {
    [self.postViewController setPlaceholder: @"Connecting to meatspace"];
    self.socket = socket;
@@ -189,6 +194,7 @@
    [self.socket on: @"active" callback:^(NSArray *args) {
      dispatch_async(dispatch_get_main_queue(), ^{
        self.activeCount.text=[args[0] stringValue];
+       self.activeCount.hidden=NO;
      });
    }];
    self.socket.onError = ^(NSDictionary *errorInfo) {
@@ -229,6 +235,7 @@
    [self.postViewController.textfield resignFirstResponder];
    self.postViewController.textfield.enabled=NO;
    [self.postViewController setPlaceholder: @"Disconnected, please hold"];
+   self.activeCount.hidden=YES;
   
 }
 
@@ -244,6 +251,9 @@
 - (void)addPost: (NSArray*)args
 {
   NSDictionary *data=args[0];
+  if([self.muted objectForKey: [data objectForKey: @"fingerprint"]]) { return; }
+  
+    // Flush old posts
   [self.tableView beginUpdates];
   for( int i = (int)[self.items count]-1; i >=0; --i)
   {
@@ -257,12 +267,8 @@
   [self.tableView endUpdates];
   
   NSString *key=[data objectForKey: @"key"];
-  NSLog(@"Got %@ for %@",[data allKeys],[data objectForKey: @"message"]);
-  if([self.muted objectForKey: [data objectForKey: @"fingerprint"]]) { return; }
   if (key) {
-    if([self.seen objectForKey: key] ) {
-      return;
-    }
+    if([self.seen objectForKey: key] ) { return; }
     [self.seen setObject: @"1" forKey: key];
   };
   MCPost *post=[[MCPost alloc] initWithDictionary: data];
@@ -314,6 +320,7 @@
   } completion:^(BOOL finished) {
     if([self.items count]) {
       [self scrollToBottom];
+    [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:[self.items count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
       self.atBottom=YES;
     }
   }];
@@ -322,6 +329,7 @@
 
 - (IBAction)unmuteClicked:(id)sender {
   [self.muted removeAllObjects];
+  [[NSUserDefaults standardUserDefaults] setObject: self.muted forKey:@"meatspaceMutes"];
   self.muteButton.hidden=YES;
 }
 
@@ -367,7 +375,13 @@
   MCPost *post=[self.items objectAtIndex:indexPath.row];
   cell.textView.attributedText=post.attributedString;
   cell.timeLabel.text=[post relativeTime];
-  cell.muteButton.tag=indexPath.row;
+  if([self.userId isEqualToString: post.fingerprint]) {
+    self.muteButton.hidden=YES;
+  }
+  else {
+    cell.muteButton.hidden=NO;
+    cell.muteButton.tag=indexPath.row;
+  }
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
 
   [cell.videoPlayer replaceCurrentItemWithPlayerItem: item];
@@ -375,7 +389,7 @@
   if(([self.items count]-1)==[self.tableView.visibleCells count]) {
     [cell.videoPlayer play];
   }
-  [[NSNotificationCenter defaultCenter] addObserver:self
+  [[NSNotificationCenter defaultCenter] addObserver: cell
                                            selector:@selector(playerItemDidReachEnd:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:item];
@@ -403,12 +417,6 @@
 
 #pragma mark - AVPlayer delegate
 
-
-- (void)playerItemDidReachEnd:(NSNotification *)notification
-{
-  AVPlayerItem *p = [notification object];
-  [p seekToTime:kCMTimeZero];
-}
 
 
 

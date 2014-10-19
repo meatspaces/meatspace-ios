@@ -19,6 +19,7 @@
 @property (nonatomic,weak) MCPostViewController *postViewController;
 
 - (void)flushItems;
--(void)scrollToBottom;
+- (void)scrollToBottom;
+- (void)resumePlay;
 
 @end

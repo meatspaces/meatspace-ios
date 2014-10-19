@@ -62,7 +62,7 @@
 - (BOOL)isObsolete
 {
   NSDate *postDate=[NSDate dateWithTimeIntervalSince1970: [[self.postData objectForKey: @"created"] doubleValue]/1000];
-  NSDate *oldMessage=[NSDate dateWithTimeIntervalSinceNow: -600];
+  NSDate *oldMessage=[NSDate dateWithTimeIntervalSinceNow: -1200];
   if([oldMessage compare: postDate] == NSOrderedDescending) {
     return YES;
   }

@@ -16,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *muteButton;
 @property (strong,nonatomic) AVPlayer *videoPlayer;
 
+- (void)playerItemDidReachEnd:(NSNotification *)notification;
+
 
 @end

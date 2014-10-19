@@ -43,5 +43,22 @@
     // Configure the view for the selected state
 }
 
+- (void)prepareForReuse
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification
+{
+  AVPlayerItem *p = [notification object];
+  [p seekToTime:kCMTimeZero];
+}
+
+
 
 @end
