@@ -47,11 +47,6 @@
 {
   [super viewDidLoad];
   
-  NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
-  if(![defaults objectForKey: @"meatspaceMutes"]) {
-    [defaults setObject: [NSDictionary dictionary] forKey:@"meatspaceMutes"];
-  }
-  
   self.muted=[[[NSUserDefaults standardUserDefaults] dictionaryForKey: @"meatspaceMutes"] mutableCopy];
   if([self.muted count]) {
     self.muteButton.hidden=NO;

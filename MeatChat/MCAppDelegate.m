@@ -21,6 +21,9 @@
 
   
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+
+  NSDictionary *defaultDefaults = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DefaultDefaults" ofType:@"plist"]];
+  [[NSUserDefaults standardUserDefaults] registerDefaults:defaultDefaults];
   
     return YES;
 }
