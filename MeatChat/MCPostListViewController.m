@@ -58,15 +58,14 @@
   self.seen=[NSMutableDictionary dictionary];
   [self setupReachability];
  
-    // Keyboard handling
+  // Keyboard handling
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
                                  action:@selector(dismissKeyboard)];
   
   [self.view addGestureRecognizer:tap];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]
-  ;
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];;
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
   
   // Tableview
   self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -104,7 +103,6 @@
   for (MCPostCell *cell in self.tableView.visibleCells) {
     [cell.videoPlayer play];
   }
-  
 }
 
 - (void)endScroll: (UIScrollView*)scrollView
@@ -127,8 +125,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"postViewSegue"]) {
-      // can't assign the view controller from an embed segue via the storyboard, so capture here
-  _postViewController = (MCPostViewController*)segue.destinationViewController;
+    // can't assign the view controller from an embed segue via the storyboard, so capture here
+    _postViewController = (MCPostViewController*)segue.destinationViewController;
   }
 }
 
@@ -143,7 +141,6 @@
                                            selector:@selector(reachabilityChanged:)
                                                name:kReachabilityChangedNotification
                                              object:nil];
-  
   [reach startNotifier];
   
 }
@@ -158,62 +155,60 @@
 {
    __weak typeof(self) weakSelf = self;
   NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]);
-  [SIOSocket socketWithHost: [[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"] response: ^(SIOSocket *socket)
+  [SIOSocket socketWithHost: [[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]
+                   response: ^(SIOSocket *socket)
    {
-   [self.postViewController setPlaceholder: @"Connecting to meatspace"];
-   self.socket = socket;
-   self.socket.onConnect = ^()
-     {
-     [weakSelf.socket emit: @"join" args: @[ @"mp4" ]];
-     dispatch_async(dispatch_get_main_queue(), ^{
-       weakSelf.postViewController.textfield.enabled=YES;
-       [weakSelf.postViewController setRandomPlaceholder];
-     });
+     [self.postViewController setPlaceholder: @"Connecting to meatspace"];
+     self.socket = socket;
+     self.socket.onConnect = ^() {
+       [weakSelf.socket emit: @"join" args: @[ @"mp4" ]];
+       dispatch_async(dispatch_get_main_queue(), ^{
+         weakSelf.postViewController.textfield.enabled = YES;
+         [weakSelf.postViewController setRandomPlaceholder];
+       });
      };
-   self.socket.onDisconnect= ^()
-   {
-   dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf handleDisconnect]; });
-   };
-   [self.socket on: @"message"  callback:^(id data) {
-     dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf addPost: data]; });
-   }];
-   [self.socket on: @"messageack"  callback:^(NSArray *data) {
-     NSString *message=data[0];
-     dispatch_async(dispatch_get_main_queue(), ^{
-       if([[message class] isSubclassOfClass: [NSString class]]) {
-       [weakSelf.postViewController setPlaceholder: message];
-       };
-       self.userId=[data[1] objectForKey: @"userId"];
-     });
-   }];
-   [self.socket on: @"active" callback:^(NSArray *args) {
-     dispatch_async(dispatch_get_main_queue(), ^{
-       self.activeCount.text=[args[0] stringValue];
-       self.activeCount.hidden=NO;
-     });
-   }];
-   self.socket.onError = ^(NSDictionary *errorInfo) {
-     NSLog(@"Oops: %@",errorInfo);
-     dispatch_async(dispatch_get_main_queue(), ^{
-       [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"An error occured: %@",errorInfo]];
-     });
-   };
-   self.socket.onReconnect = ^(NSInteger numberOfAttempts) {
-     NSLog(@"Reconnect %ld", (long)numberOfAttempts);
-   };
-   self.socket.onReconnectionAttempt =^(NSInteger numberOfAttempts) {
-     NSLog(@"Attempt %ld", (long)numberOfAttempts);
-   dispatch_async(dispatch_get_main_queue(), ^{
-     [weakSelf.postViewController setPlaceholder: @"Reconnecting to meatspace."];
-   });
-   };
-   self.socket.onReconnectionError=^(NSDictionary *errorInfo) {
-     NSLog(@"Oops: %@",errorInfo);
-   dispatch_async(dispatch_get_main_queue(), ^{
-     [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"Could not connect: %@", errorInfo]];
-   });
-   };
-   
+     self.socket.onDisconnect= ^() {
+       dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf handleDisconnect]; });
+     };
+     [self.socket on: @"message" callback:^(id data) {
+       dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf addPost: data]; });
+     }];
+     [self.socket on: @"messageack" callback:^(NSArray *data) {
+       NSString *message=data[0];
+       dispatch_async(dispatch_get_main_queue(), ^{
+         if([[message class] isSubclassOfClass: [NSString class]]) {
+           [weakSelf.postViewController setPlaceholder: message];
+         };
+         self.userId=[data[1] objectForKey: @"userId"];
+       });
+     }];
+     [self.socket on: @"active" callback:^(NSArray *args) {
+       dispatch_async(dispatch_get_main_queue(), ^{
+         self.activeCount.text=[args[0] stringValue];
+         self.activeCount.hidden=NO;
+       });
+     }];
+     self.socket.onError = ^(NSDictionary *errorInfo) {
+       NSLog(@"Oops: %@",errorInfo);
+       dispatch_async(dispatch_get_main_queue(), ^{
+         [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"An error occured: %@",errorInfo]];
+       });
+     };
+     self.socket.onReconnect = ^(NSInteger numberOfAttempts) {
+       NSLog(@"Reconnect %ld", (long)numberOfAttempts);
+     };
+     self.socket.onReconnectionAttempt =^(NSInteger numberOfAttempts) {
+       NSLog(@"Attempt %ld", (long)numberOfAttempts);
+       dispatch_async(dispatch_get_main_queue(), ^{
+         [weakSelf.postViewController setPlaceholder: @"Reconnecting to meatspace."];
+       });
+     };
+     self.socket.onReconnectionError=^(NSDictionary *errorInfo) {
+       NSLog(@"Oops: %@",errorInfo);
+       dispatch_async(dispatch_get_main_queue(), ^{
+         [weakSelf.postViewController setPlaceholder: [NSString stringWithFormat: @"Could not connect: %@", errorInfo]];
+       });
+     };
    }];
 }
 
@@ -248,11 +243,10 @@
   NSDictionary *data=args[0];
   if([self.muted objectForKey: [data objectForKey: @"fingerprint"]]) { return; }
   
-    // Flush old posts
+  // Flush old posts
   [self.tableView beginUpdates];
-  for( int i = (int)[self.items count]-1; i >=0; --i)
-  {
-  MCPost *post=[self.items objectAtIndex: i];
+  for( int i = (int)[self.items count] - 1; i >= 0; --i) {
+    MCPost *post=[self.items objectAtIndex: i];
     if ([post isObsolete]) {
       [post cleanup];
       [self.items removeObjectAtIndex: i];
@@ -271,9 +265,9 @@
   NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
   [CATransaction begin];
   [CATransaction setCompletionBlock:^{
-  if (self.atBottom) {
-    [self scrollToBottom];
-  }
+    if (self.atBottom) {
+      [self scrollToBottom];
+    }
   }];
   [self.tableView beginUpdates];
   [self.tableView insertRowsAtIndexPaths:@[newRow] withRowAnimation: UITableViewRowAnimationFade];
@@ -315,7 +309,8 @@
   } completion:^(BOOL finished) {
     if([self.items count]) {
       [self scrollToBottom];
-    [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:[self.items count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+      [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0]]
+                            withRowAnimation: UITableViewRowAnimationNone];
       self.atBottom=YES;
     }
   }];
@@ -366,7 +361,7 @@
   static NSString *CellIdentifier = @"MeatCell";
   MCPostCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
   
-    // Configure the cell...
+  // Configure the cell...
   MCPost *post=[self.items objectAtIndex:indexPath.row];
   cell.textView.attributedText=post.attributedString;
   cell.timeLabel.text=[post relativeTime];
@@ -398,7 +393,6 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
   MCPostCell *cell = (MCPostCell*)[tableView cellForRowAtIndexPath:indexPath];
   cell.muteButton.hidden=YES;
 }
