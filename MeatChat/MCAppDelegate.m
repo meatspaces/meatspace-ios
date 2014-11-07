@@ -15,17 +15,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-  
-    [TestFlight takeOff:@"15b86d3f-cf9f-4729-b1be-d4263f01d8ab"];
+  // Override point for customization after application launch.
+  [TestFlight takeOff:@"15b86d3f-cf9f-4729-b1be-d4263f01d8ab"];
 
-  
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
 
   NSDictionary *defaultDefaults = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DefaultDefaults" ofType:@"plist"]];
   [[NSUserDefaults standardUserDefaults] registerDefaults:defaultDefaults];
   
-    return YES;
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -49,7 +47,7 @@
   [vc resumePlay];
 }
 
-- (void)applicatioknDidBecomeActive:(UIApplication *)application
+- (void)applicationDidBecomeActive:(UIApplication *)application
 {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
