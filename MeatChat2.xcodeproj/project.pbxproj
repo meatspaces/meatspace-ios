@@ -48,11 +48,11 @@
 		24400EDD099742C5ABF721BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C188A8218889EC3002CD14C /* MCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostViewController.h; sourceTree = "<group>"; };
 		2C188A8318889EC3002CD14C /* MCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostViewController.m; sourceTree = "<group>"; };
-		2C1F8C991885CFEB001BE713 /* MeatChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C1F8C991885CFEB001BE713 /* MeatChat2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatChat2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8C9C1885CFEB001BE713 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2C1F8CA01885CFEB001BE713 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2C1F8CA41885CFEB001BE713 /* MeatChat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat-Info.plist"; sourceTree = "<group>"; };
+		2C1F8CA41885CFEB001BE713 /* MeatChat2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat2-Info.plist"; sourceTree = "<group>"; };
 		2C1F8CA61885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C1F8CA81885CFEB001BE713 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeatChat-Prefix.pch"; sourceTree = "<group>"; };
@@ -62,9 +62,9 @@
 		2C1F8CB41885CFEB001BE713 /* NMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NMViewController.h; sourceTree = "<group>"; };
 		2C1F8CB51885CFEB001BE713 /* NMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NMViewController.m; sourceTree = "<group>"; };
 		2C1F8CB71885CFEB001BE713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C1F8CBD1885CFEB001BE713 /* MeatChat2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatChat2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8CBE1885CFEB001BE713 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2C1F8CC61885CFEB001BE713 /* MeatChatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChatTests-Info.plist"; sourceTree = "<group>"; };
+		2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat2Tests-Info.plist"; sourceTree = "<group>"; };
 		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeatChatTests.m; sourceTree = "<group>"; };
 		2C1F8CD41885D05B001BE713 /* MCPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostCell.h; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		2C2B273F19E980E200A03B04 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
 		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
-		4134EA2819E9EC210093B991 /* MeatChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat-Prefix.pch"; path = "MeatChat/MeatChat-Prefix.pch"; sourceTree = "<group>"; };
+		4134EA2819E9EC210093B991 /* MeatChat2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat2-Prefix.pch"; path = "MeatChat/MeatChat2-Prefix.pch"; sourceTree = "<group>"; };
 		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +117,7 @@
 		2C1F8C901885CFEB001BE713 = {
 			isa = PBXGroup;
 			children = (
-				4134EA2819E9EC210093B991 /* MeatChat-Prefix.pch */,
+				4134EA2819E9EC210093B991 /* MeatChat2-Prefix.pch */,
 				2C1F8CA21885CFEB001BE713 /* MeatChat */,
 				2C1F8CC41885CFEB001BE713 /* MeatChat */,
 				2C1F8C9B1885CFEB001BE713 /* Frameworks */,
@@ -129,8 +129,8 @@
 		2C1F8C9A1885CFEB001BE713 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F8C991885CFEB001BE713 /* MeatChat.app */,
-				2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */,
+				2C1F8C991885CFEB001BE713 /* MeatChat2.app */,
+				2C1F8CBD1885CFEB001BE713 /* MeatChat2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */,
-				2C1F8CA41885CFEB001BE713 /* MeatChat-Info.plist */,
+				2C1F8CA41885CFEB001BE713 /* MeatChat2-Info.plist */,
 				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
 				2C1F8CA81885CFEB001BE713 /* main.m */,
 				2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */,
@@ -193,7 +193,7 @@
 		2C1F8CC51885CFEB001BE713 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F8CC61885CFEB001BE713 /* MeatChatTests-Info.plist */,
+				2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */,
 				2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -251,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C1F8C981885CFEB001BE713 /* MeatChat */ = {
+		2C1F8C981885CFEB001BE713 /* MeatChat2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat" */;
+			buildConfigurationList = 2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2" */;
 			buildPhases = (
 				BBA07FE4852D4CF2954B2AB4 /* Check Pods Manifest.lock */,
 				2C1F8C951885CFEB001BE713 /* Sources */,
@@ -265,14 +265,14 @@
 			);
 			dependencies = (
 			);
-			name = MeatChat;
+			name = MeatChat2;
 			productName = MeatChat;
-			productReference = 2C1F8C991885CFEB001BE713 /* MeatChat.app */;
+			productReference = 2C1F8C991885CFEB001BE713 /* MeatChat2.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2C1F8CBC1885CFEB001BE713 /* MeatChatTests */ = {
+		2C1F8CBC1885CFEB001BE713 /* MeatChat2Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChatTests" */;
+			buildConfigurationList = 2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2Tests" */;
 			buildPhases = (
 				2C1F8CB91885CFEB001BE713 /* Sources */,
 				2C1F8CBA1885CFEB001BE713 /* Frameworks */,
@@ -283,9 +283,9 @@
 			dependencies = (
 				2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */,
 			);
-			name = MeatChatTests;
+			name = MeatChat2Tests;
 			productName = MeatChatTests;
-			productReference = 2C1F8CBD1885CFEB001BE713 /* MeatChatTests.xctest */;
+			productReference = 2C1F8CBD1885CFEB001BE713 /* MeatChat2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -306,7 +306,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C1F8C941885CFEB001BE713 /* Build configuration list for PBXProject "MeatChat" */;
+			buildConfigurationList = 2C1F8C941885CFEB001BE713 /* Build configuration list for PBXProject "MeatChat2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -319,8 +319,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C1F8C981885CFEB001BE713 /* MeatChat */,
-				2C1F8CBC1885CFEB001BE713 /* MeatChatTests */,
+				2C1F8C981885CFEB001BE713 /* MeatChat2 */,
+				2C1F8CBC1885CFEB001BE713 /* MeatChat2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -410,7 +410,7 @@
 /* Begin PBXTargetDependency section */
 		2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2C1F8C981885CFEB001BE713 /* MeatChat */;
+			target = 2C1F8C981885CFEB001BE713 /* MeatChat2 */;
 			targetProxy = 2C1F8CC21885CFEB001BE713 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -521,12 +521,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "MeatChat/MeatChat-Info.plist";
+				GCC_PREFIX_HEADER = "MeatChat/MeatChat2-Prefix.pch";
+				INFOPLIST_FILE = "MeatChat/MeatChat2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = MeatChat;
+				PRODUCT_NAME = MeatChat2;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -540,12 +543,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "MeatChat/MeatChat-Info.plist";
+				GCC_PREFIX_HEADER = "MeatChat/MeatChat2-Prefix.pch";
+				INFOPLIST_FILE = "MeatChat/MeatChat2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = MeatChat;
+				PRODUCT_NAME = MeatChat2;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -567,8 +573,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "MeatChatTests/MeatChatTests-Info.plist";
-				PRODUCT_NAME = MeatChatTests;
+				INFOPLIST_FILE = "MeatChatTests/MeatChat2Tests-Info.plist";
+				PRODUCT_NAME = MeatChat2Tests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -585,8 +591,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "MeatChatTests/MeatChatTests-Info.plist";
-				PRODUCT_NAME = MeatChatTests;
+				INFOPLIST_FILE = "MeatChatTests/MeatChat2Tests-Info.plist";
+				PRODUCT_NAME = MeatChat2Tests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -595,7 +601,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C1F8C941885CFEB001BE713 /* Build configuration list for PBXProject "MeatChat" */ = {
+		2C1F8C941885CFEB001BE713 /* Build configuration list for PBXProject "MeatChat2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1F8CCC1885CFEB001BE713 /* Debug */,
@@ -604,7 +610,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat" */ = {
+		2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1F8CCF1885CFEB001BE713 /* Debug */,
@@ -613,7 +619,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChatTests" */ = {
+		2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1F8CD21885CFEB001BE713 /* Debug */,

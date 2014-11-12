@@ -57,6 +57,7 @@
     self.muteButton.hidden=NO;
   }
   
+  // The most pleasing inset 
   [self.tableView setContentInset:UIEdgeInsetsMake(42, 0, 0, 0)];
 
   self.items=[NSMutableArray array];
@@ -148,8 +149,8 @@
                                            selector:@selector(reachabilityChanged:)
                                                name:kReachabilityChangedNotification
                                              object:nil];
-  
   [reach startNotifier];
+  [self setupSocket];
   
 }
 
@@ -162,8 +163,10 @@
 - (void)setupSocket
 {
    __weak typeof(self) weakSelf = self;
-  NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]);
-  [SIOSocket socketWithHost: [[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"] response: ^(SIOSocket *socket)
+  NSLog(@"Connecting to %@",[[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]);
+  NSString *server_url=[[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"];
+  if(!server_url) { server_url=@"https://chat.meatspac.es"; }
+  [SIOSocket socketWithHost: server_url response: ^(SIOSocket *socket)
    {
    [self.postViewController setPlaceholder: @"Connecting to meatspace"];
    self.socket = socket;
@@ -225,7 +228,7 @@
 - (void)teardownSocket
 {
   [self.socket close];
-  self.socket=NULL;
+  self.socket=nil;
   [self.postViewController setPlaceholder: @"Get the internet, bae."];
 }
 
@@ -336,6 +339,7 @@
 - (IBAction)muteClicked:(UIButton*)sender {
   MCPost *mutePost=[self.items objectAtIndex: sender.tag];
   [self.muted setObject: @"1" forKey: mutePost.fingerprint];
+  self.muteButton.hidden=NO;
   [[NSUserDefaults standardUserDefaults] setObject: self.muted forKey:@"meatspaceMutes"];
   for( int i = (int)[self.items count]-1; i >=0; --i) {
     MCPost *post=[self.items objectAtIndex: i];

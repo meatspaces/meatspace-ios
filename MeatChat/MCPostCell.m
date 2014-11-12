@@ -45,6 +45,7 @@
 
 - (void)prepareForReuse
 {
+  [super prepareForReuse];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -55,6 +56,7 @@
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification
 {
+    // NSLog(@"Looping for  %@", [notification object]);
   AVPlayerItem *p = [notification object];
   [p seekToTime:kCMTimeZero];
 }
