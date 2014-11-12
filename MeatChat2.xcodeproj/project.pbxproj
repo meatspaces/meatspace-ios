@@ -18,11 +18,6 @@
 		2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */; };
 		2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB51885CFEB001BE713 /* NMViewController.m */; };
 		2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB71885CFEB001BE713 /* Images.xcassets */; };
-		2C1F8CBF1885CFEB001BE713 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CBE1885CFEB001BE713 /* XCTest.framework */; };
-		2C1F8CC01885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
-		2C1F8CC11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
-		2C1F8CC91885CFEB001BE713 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */; };
-		2C1F8CCB1885CFEB001BE713 /* MeatChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */; };
 		2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD51885D05B001BE713 /* MCPostCell.m */; };
 		2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */; };
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
@@ -34,16 +29,6 @@
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
 		61B37259671C453AA69C08CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24400EDD099742C5ABF721BF /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2C1F8CC21885CFEB001BE713 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C1F8C911885CFEB001BE713 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C1F8C981885CFEB001BE713;
-			remoteInfo = MeatChat;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultDefaults.plist; sourceTree = "<group>"; };
@@ -64,7 +49,6 @@
 		2C1F8CB41885CFEB001BE713 /* NMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NMViewController.h; sourceTree = "<group>"; };
 		2C1F8CB51885CFEB001BE713 /* NMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NMViewController.m; sourceTree = "<group>"; };
 		2C1F8CB71885CFEB001BE713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2C1F8CBD1885CFEB001BE713 /* MeatChat2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeatChat2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8CBE1885CFEB001BE713 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat2Tests-Info.plist"; sourceTree = "<group>"; };
 		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -103,16 +87,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C1F8CBA1885CFEB001BE713 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CBF1885CFEB001BE713 /* XCTest.framework in Frameworks */,
-				2C1F8CC11885CFEB001BE713 /* UIKit.framework in Frameworks */,
-				2C1F8CC01885CFEB001BE713 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -132,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				2C1F8C991885CFEB001BE713 /* MeatChat2.app */,
-				2C1F8CBD1885CFEB001BE713 /* MeatChat2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,24 +246,6 @@
 			productReference = 2C1F8C991885CFEB001BE713 /* MeatChat2.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2C1F8CBC1885CFEB001BE713 /* MeatChat2Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2Tests" */;
-			buildPhases = (
-				2C1F8CB91885CFEB001BE713 /* Sources */,
-				2C1F8CBA1885CFEB001BE713 /* Frameworks */,
-				2C1F8CBB1885CFEB001BE713 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */,
-			);
-			name = MeatChat2Tests;
-			productName = MeatChatTests;
-			productReference = 2C1F8CBD1885CFEB001BE713 /* MeatChat2Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -303,9 +258,6 @@
 				TargetAttributes = {
 					2C1F8C981885CFEB001BE713 = {
 						DevelopmentTeam = 92W4VZ8HPS;
-					};
-					2C1F8CBC1885CFEB001BE713 = {
-						TestTargetID = 2C1F8C981885CFEB001BE713;
 					};
 				};
 			};
@@ -323,7 +275,6 @@
 			projectRoot = "";
 			targets = (
 				2C1F8C981885CFEB001BE713 /* MeatChat2 */,
-				2C1F8CBC1885CFEB001BE713 /* MeatChat2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,14 +290,6 @@
 				2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */,
 				2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */,
 				2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C1F8CBB1885CFEB001BE713 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CC91885CFEB001BE713 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,23 +344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C1F8CB91885CFEB001BE713 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C1F8CCB1885CFEB001BE713 /* MeatChatTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2C1F8CC31885CFEB001BE713 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C1F8C981885CFEB001BE713 /* MeatChat2 */;
-			targetProxy = 2C1F8CC21885CFEB001BE713 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */ = {
@@ -562,46 +489,6 @@
 			};
 			name = Release;
 		};
-		2C1F8CD21885CFEB001BE713 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeatChat.app/MeatChat";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "MeatChatTests/MeatChat2Tests-Info.plist";
-				PRODUCT_NAME = MeatChat2Tests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		2C1F8CD31885CFEB001BE713 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeatChat.app/MeatChat";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MeatChat/MeatChat-Prefix.pch";
-				INFOPLIST_FILE = "MeatChatTests/MeatChat2Tests-Info.plist";
-				PRODUCT_NAME = MeatChat2Tests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -619,15 +506,6 @@
 			buildConfigurations = (
 				2C1F8CCF1885CFEB001BE713 /* Debug */,
 				2C1F8CD01885CFEB001BE713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C1F8CD11885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C1F8CD21885CFEB001BE713 /* Debug */,
-				2C1F8CD31885CFEB001BE713 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
