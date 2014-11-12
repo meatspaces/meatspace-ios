@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22771F1C1A0D171900D93C65 /* DefaultDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */; };
 		2C188A8418889EC3002CD14C /* MCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C188A8318889EC3002CD14C /* MCPostViewController.m */; };
 		2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
 		2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultDefaults.plist; sourceTree = "<group>"; };
 		24400EDD099742C5ABF721BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C188A8218889EC3002CD14C /* MCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostViewController.h; sourceTree = "<group>"; };
 		2C188A8318889EC3002CD14C /* MCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostViewController.m; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				2C1F8CA81885CFEB001BE713 /* main.m */,
 				2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */,
 				2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */,
+				22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22771F1C1A0D171900D93C65 /* DefaultDefaults.plist in Resources */,
 				2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */,
 				2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */,
 				2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */,
