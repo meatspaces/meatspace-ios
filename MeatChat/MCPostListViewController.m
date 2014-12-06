@@ -17,7 +17,7 @@
 @interface MCPostListViewController ()
 
 @property (retain,nonatomic) NSMutableArray *items;
-@property (retain,nonatomic) NSMutableDictionary *muted;
+@property (retain,nonatomic) NSMutableDictionary *blocked;
 @property (assign,nonatomic) BOOL atBottom;
 @property (strong, nonatomic) NSMutableDictionary *seen;
 @property (strong,nonatomic) NSString *userId;
@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottom;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *activeCount;
-@property (weak, nonatomic) IBOutlet UIButton *muteButton;
+@property (weak, nonatomic) IBOutlet UIButton *blockButton;
 @property (assign, nonatomic) BOOL acceptedEula;
 
 
@@ -48,15 +48,15 @@
 {
     [super viewDidLoad];
     
-    self.muted=[[[NSUserDefaults standardUserDefaults] dictionaryForKey: @"meatspaceMutes"] mutableCopy];
-    if([self.muted count]) {
-        self.muteButton.hidden=NO;
+    self.blocked=[[[NSUserDefaults standardUserDefaults] dictionaryForKey: @"meatspaceBlocks"] mutableCopy];
+    if([self.blocked count]) {
+        self.blockButton.hidden=NO;
     }
     self.acceptedEula=[[NSUserDefaults standardUserDefaults] boolForKey: @"acceptedEula"];
     if(!self.acceptedEula) {
         UIAlertController *alertController = [UIAlertController
                                               alertControllerWithTitle: @"Welcome to MeatChat"
-                                              message: @"This is a client for the real time chat service chat.meatspac.es. Please behave nicely, objectionable content is not accepted. If someone else posts objectionable content, you can remove it, and future messages from them, by using the 'mute' button next to their message."
+                                              message: @"This is a client for the real time chat service chat.meatspac.es. Please behave nicely, objectionable content is not accepted. If someone else posts objectionable content, you can remove current and future messages from them, by using the 'block' button next to their message."
                                               preferredStyle:UIAlertControllerStyleAlert];
         
         
@@ -274,7 +274,7 @@
 - (void)addPost: (NSArray*)args
 {
   NSDictionary *data=args[0];
-  if([self.muted objectForKey: [data objectForKey: @"fingerprint"]]) { return; }
+  if([self.blocked objectForKey: [data objectForKey: @"fingerprint"]]) { return; }
   
   // Flush old posts
   [self.tableView beginUpdates];
@@ -350,20 +350,20 @@
 }
 
 
-- (IBAction)unmuteClicked:(id)sender {
-  [self.muted removeAllObjects];
-  [[NSUserDefaults standardUserDefaults] setObject: self.muted forKey:@"meatspaceMutes"];
-  self.muteButton.hidden=YES;
+- (IBAction)unblockClicked:(id)sender {
+  [self.blocked removeAllObjects];
+  [[NSUserDefaults standardUserDefaults] setObject: self.blocked forKey:@"meatspaceBlocks"];
+  self.blockButton.hidden=YES;
 }
 
-- (IBAction)muteClicked:(UIButton*)sender {
-  MCPost *mutePost=[self.items objectAtIndex: sender.tag];
-  [self.muted setObject: @"1" forKey: mutePost.fingerprint];
-  self.muteButton.hidden=NO;
-  [[NSUserDefaults standardUserDefaults] setObject: self.muted forKey:@"meatspaceMutes"];
+- (IBAction)blockClicked:(UIButton*)sender {
+  MCPost *blockPost=[self.items objectAtIndex: sender.tag];
+  [self.blocked setObject: @"1" forKey: blockPost.fingerprint];
+  self.blockButton.hidden=NO;
+  [[NSUserDefaults standardUserDefaults] setObject: self.blocked forKey:@"meatspaceBlocks"];
   for( int i = (int)[self.items count]-1; i >=0; --i) {
     MCPost *post=[self.items objectAtIndex: i];
-    if([post.fingerprint isEqualToString: mutePost.fingerprint] ) {
+    if([post.fingerprint isEqualToString: blockPost.fingerprint] ) {
       [self.items removeObject: post];
     }
     [self.tableView reloadData];
@@ -390,7 +390,7 @@
                                  MFMailComposeViewController *mf=[[MFMailComposeViewController alloc] init];
                                  [mf setToRecipients: @[@"report@meatspac.es"]];
                                  mf.mailComposeDelegate=weakSelf;
-                                 [mf setSubject: [NSString stringWithFormat: @"Abuse from user fingerprint %@",mutePost.fingerprint]];
+                                 [mf setSubject: [NSString stringWithFormat: @"Abuse from user fingerprint %@",blockPost.fingerprint]];
                                 [weakSelf presentViewController: mf animated: YES completion:^{
                                 }];
                                    
@@ -431,11 +431,11 @@
   cell.textView.attributedText=post.attributedString;
   cell.timeLabel.text=[post relativeTime];
   if([self.userId isEqualToString: post.fingerprint]) {
-    self.muteButton.hidden=YES;
+    self.blockButton.hidden=YES;
   }
   else {
-    cell.muteButton.hidden=NO;
-    cell.muteButton.tag=indexPath.row;
+    cell.blockButton.hidden=NO;
+    cell.blockButton.tag=indexPath.row;
   }
   AVPlayerItem *item=[AVPlayerItem playerItemWithURL: post.videoUrl];
 
@@ -459,13 +459,13 @@
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   MCPostCell *cell = (MCPostCell*)[tableView cellForRowAtIndexPath:indexPath];
-  cell.muteButton.hidden=YES;
+  cell.blockButton.hidden=YES;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   MCPostCell *cell = (MCPostCell*)[tableView cellForRowAtIndexPath:indexPath];
-  cell.muteButton.hidden=NO;
+  cell.blockButton.hidden=NO;
 }
 
 

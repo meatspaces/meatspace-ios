@@ -112,7 +112,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="muteClicked:" destination="LSf-OK-ZIC" eventType="touchUpInside" id="MbW-e2-oI4"/>
+                                                        <action selector="blockClicked:" destination="LSf-OK-ZIC" eventType="touchUpInside" id="ci7-IH-dEC"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -140,7 +140,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="muteButton" destination="NZG-mO-lWt" id="u2W-ne-QC5"/>
+                                            <outlet property="blockButton" destination="NZG-mO-lWt" id="c7y-fP-FCU"/>
                                             <outlet property="textView" destination="7cq-zs-Ogn" id="nJF-UL-hCu"/>
                                             <outlet property="timeLabel" destination="4ga-Ou-tZx" id="31L-k4-oRa"/>
                                             <outlet property="video" destination="J8R-OW-4bV" id="ykS-Nt-G0y"/>
@@ -170,18 +170,18 @@
                                                     <color key="textColor" red="0.0" green="0.1647058874" blue="0.15686275059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZ1-dh-0LX">
-                                                    <rect key="frame" x="548" y="18" width="44" height="30"/>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZ1-dh-0LX" userLabel="Unblock">
+                                                    <rect key="frame" x="545" y="18" width="47" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="gGr-RU-siW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="Unmute">
+                                                    <state key="normal" title="Unblock">
                                                         <color key="titleColor" red="0.0" green="0.1647058874" blue="0.15686275059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="unmuteClicked:" destination="LSf-OK-ZIC" eventType="touchUpInside" id="H0H-zJ-Req"/>
+                                                        <action selector="unblockClicked:" destination="LSf-OK-ZIC" eventType="touchUpInside" id="hOx-Tj-2r3"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -242,10 +242,10 @@
                     <navigationItem key="navigationItem" id="96G-8r-Dkb"/>
                     <connections>
                         <outlet property="activeCount" destination="Crz-Os-b6z" id="9So-N6-7N9"/>
+                        <outlet property="blockButton" destination="iZ1-dh-0LX" id="81J-z9-8Cz"/>
                         <outlet property="containerBottom" destination="KF3-kb-CEA" id="gEP-tq-dTz"/>
                         <outlet property="containerHeight" destination="lJv-yd-p7R" id="9nc-Mr-R1m"/>
                         <outlet property="containerView" destination="uud-iA-H6S" id="g5m-dn-WGP"/>
-                        <outlet property="muteButton" destination="iZ1-dh-0LX" id="Vj0-j4-iEr"/>
                         <outlet property="tableView" destination="0se-Fx-CQ5" id="Pil-JH-Dc7"/>
                     </connections>
                 </viewController>
