@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UILabel *activeCount;
 @property (weak, nonatomic) IBOutlet UIButton *muteButton;
+@property (assign, nonatomic) BOOL acceptedEula;
 
 
 - (void)setupReachability;
@@ -45,33 +46,63 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  
-  self.muted=[[[NSUserDefaults standardUserDefaults] dictionaryForKey: @"meatspaceMutes"] mutableCopy];
-  if([self.muted count]) {
-    self.muteButton.hidden=NO;
-  }
-  
-  // The most pleasing inset 
-  [self.tableView setContentInset:UIEdgeInsetsMake(42, 0, 0, 0)];
-
-  self.items=[NSMutableArray array];
-  self.seen=[NSMutableDictionary dictionary];
-  [self setupReachability];
- 
-  // Keyboard handling
-  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                 initWithTarget:self
-                                 action:@selector(dismissKeyboard)];
-  
-  [self.view addGestureRecognizer:tap];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-  
-  // Tableview
-  self.tableView.rowHeight = UITableViewAutomaticDimension;
-  self.tableView.estimatedRowHeight=75;
-  self.atBottom=YES;
+    [super viewDidLoad];
+    
+    self.muted=[[[NSUserDefaults standardUserDefaults] dictionaryForKey: @"meatspaceMutes"] mutableCopy];
+    if([self.muted count]) {
+        self.muteButton.hidden=NO;
+    }
+    self.acceptedEula=[[NSUserDefaults standardUserDefaults] boolForKey: @"acceptedEula"];
+    if(!self.acceptedEula) {
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle: @"Welcome to MeatChat"
+                                              message: @"This is a client for the real time chat service chat.meatspac.es. Please behave nicely, objectionable content is not accepted. If someone else posts objectionable content, you can remove it, and future messages from them, by using the 'mute' button next to their message."
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           exit(0);
+                                       }];
+        
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       self.acceptedEula=YES;
+                                       [[NSUserDefaults standardUserDefaults] setBool: self.acceptedEula forKey: @"acceptedEula"];
+                                       
+                                   }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        
+        [self presentViewController: alertController animated:YES completion:nil];
+    }
+    
+    // The most pleasing inset 
+    [self.tableView setContentInset:UIEdgeInsetsMake(42, 0, 0, 0)];
+    
+    self.items=[NSMutableArray array];
+    self.seen=[NSMutableDictionary dictionary];
+    [self setupReachability];
+    
+    // Keyboard handling
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    
+    // Tableview
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight=75;
+    self.atBottom=YES;
 }
 
 
@@ -337,6 +368,37 @@
     }
     [self.tableView reloadData];
   }
+  __weak __typeof(self)weakSelf = self;
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle: @"Report abuse?"
+                                          message: @"You have just chosen to block another meatspacer. Would you like to report this user for objectionable content?"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"No", @"No")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                   }];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"Yes", @"Yes")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                 MFMailComposeViewController *mf=[[MFMailComposeViewController alloc] init];
+                                 [mf setToRecipients: @[@"report@meatspac.es"]];
+                                 mf.mailComposeDelegate=weakSelf;
+                                 [mf setSubject: [NSString stringWithFormat: @"Abuse from user fingerprint %@",mutePost.fingerprint]];
+                                [weakSelf presentViewController: mf animated: YES completion:^{
+                                }];
+                                   
+                               }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    
+    [self presentViewController: alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -417,6 +479,13 @@
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
   return YES;
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+  [self dismissViewControllerAnimated: YES completion:^{
+    
+  }];
 }
 
 @end

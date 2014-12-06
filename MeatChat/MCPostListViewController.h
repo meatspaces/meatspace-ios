@@ -10,8 +10,9 @@
 #import <SIOSocket/SIOSocket.h>
 #import <AVFoundation/AVAssetResourceLoader.h>
 #import "MCPostViewController.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, AVAssetResourceLoaderDelegate>
+@interface MCPostListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, AVAssetResourceLoaderDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic)IBOutlet NSLayoutConstraint *containerHeight;
 @property (strong, nonatomic)IBOutlet UITableView *tableView;
