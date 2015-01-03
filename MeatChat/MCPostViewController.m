@@ -22,6 +22,7 @@
 @property (atomic) BOOL capturing;
 @property (strong, nonatomic) NSDictionary *frameProperties;
 @property (nonatomic) int skipFrames;
+@property (nonatomic) AVCaptureVideoPreviewLayer *captureLayer;
 
 - (void)updateCount;
 @end
@@ -41,6 +42,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   self.skipFrames=0;
       // Do any additional setup after loading the view.
   [self setupCaptureSession];
+  [self orientationChanged];
 }
 
 + (NSArray*)placeholders
@@ -119,6 +121,7 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
   captureLayer.videoGravity=AVLayerVideoGravityResizeAspectFill;
   
   [self.imageButton.layer addSublayer:captureLayer];
+  self.captureLayer=captureLayer;
 
     // Configure your output.
   dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
@@ -130,9 +133,6 @@ const int CAPTURE_FRAMES_PER_SECOND=5;
    [NSNumber numberWithInt:kCVPixelFormatType_32BGRA]
                               forKey:(id)kCVPixelBufferPixelFormatTypeKey];
   
-  
-  
-    // Start the session running to start the flow of data
   
     // Assign session to an ivar.
   [self setSession:session];
@@ -182,6 +182,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (IBAction)toggleFlashlight:(id)sender {
   [self.session beginConfiguration];
   AVCaptureDevice *camera=[self cameraWithPosition:AVCaptureDevicePositionBack];
+  if(![camera isTorchModeSupported: AVCaptureTorchModeOff]) {
+    [self.session commitConfiguration];
+    return;
+  }
   [camera lockForConfiguration:nil];
   if (camera.torchMode == AVCaptureTorchModeOff) {
     camera.torchMode=AVCaptureTorchModeOn;
@@ -221,7 +225,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
       NSError *err;
       [currentCameraInput.device lockForConfiguration:&err];
       if(!err) {
-        currentCameraInput.device.torchMode=AVCaptureTorchModeOff;
+        if([currentCameraInput.device isTorchModeSupported: AVCaptureTorchModeOff]) {
+          currentCameraInput.device.torchMode=AVCaptureTorchModeOff;
+        }
         [currentCameraInput.device unlockForConfiguration];
       }
       newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
@@ -309,10 +315,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   
     // Create an image object from the Quartz image
   AVCaptureInput* currentCameraInput = [_session.inputs objectAtIndex:0];
-  int cameraImageOrientation = ((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionBack ?
-    UIImageOrientationRight:
-    UIImageOrientationLeftMirrored;
-  UIImage *image = [[UIImage alloc] initWithCGImage:quartzImage scale:(CGFloat)1.0 orientation:cameraImageOrientation];
+  BOOL frontcamera= ((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionFront;
+  UIImage *image = [[UIImage alloc] initWithCGImage:quartzImage scale:(CGFloat)1.0 orientation: [self currentImageOrientationWithMirroring: frontcamera]];
 
     // Release the Quartz image
   CGImageRelease(quartzImage);
@@ -359,6 +363,72 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   return YES;
   
 }
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+  [self orientationChanged];
+}
+
+
+-(void) orientationChanged
+{
+  // get the new orientation from device
+  AVCaptureVideoOrientation newOrientation = [self videoOrientationFromDeviceOrientation: [UIDevice currentDevice].orientation];
+  
+  // set the orientation of preview layer :( which will be displayed in the device )
+  [self.captureLayer.connection setVideoOrientation:newOrientation];
+  
+  // set the orientation of the connection: which will take care of capture
+  //[pCaptureConnection setVideoOrientation:newOrientation];
+  
+}
+
+- (AVCaptureVideoOrientation)videoOrientationFromDeviceOrientation:(UIDeviceOrientation)deviceOrientation
+{
+  AVCaptureVideoOrientation orientation;
+  switch (deviceOrientation) {
+    case UIDeviceOrientationUnknown:
+      orientation = AVCaptureVideoOrientationPortrait;
+      break;
+    case UIDeviceOrientationPortrait:
+      orientation = AVCaptureVideoOrientationPortrait;
+      break;
+    case UIDeviceOrientationPortraitUpsideDown:
+      orientation = AVCaptureVideoOrientationPortraitUpsideDown;
+      break;
+    case UIDeviceOrientationLandscapeLeft:
+      orientation = AVCaptureVideoOrientationLandscapeRight;
+      break;
+    case UIDeviceOrientationLandscapeRight:
+      orientation = AVCaptureVideoOrientationLandscapeLeft;
+      break;
+    case UIDeviceOrientationFaceUp:
+      orientation = AVCaptureVideoOrientationPortrait;
+      break;
+    case UIDeviceOrientationFaceDown:
+      orientation = AVCaptureVideoOrientationPortrait;
+      break;
+  }
+  return orientation;
+}
+
+- (UIImageOrientation)currentImageOrientationWithMirroring: (BOOL)isUsingFrontCamera
+{
+  switch ([UIDevice currentDevice].orientation)
+  {
+    case UIDeviceOrientationPortrait:
+      return isUsingFrontCamera ? UIImageOrientationRight : UIImageOrientationLeftMirrored;
+    case UIDeviceOrientationPortraitUpsideDown:
+      return isUsingFrontCamera ? UIImageOrientationLeft :UIImageOrientationRightMirrored;
+    case UIDeviceOrientationLandscapeLeft:
+      return isUsingFrontCamera ? UIImageOrientationDown :  UIImageOrientationUpMirrored;
+    case UIDeviceOrientationLandscapeRight:
+      return isUsingFrontCamera ? UIImageOrientationUp : UIImageOrientationDownMirrored;
+    default:
+      return  UIImageOrientationUp;
+  }
+}
+
 
 
 @end
