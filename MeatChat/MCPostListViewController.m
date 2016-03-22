@@ -7,7 +7,6 @@
 //
 
 #import "MCPostListViewController.h"
-#import "MCPostCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Reachability.h"
 #import "MeatChat2-Swift.h"

@@ -18,13 +18,13 @@
 		2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */; };
 		2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB51885CFEB001BE713 /* NMViewController.m */; };
 		2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB71885CFEB001BE713 /* Images.xcassets */; };
-		2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD51885D05B001BE713 /* MCPostCell.m */; };
 		2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */; };
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
 		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
 		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
 		2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B273F19E980E200A03B04 /* UIImage+Extras.m */; };
 		2C4CC2FB1CA1D8CF0098F706 /* PSPDFAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */; };
+		2C4CC2FD1CA1DEF60098F706 /* MCPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */; };
 		2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */; };
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
 		2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */; };
@@ -54,8 +54,6 @@
 		2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat2Tests-Info.plist"; sourceTree = "<group>"; };
 		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeatChatTests.m; sourceTree = "<group>"; };
-		2C1F8CD41885D05B001BE713 /* MCPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostCell.h; sourceTree = "<group>"; };
-		2C1F8CD51885D05B001BE713 /* MCPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostCell.m; sourceTree = "<group>"; };
 		2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostListViewController.h; sourceTree = "<group>"; };
 		2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostListViewController.m; sourceTree = "<group>"; };
 		2C1F8CFC1885FB86001BE713 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -66,6 +64,7 @@
 		2C2B273F19E980E200A03B04 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
 		2C4CC2F91CA1D8CF0098F706 /* PSPDFAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPDFAssert.h; sourceTree = "<group>"; };
 		2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFAssert.m; sourceTree = "<group>"; };
+		2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostCell.swift; sourceTree = "<group>"; };
 		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPost.swift; sourceTree = "<group>"; };
@@ -202,8 +201,7 @@
 		2C27841919C4321900EDCA57 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F8CD41885D05B001BE713 /* MCPostCell.h */,
-				2C1F8CD51885D05B001BE713 /* MCPostCell.m */,
+				2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -359,8 +357,8 @@
 				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
 				2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */,
 				2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */,
+				2C4CC2FD1CA1DEF60098F706 /* MCPostCell.swift in Sources */,
 				2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */,
-				2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
