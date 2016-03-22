@@ -23,10 +23,11 @@
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
 		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
 		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
-		2C27842019C4331400EDCA57 /* MCPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C27841F19C4331400EDCA57 /* MCPost.m */; };
 		2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B273F19E980E200A03B04 /* UIImage+Extras.m */; };
+		2C4CC2FB1CA1D8CF0098F706 /* PSPDFAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */; };
 		2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */; };
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
+		2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */; };
 		61B37259671C453AA69C08CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24400EDD099742C5ABF721BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,12 +62,13 @@
 		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeatChat-Bridging-Header.h"; sourceTree = "<group>"; };
-		2C27841E19C4331400EDCA57 /* MCPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPost.h; sourceTree = "<group>"; };
-		2C27841F19C4331400EDCA57 /* MCPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPost.m; sourceTree = "<group>"; };
 		2C2B273E19E980E200A03B04 /* UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extras.h"; sourceTree = "<group>"; };
 		2C2B273F19E980E200A03B04 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
+		2C4CC2F91CA1D8CF0098F706 /* PSPDFAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPDFAssert.h; sourceTree = "<group>"; };
+		2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFAssert.m; sourceTree = "<group>"; };
 		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPost.swift; sourceTree = "<group>"; };
 		4134EA2819E9EC210093B991 /* MeatChat2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat2-Prefix.pch"; path = "MeatChat/MeatChat2-Prefix.pch"; sourceTree = "<group>"; };
 		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,12 +130,12 @@
 		2C1F8CA21885CFEB001BE713 /* MeatChat */ = {
 			isa = PBXGroup;
 			children = (
+				2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */,
 				2C27841A19C4322600EDCA57 /* Models */,
 				2C27841919C4321900EDCA57 /* Views */,
 				2C27841819C431F800EDCA57 /* Controllers */,
 				2C1F8CDF1885F89B001BE713 /* External */,
 				2C1F8CAB1885CFEB001BE713 /* MCAppDelegate.h */,
-				2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */,
 				2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */,
 				2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */,
 				2C1F8CB71885CFEB001BE713 /* Images.xcassets */,
@@ -178,6 +180,8 @@
 		2C1F8CDF1885F89B001BE713 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				2C4CC2F91CA1D8CF0098F706 /* PSPDFAssert.h */,
+				2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -207,10 +211,9 @@
 		2C27841A19C4322600EDCA57 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2C27841E19C4331400EDCA57 /* MCPost.h */,
-				2C27841F19C4331400EDCA57 /* MCPost.m */,
 				2C2B273E19E980E200A03B04 /* UIImage+Extras.h */,
 				2C2B273F19E980E200A03B04 /* UIImage+Extras.m */,
+				2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				2C1F8C961885CFEB001BE713 /* Frameworks */,
 				2C1F8C971885CFEB001BE713 /* Resources */,
 				CF0CBC43598E48318E5B1E58 /* Copy Pods Resources */,
+				41F99944D11ECDBE143167A1 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,11 +257,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NM;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Nordaaker AS";
 				TargetAttributes = {
 					2C1F8C981885CFEB001BE713 = {
-						DevelopmentTeam = 92W4VZ8HPS;
+						DevelopmentTeam = SVJ2962KBR;
 					};
 				};
 			};
@@ -296,6 +300,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		41F99944D11ECDBE143167A1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBA07FE4852D4CF2954B2AB4 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,10 +353,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C188A8418889EC3002CD14C /* MCPostViewController.m in Sources */,
+				2C4CC2FB1CA1D8CF0098F706 /* PSPDFAssert.m in Sources */,
+				2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */,
 				2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */,
 				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
 				2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */,
-				2C27842019C4331400EDCA57 /* MCPost.m in Sources */,
 				2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */,
 				2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */,
 				2C1F8CD61885D05B001BE713 /* MCPostCell.m in Sources */,
@@ -392,6 +412,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -459,6 +480,7 @@
 				INFOPLIST_FILE = "MeatChat/MeatChat2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.output.meatchat;
 				PRODUCT_NAME = MeatChat2;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
@@ -481,6 +503,7 @@
 				INFOPLIST_FILE = "MeatChat/MeatChat2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.output.meatchat;
 				PRODUCT_NAME = MeatChat2;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";

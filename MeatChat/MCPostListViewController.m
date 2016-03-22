@@ -8,10 +8,9 @@
 
 #import "MCPostListViewController.h"
 #import "MCPostCell.h"
-#import "MCPost.h"
 #import <AVFoundation/AVFoundation.h>
-#import "TestFlight.h"
 #import "Reachability.h"
+#import "MeatChat2-Swift.h"
 
 
 @interface MCPostListViewController ()
@@ -188,10 +187,10 @@
 {
    __weak typeof(self) weakSelf = self;
   NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]);
+  [self.postViewController setPlaceholder: @"Connecting to meatspace"];
   [SIOSocket socketWithHost: [[NSUserDefaults standardUserDefaults] objectForKey: @"server_url"]
                    response: ^(SIOSocket *socket)
    {
-     [self.postViewController setPlaceholder: @"Connecting to meatspace"];
      self.socket = socket;
      self.socket.onConnect = ^() {
        [weakSelf.socket emit: @"join" args: @[ @"mp4" ]];
@@ -293,7 +292,7 @@
     if([self.seen objectForKey: key] ) { return; }
     [self.seen setObject: @"1" forKey: key];
   };
-  MCPost *post=[[MCPost alloc] initWithDictionary: data];
+  MCPost *post=[[MCPost alloc] initWithDict: data];
   [self.items addObject: post];
   NSIndexPath *newRow=[NSIndexPath indexPathForItem:[self.items count]-1 inSection:0];
   [CATransaction begin];
