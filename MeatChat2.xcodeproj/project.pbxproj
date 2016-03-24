@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		22771F1C1A0D171900D93C65 /* DefaultDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */; };
-		2C188A8418889EC3002CD14C /* MCPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C188A8318889EC3002CD14C /* MCPostViewController.m */; };
 		2C1F8C9D1885CFEB001BE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9C1885CFEB001BE713 /* Foundation.framework */; };
 		2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */; };
 		2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
@@ -16,9 +15,7 @@
 		2C1F8CA91885CFEB001BE713 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CA81885CFEB001BE713 /* main.m */; };
 		2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */; };
 		2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */; };
-		2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB51885CFEB001BE713 /* NMViewController.m */; };
 		2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB71885CFEB001BE713 /* Images.xcassets */; };
-		2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */; };
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
 		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
 		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
@@ -28,14 +25,15 @@
 		2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */; };
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
 		2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */; };
+		2CEB7CDB1CA1ECFD0038D78B /* NMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDA1CA1ECFD0038D78B /* NMViewController.swift */; };
+		2CEB7CDD1CA1ED6E0038D78B /* MCPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */; };
+		2CEB7CDF1CA1EE320038D78B /* MCPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDE1CA1EE320038D78B /* MCPostViewController.swift */; };
 		61B37259671C453AA69C08CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24400EDD099742C5ABF721BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultDefaults.plist; sourceTree = "<group>"; };
 		24400EDD099742C5ABF721BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C188A8218889EC3002CD14C /* MCPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostViewController.h; sourceTree = "<group>"; };
-		2C188A8318889EC3002CD14C /* MCPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostViewController.m; sourceTree = "<group>"; };
 		2C1F8C991885CFEB001BE713 /* MeatChat2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatChat2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8C9C1885CFEB001BE713 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,15 +45,11 @@
 		2C1F8CAB1885CFEB001BE713 /* MCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAppDelegate.h; sourceTree = "<group>"; };
 		2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAppDelegate.m; sourceTree = "<group>"; };
 		2C1F8CAF1885CFEB001BE713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		2C1F8CB41885CFEB001BE713 /* NMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NMViewController.h; sourceTree = "<group>"; };
-		2C1F8CB51885CFEB001BE713 /* NMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NMViewController.m; sourceTree = "<group>"; };
 		2C1F8CB71885CFEB001BE713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2C1F8CBE1885CFEB001BE713 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeatChat2Tests-Info.plist"; sourceTree = "<group>"; };
+		2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MeatChat2Tests-Info.plist"; path = "MeatChatTests/MeatChat2Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2C1F8CC81885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeatChatTests.m; sourceTree = "<group>"; };
-		2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPostListViewController.h; sourceTree = "<group>"; };
-		2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPostListViewController.m; sourceTree = "<group>"; };
+		2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MeatChatTests.m; path = MeatChatTests/MeatChatTests.m; sourceTree = SOURCE_ROOT; };
 		2C1F8CFC1885FB86001BE713 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -68,6 +62,9 @@
 		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPost.swift; sourceTree = "<group>"; };
+		2CEB7CDA1CA1ECFD0038D78B /* NMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMViewController.swift; sourceTree = "<group>"; };
+		2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostListViewController.swift; sourceTree = "<group>"; };
+		2CEB7CDE1CA1EE320038D78B /* MCPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostViewController.swift; sourceTree = "<group>"; };
 		4134EA2819E9EC210093B991 /* MeatChat2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat2-Prefix.pch"; path = "MeatChat/MeatChat2-Prefix.pch"; sourceTree = "<group>"; };
 		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,7 +93,6 @@
 			children = (
 				4134EA2819E9EC210093B991 /* MeatChat2-Prefix.pch */,
 				2C1F8CA21885CFEB001BE713 /* MeatChat */,
-				2C1F8CC41885CFEB001BE713 /* MeatChat */,
 				2C1F8C9B1885CFEB001BE713 /* Frameworks */,
 				2C1F8C9A1885CFEB001BE713 /* Products */,
 				30709C7767B2121A7B0101B4 /* Pods */,
@@ -146,6 +142,8 @@
 		2C1F8CA31885CFEB001BE713 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */,
+				2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */,
 				2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */,
 				2C1F8CA41885CFEB001BE713 /* MeatChat2-Info.plist */,
 				2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */,
@@ -157,28 +155,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2C1F8CC41885CFEB001BE713 /* MeatChat */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */,
-				2C1F8CC51885CFEB001BE713 /* Supporting Files */,
-			);
-			name = MeatChat;
-			path = MeatChatTests;
-			sourceTree = "<group>";
-		};
-		2C1F8CC51885CFEB001BE713 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2C1F8CC61885CFEB001BE713 /* MeatChat2Tests-Info.plist */,
-				2C1F8CC71885CFEB001BE713 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		2C1F8CDF1885F89B001BE713 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */,
 				2C4CC2F91CA1D8CF0098F706 /* PSPDFAssert.h */,
 				2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */,
 			);
@@ -188,12 +168,9 @@
 		2C27841819C431F800EDCA57 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F8CB41885CFEB001BE713 /* NMViewController.h */,
-				2C1F8CB51885CFEB001BE713 /* NMViewController.m */,
-				2C1F8CD71885D08A001BE713 /* MCPostListViewController.h */,
-				2C1F8CD81885D08A001BE713 /* MCPostListViewController.m */,
-				2C188A8218889EC3002CD14C /* MCPostViewController.h */,
-				2C188A8318889EC3002CD14C /* MCPostViewController.m */,
+				2CEB7CDA1CA1ECFD0038D78B /* NMViewController.swift */,
+				2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */,
+				2CEB7CDE1CA1EE320038D78B /* MCPostViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -350,12 +327,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C188A8418889EC3002CD14C /* MCPostViewController.m in Sources */,
+				2CEB7CDD1CA1ED6E0038D78B /* MCPostListViewController.swift in Sources */,
 				2C4CC2FB1CA1D8CF0098F706 /* PSPDFAssert.m in Sources */,
 				2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */,
-				2C1F8CB61885CFEB001BE713 /* NMViewController.m in Sources */,
 				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
-				2C1F8CD91885D08A001BE713 /* MCPostListViewController.m in Sources */,
+				2CEB7CDB1CA1ECFD0038D78B /* NMViewController.swift in Sources */,
+				2CEB7CDF1CA1EE320038D78B /* MCPostViewController.swift in Sources */,
 				2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */,
 				2C4CC2FD1CA1DEF60098F706 /* MCPostCell.swift in Sources */,
 				2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */,
@@ -387,7 +364,8 @@
 				2C1F8CC81885CFEB001BE713 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
+			path = MeatChatTests;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 

@@ -8,7 +8,7 @@
 
 #import "MCAppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
-#import "MCPostListViewController.h"
+#import "MeatChat2-Swift.h"
 
 @implementation MCAppDelegate
 
