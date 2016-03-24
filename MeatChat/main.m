@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MCAppDelegate.h"
+#import "MeatChat2-Swift.h"
 
 int main(int argc, char * argv[])
 {

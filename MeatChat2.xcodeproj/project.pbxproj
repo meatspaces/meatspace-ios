@@ -13,7 +13,6 @@
 		2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CA01885CFEB001BE713 /* UIKit.framework */; };
 		2C1F8CA71885CFEB001BE713 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CA51885CFEB001BE713 /* InfoPlist.strings */; };
 		2C1F8CA91885CFEB001BE713 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CA81885CFEB001BE713 /* main.m */; };
-		2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */; };
 		2C1F8CB01885CFEB001BE713 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */; };
 		2C1F8CB81885CFEB001BE713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C1F8CB71885CFEB001BE713 /* Images.xcassets */; };
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
@@ -24,6 +23,7 @@
 		2C4CC2FD1CA1DEF60098F706 /* MCPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */; };
 		2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */; };
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
+		2CC8CA5C1CA4A73B002F8A31 /* MCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8CA5B1CA4A73B002F8A31 /* MCAppDelegate.swift */; };
 		2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */; };
 		2CEB7CDB1CA1ECFD0038D78B /* NMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDA1CA1ECFD0038D78B /* NMViewController.swift */; };
 		2CEB7CDD1CA1ED6E0038D78B /* MCPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */; };
@@ -42,8 +42,6 @@
 		2C1F8CA61885CFEB001BE713 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C1F8CA81885CFEB001BE713 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2C1F8CAA1885CFEB001BE713 /* MeatChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeatChat-Prefix.pch"; sourceTree = "<group>"; };
-		2C1F8CAB1885CFEB001BE713 /* MCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCAppDelegate.h; sourceTree = "<group>"; };
-		2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCAppDelegate.m; sourceTree = "<group>"; };
 		2C1F8CAF1885CFEB001BE713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		2C1F8CB71885CFEB001BE713 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2C1F8CBE1885CFEB001BE713 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -61,6 +59,7 @@
 		2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostCell.swift; sourceTree = "<group>"; };
 		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		2CC8CA5B1CA4A73B002F8A31 /* MCAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCAppDelegate.swift; sourceTree = "<group>"; };
 		2CD80B5A1CA18EAB0035CB1F /* MCPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPost.swift; sourceTree = "<group>"; };
 		2CEB7CDA1CA1ECFD0038D78B /* NMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMViewController.swift; sourceTree = "<group>"; };
 		2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostListViewController.swift; sourceTree = "<group>"; };
@@ -125,12 +124,11 @@
 		2C1F8CA21885CFEB001BE713 /* MeatChat */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F8CAC1885CFEB001BE713 /* MCAppDelegate.m */,
+				2CC8CA5B1CA4A73B002F8A31 /* MCAppDelegate.swift */,
 				2C27841A19C4322600EDCA57 /* Models */,
 				2C27841919C4321900EDCA57 /* Views */,
 				2C27841819C431F800EDCA57 /* Controllers */,
 				2C1F8CDF1885F89B001BE713 /* External */,
-				2C1F8CAB1885CFEB001BE713 /* MCAppDelegate.h */,
 				2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */,
 				2C1F8CAE1885CFEB001BE713 /* Main_iPhone.storyboard */,
 				2C1F8CB71885CFEB001BE713 /* Images.xcassets */,
@@ -333,8 +331,8 @@
 				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
 				2CEB7CDB1CA1ECFD0038D78B /* NMViewController.swift in Sources */,
 				2CEB7CDF1CA1EE320038D78B /* MCPostViewController.swift in Sources */,
-				2C1F8CAD1885CFEB001BE713 /* MCAppDelegate.m in Sources */,
 				2C4CC2FD1CA1DEF60098F706 /* MCPostCell.swift in Sources */,
+				2CC8CA5C1CA4A73B002F8A31 /* MCAppDelegate.swift in Sources */,
 				2C2B274019E980E200A03B04 /* UIImage+Extras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
