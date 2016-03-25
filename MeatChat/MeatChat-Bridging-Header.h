@@ -9,5 +9,4 @@
 #import <AVFoundation/AVAssetResourceLoader.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "Reachability.h"
-#import "UIImage+Extras.h"
 #import <CoreGraphics/CGImage.h>
