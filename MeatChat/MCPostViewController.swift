@@ -230,7 +230,6 @@ class MCPostViewController : UIViewController, AVCaptureVideoDataOutputSampleBuf
                     "message": self.textfield.text!,
                     "media": encodedImages
                 ]
-                print(message)
                 dispatch_async(dispatch_get_main_queue(), {
                     parentViewController!.socket!.emit("message", args: [message])
                     self.closePostWithPosted(true)

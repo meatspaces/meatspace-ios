@@ -18,7 +18,6 @@
 		2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFC1885FB86001BE713 /* libicucore.dylib */; };
 		2C1F8CFF1885FB8C001BE713 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */; };
 		2C1F8D011885FB92001BE713 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C1F8D001885FB92001BE713 /* Security.framework */; };
-		2C4CC2FB1CA1D8CF0098F706 /* PSPDFAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */; };
 		2C4CC2FD1CA1DEF60098F706 /* MCPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */; };
 		2C8E87AD19EEFC5D00EB1396 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */; };
 		2CAAA5DC19ED19CA00FE68CF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */; };
@@ -52,8 +51,6 @@
 		2C1F8CFE1885FB8C001BE713 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C1F8D001885FB92001BE713 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2C27841B19C4329B00EDCA57 /* MeatChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeatChat-Bridging-Header.h"; sourceTree = "<group>"; };
-		2C4CC2F91CA1D8CF0098F706 /* PSPDFAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPDFAssert.h; sourceTree = "<group>"; };
-		2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSPDFAssert.m; sourceTree = "<group>"; };
 		2C4CC2FC1CA1DEF60098F706 /* MCPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostCell.swift; sourceTree = "<group>"; };
 		2C8E87AC19EEFC5D00EB1396 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2CAAA5DB19ED19CA00FE68CF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -156,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				2C1F8CCA1885CFEB001BE713 /* MeatChatTests.m */,
-				2C4CC2F91CA1D8CF0098F706 /* PSPDFAssert.h */,
-				2C4CC2FA1CA1D8CF0098F706 /* PSPDFAssert.m */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -325,7 +320,6 @@
 			files = (
 				2CEB7CDD1CA1ED6E0038D78B /* MCPostListViewController.swift in Sources */,
 				2CC8CA5E1CA4B539002F8A31 /* UIImage-Scaled.swift in Sources */,
-				2C4CC2FB1CA1D8CF0098F706 /* PSPDFAssert.m in Sources */,
 				2CD80B5B1CA18EAB0035CB1F /* MCPost.swift in Sources */,
 				2C1F8CA91885CFEB001BE713 /* main.m in Sources */,
 				2CEB7CDB1CA1ECFD0038D78B /* NMViewController.swift in Sources */,

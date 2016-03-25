@@ -4,7 +4,6 @@
 
 #import <Foundation/Foundation.h>
 #import "NSDate+TimeAgo.h"
-#import "PSPDFAssert.h"
 #import <SIOSocket/SIOSocket.h>
 #import <AVFoundation/AVAssetResourceLoader.h>
 #import <MessageUI/MFMailComposeViewController.h>

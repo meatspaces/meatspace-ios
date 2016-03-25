@@ -63,7 +63,6 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight=75;
-        self.atBottom=true;
 
     }
     
@@ -314,6 +313,13 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
                         }
                     })
                 }
+            })
+            self.socket!.on("active", callback: { (args) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.activeCount.text=args[0].stringValue
+                    self.activeCount.hidden=false
+                    })
+                
             })
             self.socket!.onError = { (errorInfo) in
                 print(errorInfo)

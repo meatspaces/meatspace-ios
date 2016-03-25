@@ -163,9 +163,9 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crz-Os-b6z">
-                                                    <rect key="frame" x="8" y="20" width="7" height="21"/>
+                                                    <rect key="frame" x="8" y="20" width="15" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="7" id="FxP-68-heX"/>
+                                                        <constraint firstAttribute="width" constant="15" id="FxP-68-heX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.1647058874" blue="0.15686275059999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -194,6 +194,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="iZ1-dh-0LX" secondAttribute="trailing" constant="8" id="azU-Bm-za9"/>
                                                 <constraint firstItem="iZ1-dh-0LX" firstAttribute="top" secondItem="AIT-Di-BNJ" secondAttribute="top" constant="18" id="i7y-IN-fra"/>
                                                 <constraint firstItem="iZ1-dh-0LX" firstAttribute="leading" secondItem="AIT-Di-BNJ" secondAttribute="leading" id="jeL-ks-6h8"/>
+                                                <constraint firstAttribute="bottom" secondItem="Crz-Os-b6z" secondAttribute="bottom" id="mJu-uV-276"/>
                                                 <constraint firstItem="Crz-Os-b6z" firstAttribute="top" secondItem="AIT-Di-BNJ" secondAttribute="top" constant="20" id="nHh-s4-igd"/>
                                             </constraints>
                                             <variation key="default">
