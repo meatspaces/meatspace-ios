@@ -27,12 +27,12 @@
 		2CEB7CDB1CA1ECFD0038D78B /* NMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDA1CA1ECFD0038D78B /* NMViewController.swift */; };
 		2CEB7CDD1CA1ED6E0038D78B /* MCPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */; };
 		2CEB7CDF1CA1EE320038D78B /* MCPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB7CDE1CA1EE320038D78B /* MCPostViewController.swift */; };
-		61B37259671C453AA69C08CE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24400EDD099742C5ABF721BF /* libPods.a */; };
+		7050E4AB73D009B4CD69B263 /* libPods-MeatChat2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8667A4E94C6C9DF20BC6D373 /* libPods-MeatChat2.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00286F5B245C02DF19D54856 /* Pods-MeatChat2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatChat2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeatChat2/Pods-MeatChat2.debug.xcconfig"; sourceTree = "<group>"; };
 		22771F1B1A0D171900D93C65 /* DefaultDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultDefaults.plist; sourceTree = "<group>"; };
-		24400EDD099742C5ABF721BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8C991885CFEB001BE713 /* MeatChat2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeatChat2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F8C9C1885CFEB001BE713 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,8 +61,8 @@
 		2CEB7CDC1CA1ED6E0038D78B /* MCPostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostListViewController.swift; sourceTree = "<group>"; };
 		2CEB7CDE1CA1EE320038D78B /* MCPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPostViewController.swift; sourceTree = "<group>"; };
 		4134EA2819E9EC210093B991 /* MeatChat2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MeatChat2-Prefix.pch"; path = "MeatChat/MeatChat2-Prefix.pch"; sourceTree = "<group>"; };
-		878D885A722FC2C12257BA5B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		599CE909B97176E36A037704 /* Pods-MeatChat2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeatChat2.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeatChat2/Pods-MeatChat2.release.xcconfig"; sourceTree = "<group>"; };
+		8667A4E94C6C9DF20BC6D373 /* libPods-MeatChat2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeatChat2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				2C1F8CFD1885FB86001BE713 /* libicucore.dylib in Frameworks */,
 				2C1F8C9F1885CFEB001BE713 /* CoreGraphics.framework in Frameworks */,
 				2C1F8CA11885CFEB001BE713 /* UIKit.framework in Frameworks */,
-				61B37259671C453AA69C08CE /* libPods.a in Frameworks */,
+				7050E4AB73D009B4CD69B263 /* libPods-MeatChat2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 				2C1F8CA21885CFEB001BE713 /* MeatChat */,
 				2C1F8C9B1885CFEB001BE713 /* Frameworks */,
 				2C1F8C9A1885CFEB001BE713 /* Products */,
-				30709C7767B2121A7B0101B4 /* Pods */,
+				A0DBFF67934E096D57663829 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,7 +112,7 @@
 				2C1F8C9E1885CFEB001BE713 /* CoreGraphics.framework */,
 				2C1F8CA01885CFEB001BE713 /* UIKit.framework */,
 				2C1F8CBE1885CFEB001BE713 /* XCTest.framework */,
-				24400EDD099742C5ABF721BF /* libPods.a */,
+				8667A4E94C6C9DF20BC6D373 /* libPods-MeatChat2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,11 +184,11 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		30709C7767B2121A7B0101B4 /* Pods */ = {
+		A0DBFF67934E096D57663829 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */,
-				878D885A722FC2C12257BA5B /* Pods.release.xcconfig */,
+				00286F5B245C02DF19D54856 /* Pods-MeatChat2.debug.xcconfig */,
+				599CE909B97176E36A037704 /* Pods-MeatChat2.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -200,12 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C1F8CCE1885CFEB001BE713 /* Build configuration list for PBXNativeTarget "MeatChat2" */;
 			buildPhases = (
-				BBA07FE4852D4CF2954B2AB4 /* Check Pods Manifest.lock */,
+				12918A3A3DCE189D18136121 /* 📦 Check Pods Manifest.lock */,
 				2C1F8C951885CFEB001BE713 /* Sources */,
 				2C1F8C961885CFEB001BE713 /* Frameworks */,
 				2C1F8C971885CFEB001BE713 /* Resources */,
-				CF0CBC43598E48318E5B1E58 /* Copy Pods Resources */,
-				41F99944D11ECDBE143167A1 /* Embed Pods Frameworks */,
+				445DBA76423D0A1F07EBDDE0 /* 📦 Embed Pods Frameworks */,
+				EC0DC83DCD9B573FB5E9D6F7 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,7 +227,7 @@
 				ORGANIZATIONNAME = "Nordaaker AS";
 				TargetAttributes = {
 					2C1F8C981885CFEB001BE713 = {
-						DevelopmentTeam = SVJ2962KBR;
+						DevelopmentTeam = 6H9E5FXCJJ;
 					};
 				};
 			};
@@ -266,29 +266,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41F99944D11ECDBE143167A1 /* Embed Pods Frameworks */ = {
+		12918A3A3DCE189D18136121 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBA07FE4852D4CF2954B2AB4 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,19 +281,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CF0CBC43598E48318E5B1E58 /* Copy Pods Resources */ = {
+		445DBA76423D0A1F07EBDDE0 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeatChat2/Pods-MeatChat2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC0DC83DCD9B573FB5E9D6F7 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeatChat2/Pods-MeatChat2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -435,7 +435,7 @@
 		};
 		2C1F8CCF1885CFEB001BE713 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB118653E2E1DB891F4CA8C6 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 00286F5B245C02DF19D54856 /* Pods-MeatChat2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -446,7 +446,7 @@
 				INFOPLIST_FILE = "MeatChat/MeatChat2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.output.meatchat;
+				PRODUCT_BUNDLE_IDENTIFIER = io.output.meatchat.jpw;
 				PRODUCT_NAME = MeatChat2;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
@@ -458,7 +458,7 @@
 		};
 		2C1F8CD01885CFEB001BE713 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 878D885A722FC2C12257BA5B /* Pods.release.xcconfig */;
+			baseConfigurationReference = 599CE909B97176E36A037704 /* Pods-MeatChat2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -469,7 +469,7 @@
 				INFOPLIST_FILE = "MeatChat/MeatChat2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.output.meatchat;
+				PRODUCT_BUNDLE_IDENTIFIER = io.output.meatchat.jpw;
 				PRODUCT_NAME = MeatChat2;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeatChat/MeatChat-Bridging-Header.h";
