@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import DateToolsSwift
 
 class MCPost :NSObject {
     
@@ -54,7 +55,7 @@ class MCPost :NSObject {
     func relativeTime() -> String {
         let epoch: TimeInterval = Double(created)/1000
         let postDate: Date = Date(timeIntervalSince1970: epoch)
-        return (postDate as NSDate).dateTimeAgo()
+        return postDate.timeAgoSinceNow
     }
     
     func cleanup() {

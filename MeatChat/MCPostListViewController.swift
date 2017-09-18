@@ -8,7 +8,8 @@
 
 import UIKit
 import MessageUI.MFMailComposeViewController
-
+import SocketIO
+import ReachabilitySwift
 
 class MCPostListViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, AVAssetResourceLoaderDelegate,MFMailComposeViewControllerDelegate {
     
@@ -26,7 +27,7 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var activeCount:UILabel!
     @IBOutlet weak var blockButton:UIButton!
 
-    var  socket:SIOSocket?
+    var  socket:SocketIOClient?
     var  postViewController:MCPostViewController?
     var acceptedEula:Bool!
     
@@ -119,22 +120,26 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
     
     func setupReachability() {
         let server_url=URL(string: UserDefaults.standard.object(forKey: "server_url") as! String);
-        let reach = Reachability(hostname: server_url!.host);
-        NotificationCenter.default.addObserver(self, selector: #selector(MCPostListViewController.reachabilityChanged(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
-        reach?.startNotifier()
-        self.setupSocket();
+        let reach = Reachability(hostname: server_url!.host!)!
+        NotificationCenter.default.addObserver(self, selector: #selector(MCPostListViewController.reachabilityChanged(_:)), name: ReachabilityChangedNotification, object: nil)
+        do {
+            try reach.startNotifier()
+        } catch {
+            print("could not start reachability notifier")
+        }
+        // self.setupSocket();
     }
     
     func reachabilityChanged(_ notif:Notification) {
         let reach=notif.object as! Reachability;
-        reach.isReachable() ? self.setupSocket() : self.teardownSocket();
+        reach.isReachable ? self.setupSocket() : self.teardownSocket();
     }
     
 
         
     func teardownSocket() {
         
-        self.socket!.close()
+        self.socket!.disconnect()
         self.socket=nil;
         self.postViewController!.setPlaceHolder("Get the internet, bae.")
     }
@@ -284,66 +289,92 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         self.postViewController!.setPlaceHolder("Connecting to meatspace")
 
         
-        SIOSocket.socket(withHost: UserDefaults.standard.object(forKey: "server_url") as? String, response: { (sock) in
+        print("setupSocket")
+        self.socket = SocketIOClient(socketURL: URL(string: UserDefaults.standard.object(forKey: "server_url") as! String)!)
 
-            self.socket=sock
-            self.socket!.onConnect = {
-                weakSelf?.socket!.emit("join", args: ["mp4"])
-                DispatchQueue.main.async(execute: {
-                    weakSelf?.postViewController!.textfield.isEnabled=true
-                    weakSelf?.postViewController!.setRandomPlaceholder()
-                })
-            }
-            self.socket!.onDisconnect = {
-                DispatchQueue.main.async(execute: {
-                    weakSelf?.handleDisconnect()
-                })
-            }
-            self.socket!.on("message", callback: { (data) in
-                DispatchQueue.main.async(execute: {
-                    weakSelf!.addPost(data as! NSArray)
-                })
+        self.socket!.on(clientEvent: .connect) { data, ack in
+            print("join")
+            weakSelf?.socket!.emit("join", ["mp4"])
+            DispatchQueue.main.async(execute: {
+                weakSelf?.postViewController!.textfield.isEnabled=true
+                weakSelf?.postViewController!.setRandomPlaceholder()
             })
-            self.socket!.on("messageack", callback: { (data) in
-                if let message=data?[0] as? String {
-                    DispatchQueue.main.async(execute: {
-                        weakSelf?.postViewController!.setPlaceHolder(message)
-                        if let uid=(data?[1] as! NSDictionary)["userId"] as? String {
-                            self.userId=uid
-                        }
-                    })
+            ack.with("connected")
+        }
+        self.socket!.on(clientEvent: .disconnect) { data, ack in
+            DispatchQueue.main.async(execute: {
+                weakSelf?.handleDisconnect()
+            })
+        }
+        self.socket!.on("chat") { data, ack in
+            let arr = data as NSArray
+            print(arr.count)
+            DispatchQueue.main.async(execute: {
+                print(arr[0] as! NSDictionary)
+//                print(data[1] as! NSDictionary)
+            })
+            
+//            DispatchQueue.main.async(execute: {
+//                if let arr = data as NSArray? {
+//                    weakSelf!.addPost(arr)
+//                }
+//            })
+        }
+        self.socket!.on("message") { data, ack in
+            print(data)
+            DispatchQueue.main.async(execute: {
+                let arr = data as NSArray
+                weakSelf!.addPost(arr)
+            })
+        }
+        self.socket!.on("messageack") { data, ack in
+            if let message = (data as NSArray)[0] as? String {
+                DispatchQueue.main.async(execute: {
+                    weakSelf?.postViewController!.setPlaceHolder(message)
+                    if let uid=((data as NSArray)[1] as! NSDictionary)["userId"] as? String {
+                        self.userId=uid
+                    }
+                })
+            }
+        }
+        self.socket!.on("userid") { data, ack in
+            print(data)
+            DispatchQueue.main.async(execute: {
+                if let uid=((data as NSArray)[1] as! NSDictionary)["userId"] as? String {
+                    self.userId=uid
                 }
             })
-            self.socket!.on("active", callback: { (args) in
-                DispatchQueue.main.async(execute: {
-                    self.activeCount.text=(args?[0] as AnyObject).stringValue
-                    self.activeCount.isHidden=false
-                    })
-                
+        }
+        self.socket!.on("active") { args, ack in
+            DispatchQueue.main.async(execute: {
+                self.activeCount.text=((args as NSArray)[0] as AnyObject).stringValue
+                self.activeCount.isHidden=false
             })
-            self.socket!.onError = { (errorInfo) in
-                print(errorInfo)
-                DispatchQueue.main.async(execute: {
-                    weakSelf?.postViewController!.setPlaceHolder(String(format: "An error occured: %@", errorInfo!))
-                    })
-            }
-            self.socket!.onReconnect = { (numberOfAttempts) in
-                print(String(format: "Reconnect %ld",numberOfAttempts))
-            }
-            self.socket!.onReconnectionAttempt = { (numberOfAttempts) in
-                print(String(format: "Attempt %ld",numberOfAttempts))
-                DispatchQueue.main.async(execute: {
-                    weakSelf?.postViewController!.setPlaceHolder("Reconnecting to meatspace.")
-                })
-            }
-            self.socket!.onReconnectionError={ (errorInfo) in
-                print(errorInfo)
-                DispatchQueue.main.async(execute: {
-                    weakSelf!.postViewController!.setPlaceHolder(String(format: "Could not connect: %@", errorInfo!))
-                })
-            }
-        })
+            
+        }
+        self.socket!.on(clientEvent: .error) { (errorInfo, ack) in
+            print(errorInfo)
+            DispatchQueue.main.async(execute: {
+                weakSelf?.postViewController!.setPlaceHolder(String(format: "An error occured: %@", errorInfo))
+            })
+        }
+        self.socket!.on(clientEvent: .reconnect) { numberOfAttempts, ack in
+            print(String(format: "Reconnect %ld",numberOfAttempts))
+        }
+        self.socket!.on(clientEvent: .reconnectAttempt) { numberOfAttempts, ack in
+            print(String(format: "Attempt %ld",numberOfAttempts))
+            DispatchQueue.main.async(execute: {
+                weakSelf?.postViewController!.setPlaceHolder("Reconnecting to meatspace.")
+            })
+        }
+//        self.socket!.onReconnectionError={ (errorInfo) in
+//            print(errorInfo)
+//            DispatchQueue.main.async(execute: {
+//                weakSelf!.postViewController!.setPlaceHolder(String(format: "Could not connect: %@", errorInfo!))
+//            })
+//        }
         
+        self.socket!.connect()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

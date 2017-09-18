@@ -223,15 +223,18 @@ class MCPostViewController : UIViewController, AVCaptureVideoDataOutputSampleBuf
                 
                 var uuid:String = UIDevice.current.identifierForVendor!.uuidString
                 uuid=uuid.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
-                let index = uuid.characters.index(uuid.startIndex, offsetBy: 15)
+                print("uuid: \(uuid)")
+                let index = uuid.characters.index(uuid.startIndex, offsetBy: 32)
+                print("index: \(index)")
                 uuid=uuid.substring(to: index).lowercased()
+                print("uuid: \(uuid)")
                 let message = [
                     "fingerprint": uuid,
                     "message": self.textfield.text!,
                     "media": encodedImages
                 ] as [String : Any]
                 DispatchQueue.main.async(execute: {
-                    parentViewController!.socket!.emit("message", args: [message])
+                    parentViewController!.socket!.emit("message", [message])
                     self.closePostWithPosted(true)
                 })
             }
