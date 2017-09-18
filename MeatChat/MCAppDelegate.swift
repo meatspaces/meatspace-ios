@@ -13,7 +13,7 @@ class MCAppDelegate : UIResponder, UIApplicationDelegate {
     
     var window:UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
@@ -21,13 +21,13 @@ class MCAppDelegate : UIResponder, UIApplicationDelegate {
             print(error)
         }
         
-        let defaultDefaults = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("DefaultDefaults", ofType: "plist")!) as? Dictionary<String,AnyObject>
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultDefaults!)
+        let defaultDefaults = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "DefaultDefaults", ofType: "plist")!) as? Dictionary<String,AnyObject>
+        UserDefaults.standard.register(defaults: defaultDefaults!)
         
         return true
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         if let nc=self.window?.rootViewController as? UINavigationController {
             if let vc=nc.topViewController as? MCPostListViewController {
                 vc.postViewController?.closePostWithPosted(false)
@@ -35,7 +35,7 @@ class MCAppDelegate : UIResponder, UIApplicationDelegate {
         }
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         if let nc=self.window?.rootViewController as? UINavigationController {
             if let vc=nc.topViewController as? MCPostListViewController {
                 vc.resumePlay()
@@ -43,7 +43,7 @@ class MCAppDelegate : UIResponder, UIApplicationDelegate {
         }
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         if let nc=self.window?.rootViewController as? UINavigationController {
             if let vc=nc.topViewController as? MCPostListViewController {
                 vc.flushItems()

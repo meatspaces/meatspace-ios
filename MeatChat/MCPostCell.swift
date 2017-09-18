@@ -23,16 +23,16 @@ class MCPostCell : UITableViewCell {
     override func awakeFromNib() {
         self.videoPlayer=AVPlayer();
         let layer:AVPlayerLayer=AVPlayerLayer(player: self.videoPlayer)
-        self.videoPlayer!.actionAtItemEnd=AVPlayerActionAtItemEnd.None
-        layer.frame=CGRectMake(0, 0, 100, 75);
+        self.videoPlayer!.actionAtItemEnd=AVPlayerActionAtItemEnd.none
+        layer.frame=CGRect(x: 0, y: 0, width: 100, height: 75);
         layer.videoGravity=AVLayerVideoGravityResizeAspectFill;
         self.video?.layer.addSublayer(layer)
     }
     
-    func playerItemDidReachEnd(notification:NSNotification)
+    func playerItemDidReachEnd(_ notification:Notification)
     {
         let p:AVPlayerItem = notification.object as! AVPlayerItem
-        p.seekToTime(kCMTimeZero)
+        p.seek(to: kCMTimeZero)
     }
 
 }

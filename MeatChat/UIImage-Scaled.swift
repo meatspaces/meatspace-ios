@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIImage {
-    func imageByScalingAndCroppingForSize(targetSize:CGSize) -> UIImage {
+    func imageByScalingAndCroppingForSize(_ targetSize:CGSize) -> UIImage {
      
         let sourceImage = self
         let imageSize = sourceImage.size
@@ -17,12 +17,12 @@ extension UIImage {
         let height = imageSize.height
         let targetWidth = targetSize.width
         let targetHeight = targetSize.height
-        var thumbnailPoint = CGPointMake(0.0,0.0)
+        var thumbnailPoint = CGPoint(x: 0.0,y: 0.0)
         var scaleFactor = 0.0;
         var scaledWidth = targetWidth
         var scaledHeight = targetHeight
         
-        if CGSizeEqualToSize(imageSize, targetSize) == false {
+        if imageSize.equalTo(targetSize) == false {
             let widthFactor = Double(targetWidth / width)
             let heightFactor = Double(targetHeight / height)
             
@@ -52,12 +52,12 @@ extension UIImage {
         
         UIGraphicsBeginImageContext(targetSize) // this will crop
         
-        var thumbnailRect = CGRectZero
+        var thumbnailRect = CGRect.zero
         thumbnailRect.origin = thumbnailPoint
         thumbnailRect.size.width  = scaledWidth
         thumbnailRect.size.height = scaledHeight
         
-        sourceImage.drawInRect(thumbnailRect)
+        sourceImage.draw(in: thumbnailRect)
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
     
@@ -65,6 +65,6 @@ extension UIImage {
         //pop the context to get back to the default
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
 }

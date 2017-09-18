@@ -8,58 +8,59 @@
 
 import Foundation
 import UIKit
+import DateToolsSwift
 
 class MCPost :NSObject {
     
     var postData: [String : AnyObject]
     var attributedString : NSAttributedString;
-    var videoUrl : NSURL;
+    var videoUrl : URL;
     var created :Int;
     var fingerprint :String;
 
     
     init(dict: NSDictionary ) {
-        self.postData = dict.dictionaryWithValuesForKeys(["message","created"])
+        self.postData = dict.dictionaryWithValues(forKeys: ["message","created"]) as [String : AnyObject]
         self.created = (dict["created"] as? Int)!
         self.fingerprint = (dict["fingerprint"] as? String)!
         self.attributedString=NSAttributedString()
-        let media: String = (dict["media"]!.substringFromIndex(22) as String)
-        self.videoUrl=NSURL()
+        let media: String = ((dict["media"]! as AnyObject).substring(from: 22) as String)
+        self.videoUrl=URL(string: "")!
         super.init()
         self.setAttributedBody()
-        let videoData: NSData = NSData(base64EncodedString: media, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)!
-            videoData.writeToURL(self.path()!, atomically: false)
+        let videoData: Data = Data(base64Encoded: media, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+            try? videoData.write(to: self.path()!, options: [])
         self.videoUrl = self.path()!
         do {
-            try self.videoUrl.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
+            try (self.videoUrl as NSURL).setResourceValue(true, forKey: URLResourceKey.isExcludedFromBackupKey)
         } catch {
             print(error)
         }
         return
     }
     
-    func path() -> NSURL? {
+    func path() -> URL? {
 
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
         
-        let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         
-       let documentDirectory: NSURL = urls.first!
-        let finalPath = documentDirectory.URLByAppendingPathComponent(String(self.created)+".mp4")
+       let documentDirectory: URL = urls.first!
+        let finalPath = documentDirectory.appendingPathComponent(String(self.created)+".mp4")
         return finalPath
     }
     
         
         
     func relativeTime() -> String {
-        let epoch: NSTimeInterval = Double(created)/1000
-        let postDate: NSDate = NSDate(timeIntervalSince1970: epoch)
-        return postDate.dateTimeAgo()
+        let epoch: TimeInterval = Double(created)/1000
+        let postDate: Date = Date(timeIntervalSince1970: epoch)
+        return postDate.timeAgoSinceNow
     }
     
     func cleanup() {
         do {
-            try NSFileManager.defaultManager().removeItemAtURL(self.path()!)
+            try FileManager.default.removeItem(at: self.path()!)
         } catch {
             print(error)
         }
@@ -79,10 +80,10 @@ class MCPost :NSObject {
         
 
         do {
-             let string:NSMutableAttributedString = try NSMutableAttributedString(data: html.dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding ], documentAttributes: nil)
-            string.addAttribute(NSBackgroundColorAttributeName, value: UIColor.whiteColor(), range: NSMakeRange(0,string.length))
+             let string:NSMutableAttributedString = try NSMutableAttributedString(data: html.data(using: String.Encoding.utf8)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8 ], documentAttributes: nil)
+            string.addAttribute(NSBackgroundColorAttributeName, value: UIColor.white, range: NSMakeRange(0,string.length))
             string.addAttribute(NSForegroundColorAttributeName, value: UIColor(white: 0.23, alpha: 1.0), range: NSMakeRange(0,string.length))
-            string.addAttribute(NSFontAttributeName, value: UIFont.systemFontOfSize(17), range: NSMakeRange(0,string.length))
+            string.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(0,string.length))
             string.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0,string.length))
             self.attributedString=string
 
