@@ -31,25 +31,25 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
     var acceptedEula:Bool!
     
     override func viewDidLoad() {
-        if let blockList=NSUserDefaults.standardUserDefaults().dictionaryForKey("meatspaceBlocks") {
-            blocked=blockList
+        if let blockList=UserDefaults.standard.dictionary(forKey: "meatspaceBlocks") {
+            blocked=blockList as [String : AnyObject]
         }
         if((blocked.count) > 0) {
-            blockButton.hidden=false
+            blockButton.isHidden=false
         }
-        acceptedEula=NSUserDefaults.standardUserDefaults().boolForKey("acceptedEula");
+        acceptedEula=UserDefaults.standard.bool(forKey: "acceptedEula");
         if(!self.acceptedEula) {
-            let eulaAlert = UIAlertController(title: "Welcome to MeatChat", message: "This is a client for the real time chat service chat.meatspac.es. Please behave nicely, objectionable content is not accepted. If someone else posts objectionable content, you can remove current and future messages from them, by using the 'block' button next to their message.", preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (UIAlertAction) -> Void in
+            let eulaAlert = UIAlertController(title: "Welcome to MeatChat", message: "This is a client for the real time chat service chat.meatspac.es. Please behave nicely, objectionable content is not accepted. If someone else posts objectionable content, you can remove current and future messages from them, by using the 'block' button next to their message.", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) -> Void in
                 exit(0);
             })
             eulaAlert.addAction(cancelAction)
-            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
                 self.acceptedEula=true;
-                NSUserDefaults.standardUserDefaults().setBool(self.acceptedEula, forKey: "acceptedEula")
+                UserDefaults.standard.set(self.acceptedEula, forKey: "acceptedEula")
             })
             eulaAlert.addAction(OKAction)
-            self.presentViewController(eulaAlert, animated: true, completion: nil)
+            self.present(eulaAlert, animated: true, completion: nil)
         }
         
         tableView.contentInset = UIEdgeInsetsMake(42, 0, 0, 0);
@@ -58,8 +58,8 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MCPostListViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MCPostListViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MCPostListViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MCPostListViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight=75;
@@ -67,11 +67,11 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
     }
     
     func scrollToBottom() {
-        let indexPath=NSIndexPath(forItem: (self.items.count-1), inSection: 0)
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        let indexPath=IndexPath(item: (self.items.count-1), section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.atBottom = false;
         for cell in self.tableView.visibleCells {
             if let postCell = cell as? MCPostCell {
@@ -90,7 +90,7 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         
     }
     
-    func endScroll(scrollView:UIScrollView) {
+    func endScroll(_ scrollView:UIScrollView) {
         self.resumePlay();
         let height = scrollView.frame.size.height;
         let contentYoffset = scrollView.contentOffset.y;
@@ -99,33 +99,33 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
 
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.endScroll(scrollView)
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         self.endScroll(scrollView)
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         self.resumePlay()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let ctrl=segue.destinationViewController as? MCPostViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let ctrl=segue.destination as? MCPostViewController {
             self.postViewController=ctrl
         }
     }
     
     func setupReachability() {
-        let server_url=NSURL(string: NSUserDefaults.standardUserDefaults().objectForKey("server_url") as! String);
+        let server_url=URL(string: UserDefaults.standard.object(forKey: "server_url") as! String);
         let reach = Reachability(hostname: server_url!.host);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MCPostListViewController.reachabilityChanged(_:)), name: kReachabilityChangedNotification, object: nil)
-        reach.startNotifier()
+        NotificationCenter.default.addObserver(self, selector: #selector(MCPostListViewController.reachabilityChanged(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
+        reach?.startNotifier()
         self.setupSocket();
     }
     
-    func reachabilityChanged(notif:NSNotification) {
+    func reachabilityChanged(_ notif:Notification) {
         let reach=notif.object as! Reachability;
         reach.isReachable() ? self.setupSocket() : self.teardownSocket();
     }
@@ -141,9 +141,9 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
     
     func handleDisconnect() {
         self.postViewController!.textfield.resignFirstResponder()
-        self.postViewController!.textfield.enabled=false
+        self.postViewController!.textfield.isEnabled=false
         self.postViewController!.setPlaceHolder("Disconnected, please hold")
-        self.activeCount.hidden = true 
+        self.activeCount.isHidden = true 
 
     }
         
@@ -157,33 +157,33 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         self.tableView.reloadData()
     }
         
-    func addPost(args:NSArray) {
-        if let fingerprint=args[0]["fingerprint"] as? String {
+    func addPost(_ args:NSArray) {
+        if let fingerprint=(args[0] as! NSDictionary)["fingerprint"] as? String {
             if(self.blocked.keys.contains(fingerprint)) { return; }
         
             self.tableView.beginUpdates()
             if self.items.count > 0 {
                 for  i in 0 ... (self.items.count - 1)  {
-                    if let post=self.items.objectAtIndex(i) as? MCPost {
+                    if let post=self.items.object(at: i) as? MCPost {
                         if post.isObsolete() {
                             post.cleanup()
-                            self.items.removeObjectAtIndex(i)
-                            let indexPath=NSIndexPath(forItem: i, inSection: 0)
-                            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:UITableViewRowAnimation.Automatic)
+                            self.items.removeObject(at: i)
+                            let indexPath=IndexPath(item: i, section: 0)
+                            self.tableView.deleteRows(at: [indexPath], with:UITableViewRowAnimation.automatic)
                         }
                     }
                 }
             }
             self.tableView.endUpdates()
         
-            if let key = args[0]["key"] as? String {
+            if let key = (args[0] as! NSDictionary)["key"] as? String {
                 if((self.seen[key] ) != nil) { return; }
-                self.seen[key]="1"
+                self.seen[key]="1" as AnyObject?
             }
         }
         let post=MCPost(dict: args[0] as! NSDictionary)
-        self.items.addObject(post)
-        let newRow=NSIndexPath(forItem: self.items.count-1, inSection: 0)
+        self.items.add(post)
+        let newRow=IndexPath(item: self.items.count-1, section: 0)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock({
@@ -192,7 +192,7 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
             }
         })
         self.tableView.beginUpdates()
-        self.tableView.insertRowsAtIndexPaths([newRow], withRowAnimation: UITableViewRowAnimation.Fade)
+        self.tableView.insertRows(at: [newRow], with: UITableViewRowAnimation.fade)
         self.tableView.endUpdates()
         CATransaction.commit()
     }
@@ -201,77 +201,77 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         self.postViewController!.closePostWithPosted(false)
     }
 
-    func keyboardDidShow(sender:NSNotification) {
+    func keyboardDidShow(_ sender:Notification) {
 
-        let frame = sender.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-        self.containerBottom.constant = frame.size.height
+        let frame = (sender.userInfo![UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue
+        self.containerBottom.constant = (frame?.size.height)!
         self.containerView.setNeedsUpdateConstraints()
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.containerView.layoutIfNeeded()
             self.containerHeight.constant = 75.0
-            self.postViewController!.characterCount.hidden=false
-        }) { (finished) in
+            self.postViewController!.characterCount.isHidden=false
+        }, completion: { (finished) in
             if self.items.count > 0 {
                 self.scrollToBottom()
                 self.atBottom=true
             }
-        }
+        }) 
         
     }
-    func keyboardWillHide(sender:NSNotification) {
+    func keyboardWillHide(_ sender:Notification) {
         self.containerBottom.constant = 0;
         self.containerView.setNeedsUpdateConstraints()
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.containerView.layoutIfNeeded()
             self.containerHeight.constant = 35.0
-        }) { (finished) in
+        }, completion: { (finished) in
             if self.items.count > 0 {
                 self.scrollToBottom()
-                let indexPath=NSIndexPath(forItem: self.items.count-1, inSection: 0)
-                self.tableView.reloadRowsAtIndexPaths( [indexPath], withRowAnimation: UITableViewRowAnimation.None )
+                let indexPath=IndexPath(item: self.items.count-1, section: 0)
+                self.tableView.reloadRows( at: [indexPath], with: UITableViewRowAnimation.none )
                 self.atBottom=true
             }
-        }
+        }) 
     }
      
-    @IBAction func unblockClicked(sender:AnyObject) {
+    @IBAction func unblockClicked(_ sender:AnyObject) {
         self.blocked=[:]
-        NSUserDefaults.standardUserDefaults().setObject(self.blocked, forKey:"meatspaceBlocks")
-        self.blockButton.hidden=true
+        UserDefaults.standard.set(self.blocked, forKey:"meatspaceBlocks")
+        self.blockButton.isHidden=true
 
     }
     
-    @IBAction func blockClicked(sender:AnyObject) {
-        if let blockPost=self.items.objectAtIndex(sender.tag) as? MCPost {
-            self.blocked[blockPost.fingerprint]="1"
-            self.blockButton.hidden=false
-            NSUserDefaults.standardUserDefaults().setObject(self.blocked, forKey: "meatspaceBlocks")
+    @IBAction func blockClicked(_ sender:AnyObject) {
+        if let blockPost=self.items.object(at: sender.tag) as? MCPost {
+            self.blocked[blockPost.fingerprint]="1" as AnyObject
+            self.blockButton.isHidden=false
+            UserDefaults.standard.set(self.blocked, forKey: "meatspaceBlocks")
             for i in 0 ... self.items.count-1{
-                if let post = self.items.objectAtIndex(i) as? MCPost {
+                if let post = self.items.object(at: i) as? MCPost {
                     if post.fingerprint == blockPost.fingerprint {
-                        self.items.removeObject(post)
+                        self.items.remove(post)
                         self.tableView.reloadData()
                     }
                 }
             }
             weak var weakSelf=self
-            let alertController = UIAlertController(title: "Report abuse?", message: "You have just chosen to block another meatspacer. Would you like to report this user for objectionable content?", preferredStyle: UIAlertControllerStyle.Alert)
-            let cancelAction=UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel) { (action) in
+            let alertController = UIAlertController(title: "Report abuse?", message: "You have just chosen to block another meatspacer. Would you like to report this user for objectionable content?", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction=UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { (action) in
                 
             }
             
-            let okAction=UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) { (action) in
+            let okAction=UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (action) in
                 let mf=MFMailComposeViewController()
                 mf.setToRecipients(["report@meatspac.es"]);
                 mf.mailComposeDelegate=weakSelf;
                 mf.setSubject(String(format: "Abuse from user fingerprint %@",blockPost.fingerprint));
-                weakSelf!.presentViewController(mf, animated: true, completion: {})
+                weakSelf!.present(mf, animated: true, completion: {})
                 
             }
             alertController.addAction(cancelAction)
             alertController.addAction(okAction)
             
-            self.presentViewController(alertController, animated:true, completion:nil);
+            self.present(alertController, animated:true, completion:nil);
         }
 
         
@@ -284,47 +284,47 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
         self.postViewController!.setPlaceHolder("Connecting to meatspace")
 
         
-        SIOSocket.socketWithHost(NSUserDefaults.standardUserDefaults().objectForKey("server_url") as? String, response: { (sock) in
+        SIOSocket.socket(withHost: UserDefaults.standard.object(forKey: "server_url") as? String, response: { (sock) in
 
             self.socket=sock
             self.socket!.onConnect = {
                 weakSelf?.socket!.emit("join", args: ["mp4"])
-                dispatch_async(dispatch_get_main_queue(), {
-                    weakSelf?.postViewController!.textfield.enabled=true
+                DispatchQueue.main.async(execute: {
+                    weakSelf?.postViewController!.textfield.isEnabled=true
                     weakSelf?.postViewController!.setRandomPlaceholder()
                 })
             }
             self.socket!.onDisconnect = {
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     weakSelf?.handleDisconnect()
                 })
             }
             self.socket!.on("message", callback: { (data) in
-                dispatch_async(dispatch_get_main_queue(), {
-                    weakSelf!.addPost(data)
+                DispatchQueue.main.async(execute: {
+                    weakSelf!.addPost(data as! NSArray)
                 })
             })
             self.socket!.on("messageack", callback: { (data) in
-                if let message=data[0] as? String {
-                    dispatch_async(dispatch_get_main_queue(), {
+                if let message=data?[0] as? String {
+                    DispatchQueue.main.async(execute: {
                         weakSelf?.postViewController!.setPlaceHolder(message)
-                        if let uid=data[1]["userId"] as? String {
+                        if let uid=(data?[1] as! NSDictionary)["userId"] as? String {
                             self.userId=uid
                         }
                     })
                 }
             })
             self.socket!.on("active", callback: { (args) in
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.activeCount.text=args[0].stringValue
-                    self.activeCount.hidden=false
+                DispatchQueue.main.async(execute: {
+                    self.activeCount.text=(args?[0] as AnyObject).stringValue
+                    self.activeCount.isHidden=false
                     })
                 
             })
             self.socket!.onError = { (errorInfo) in
                 print(errorInfo)
-                dispatch_async(dispatch_get_main_queue(), {
-                    weakSelf?.postViewController!.setPlaceHolder(String(format: "An error occured: %@",errorInfo))
+                DispatchQueue.main.async(execute: {
+                    weakSelf?.postViewController!.setPlaceHolder(String(format: "An error occured: %@", errorInfo!))
                     })
             }
             self.socket!.onReconnect = { (numberOfAttempts) in
@@ -332,75 +332,75 @@ class MCPostListViewController : UIViewController, UITableViewDataSource, UITabl
             }
             self.socket!.onReconnectionAttempt = { (numberOfAttempts) in
                 print(String(format: "Attempt %ld",numberOfAttempts))
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     weakSelf?.postViewController!.setPlaceHolder("Reconnecting to meatspace.")
                 })
             }
             self.socket!.onReconnectionError={ (errorInfo) in
                 print(errorInfo)
-                dispatch_async(dispatch_get_main_queue(), {
-                    weakSelf!.postViewController!.setPlaceHolder(String(format: "Could not connect: %@",errorInfo))
+                DispatchQueue.main.async(execute: {
+                    weakSelf!.postViewController!.setPlaceHolder(String(format: "Could not connect: %@", errorInfo!))
                 })
             }
         })
         
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell=tableView.dequeueReusableCellWithIdentifier("MeatCell", forIndexPath: indexPath) as? MCPostCell {
-            if let post=self.items.objectAtIndex(indexPath.row) as? MCPost {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell=tableView.dequeueReusableCell(withIdentifier: "MeatCell", for: indexPath) as? MCPostCell {
+            if let post=self.items.object(at: indexPath.row) as? MCPost {
                 cell.textView.attributedText=post.attributedString
                 cell.timeLabel.text=post.relativeTime()
                 if self.userId == post.fingerprint {
-                    self.blockButton.hidden=true
+                    self.blockButton.isHidden=true
                 } else {
-                    cell.blockButton.hidden=false
+                    cell.blockButton.isHidden=false
                     cell.blockButton.tag=indexPath.row
                 }
-                let item=AVPlayerItem(URL: post.videoUrl)
-                cell.videoPlayer?.replaceCurrentItemWithPlayerItem(item)
+                let item=AVPlayerItem(url: post.videoUrl as URL)
+                cell.videoPlayer?.replaceCurrentItem(with: item)
                 if self.items.count-1 == self.tableView.visibleCells.count {
                     cell.videoPlayer?.play()
                 }
-                NSNotificationCenter.defaultCenter().addObserver(cell, selector: #selector(cell.playerItemDidReachEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: item)
+                NotificationCenter.default.addObserver(cell, selector: #selector(cell.playerItemDidReachEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: item)
             }
         return cell
         }
         return UITableViewCell()
     }
     
-    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let postCell=cell as? MCPostCell {
             postCell.videoPlayer!.pause()
         }
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell=tableView.cellForRowAtIndexPath(indexPath) as? MCPostCell {
-            cell.blockButton.hidden=true
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell=tableView.cellForRow(at: indexPath) as? MCPostCell {
+            cell.blockButton.isHidden=true
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell=tableView.cellForRowAtIndexPath(indexPath) as? MCPostCell {
-            cell.blockButton.hidden=false
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell=tableView.cellForRow(at: indexPath) as? MCPostCell {
+            cell.blockButton.isHidden=false
         }
     }
     
-    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         return true
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        self.dismissViewControllerAnimated(true) {}
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true) {}
     }
 
 }
